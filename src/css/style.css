@@ -1,0 +1,1143 @@
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #787878;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #000000;
+}
+
+::-webkit-scrollbar-track {
+    background: #0074c7;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #014a7e;
+}
+
+::-webkit-scrollbar-track:active {
+    background: #002038;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #102331;
+    margin: 0;
+}
+
+#leftMenu {
+    position: fixed;
+    width: 180px;
+    height: 100vh;
+    border-right: 1px solid black;
+}
+
+#currentSummonerInfo {
+    position: relative;
+    width: 180px;
+    height: 48px;
+    margin: 4px auto 4px 4px;
+}
+
+#currentSummonerIcon {
+    position: absolute;
+    top: 0;
+    width: 48px;
+}
+
+#currentSummonerName {
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    left: 55px;
+    right: 0;
+    top: 7px;
+    text-align: left;
+}
+
+#currentSummonerLevel {
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    left: 55px;
+    right: 0;
+    top: 25px;
+    text-align: left;
+}
+
+#nav {
+    border-top: 1px solid black;
+    padding-top: 3vh;
+    position: absolute;
+    width: 180px;
+    text-align: center;
+}
+
+#nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#nav ul li {
+    margin-bottom: 15px;
+}
+
+#nav ul li a {
+    text-decoration: none;
+    color: #ffda52;
+}
+
+#github {
+    margin-top: 80vh;
+    position: absolute;
+    height: 10vh;
+    width: 180px;
+    text-align: center;
+}
+
+#github:hover{
+    cursor: pointer;
+}
+
+#github img {
+    margin-top: 0.5vh;
+    width: 2vw;
+}
+
+#githubName {
+    color: white;
+    position: absolute;
+    top: 5vh;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 180px;
+    width: 100% - 180px;
+    height: 100vh;
+}
+
+.navbar {
+    border-bottom: 1px solid black;
+}
+
+#rankedInfo {
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    position: absolute;
+    bottom: 2vw;
+    left: 2vw;
+    width: 20vw;
+    height: 22vw;
+    background-color: #00000090;
+    transition: 0.5s;
+    border: 1px solid black;
+}
+
+#rankedInfo:hover {
+    background-color: #000000d5;
+    transform: scale(1.2);
+    bottom: 5vw;
+}
+
+#highElo {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 70%;
+    height: 14vw;
+}
+
+#leftElo {
+    position: absolute;
+    left: 0;
+    right: 9vw;
+    top: 14vw;
+    margin: auto;
+    width: 9vw;
+    height: 8vw;
+}
+
+#rightElo {
+    position: absolute;
+    left: 9vw;
+    right: 0px;
+    top: 14vw;
+    margin: auto;
+    width: 9vw;
+    height: 8vw;
+}
+
+#highElo img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 9vw;
+}
+
+#highEloName {
+    color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10.5vw;
+    text-align: center;
+    font-size: 1.2vw;
+}
+
+#highEloLP {
+    color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 12vw;
+    text-align: center;
+    font-size: 1vw;
+}
+
+#leftElo img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0px;
+    margin: auto;
+    width: 5vw;
+}
+
+#leftEloName {
+    position: absolute;
+    top: 5.7vw;
+    color: white;
+    font-size: 0.9vw;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#leftEloLP {
+    color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6.7vw;
+    text-align: center;
+    font-size: 0.7vw;
+}
+
+#rightElo img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0px;
+    margin: auto;
+    width: 5vw;
+}
+
+#rightEloName {
+    position: absolute;
+    top: 5.7vw;
+    color: white;
+    font-size: 0.9vw;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#rightEloLP {
+    color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6.7vw;
+    text-align: center;
+    font-size: 0.7vw;
+}
+
+#champInfo {
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    position: absolute;
+    bottom: 2vw;
+    left: 23vw;
+    width: 20vw;
+    height: 22vw;
+    background-color: #00000090;
+    transition: 0.5s;
+    border: 1px solid black;
+}
+
+#champInfo:hover {
+    background-color: #000000d5;
+    transform: scale(1.2);
+    bottom: 5vw;
+}
+
+#highChamp {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1vw;
+    margin: auto;
+    width: 10vw;
+    height: 11vw;
+}
+
+#highChamp img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 6vw;
+}
+
+#highChampPoint {
+    position: absolute;
+    color: white;
+    top: 10.3vw;
+    left: 0;
+    right: 0;
+    text-align: center;
+	font-size: 1.2vw;
+}
+
+#secondChamp {
+    position: absolute;
+    left: 0;
+    right: 10vw;
+    top: 13vw;
+    margin: auto;
+    width: 5vw;
+    height: 8vw;
+}
+
+#secondChamp img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 4vw;
+}
+
+#secondChampPoint {
+    position: absolute;
+    color: white;
+    top: 7vw;
+    left: 0;
+    right: 0;
+    text-align: center;
+	font-size: 1vw;
+}
+
+#thirdChamp {
+    position: absolute;
+    left: 10vw;
+    right: 0;
+    top: 13vw;
+    margin: auto;
+    width: 5vw;
+    height: 8vw;
+}
+
+#thirdChamp img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 4vw;
+}
+
+#thirdChampPoint {
+    position: absolute;
+    color: white;
+    top: 7vw;
+    left: 0;
+    right: 0;
+    text-align: center;
+	font-size: 1vw;
+}
+
+#honorInfo {
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    position: absolute;
+    bottom: 2vw;
+    left: 45vw;
+    width: 14.1vw;
+    height: 22vw;
+    background-color: #00000090;
+    transition: 0.5s;
+    border: 1px solid black;
+}
+
+#honorInfo:hover {
+    background-color: #000000d5;
+    transform: scale(1.2);
+    bottom: 5vw;
+}
+
+#honorInfo img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 1vw auto auto auto;
+    width: 14vw;
+}
+
+#honorInfo span {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    text-align: center;
+    color: white;
+    font-size: 0.9vw;
+}
+
+#honorInfoLevel {
+    top: 14.5vw;
+}
+
+#honorInfoCheckpoint {
+    top: 16.5vw;
+}
+
+#summonerFlag {
+    border-top-left-radius: 10%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: 0;
+    margin-left: auto;
+    width: 20vw;
+    height: 35vw;
+    transition: 0.5s;
+    background-color: #00000090;
+    border: 1px solid black;
+}
+
+#summonerFlag:hover {
+    background-color: #000000d5;
+    transform: scale(1.1);
+    right: 1vw;
+    bottom: 3vw;
+}
+
+#levelFrame {
+    position: absolute;
+    width: 15vw;
+    top: 0vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#summonerIcon {
+    position: absolute;
+    top: 4.5vw;
+    width: 6.4vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 50%;
+}
+
+#summonerLevel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 10.5vw;
+    font-size: 1vw;
+    color: white;
+}
+
+#summonerName {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 14vw;
+    font-size: 1.3vw;
+    color: white;
+}
+
+#levelBar {
+    width: 14vw;
+    height: 2.5vw;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 19vw;
+}
+
+.progress {
+    background-color: #17a3b877;
+    margin: auto;
+    height: 1vw;
+    width: 10vw;
+    box-shadow: 0 0 60px 25px #17a2b850;
+}
+
+.progress-bar {
+    width: var(--levelBar);
+    animation: barAnm 3s;
+}
+
+@keyframes barAnm {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: var(--levelBar);
+    }
+}
+
+#target {
+    position: absolute;
+    left: 0;
+    right: 0;
+    color: white;
+    text-align: center;
+    top: 1.8vw;
+}
+
+#nextLevel {
+    position: absolute;
+    right: 0;
+    color: white;
+    top: 0.5vw;
+    font-size: 0.9vw;
+}
+
+#level {
+    position: absolute;
+    left: 0;
+    color: white;
+    top: 0.5vw;
+    font-size: 0.9vw;
+}
+
+#summonerPerks {
+    position: absolute;
+    width: 11vw;
+    height: 3.4vw;
+    left: 0;
+    right: 0;
+    bottom: 4.5vw;
+    margin: auto;
+}
+
+#summonerPerks img {
+    position: absolute;
+    width: 2.3vw;
+}
+
+#summonerPerks span {
+    position: absolute;
+    color: white;
+    bottom: 0;
+    font-size: 0.9vw;
+}
+
+#summonerPerksChest {
+    left: 0;
+}
+
+#summonerPerksChestText {
+    left: 1vw;
+}
+
+#summonerPerksBoost {
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#summonerPerksReroll {
+    right: 0;
+}
+
+#summonerPerksRerollText {
+    right: 1vw;
+}
+
+#sampiyonAlan {
+    padding-top: 1vw;
+    padding-left: 1vw;
+    text-align: center;
+}
+
+#sampiyonAlan img {
+    width: 7vw;
+    margin: 1vw;
+}
+
+#sampiyonAlan img:hover {
+    cursor: pointer;
+}
+
+#kostumAlan {
+    padding-top: 1vw;
+    padding-left: 1vw;
+    text-align: center;
+}
+
+#kostumAlan img {
+    width: 7vw;
+    margin: 1vw;
+}
+
+#kostumAlan img:hover {
+    cursor: pointer;
+}
+
+#simgeAlan {
+    padding-top: 1vw;
+    padding-left: 1vw;
+    text-align: center;
+}
+
+#simgeAlan img {
+    width: 7vw;
+    margin: 1vw;
+}
+
+#simgeAlan img:hover {
+    cursor: pointer;
+}
+
+#ifadeAlan {
+    padding-top: 1vw;
+    padding-left: 1vw;
+    text-align: center;
+}
+
+#ifadeAlan img {
+    width: 7vw;
+    margin: 1vw;
+}
+
+#ifadeAlan img:hover {
+    cursor: pointer;
+}
+
+#totemAlan {
+    padding-top: 1vw;
+    padding-left: 1vw;
+    text-align: center;
+}
+
+#totemAlan img {
+    width: 7vw;
+    margin: 1vw;
+}
+
+#totemAlan img:hover {
+    cursor: pointer;
+}
+
+#toolsHeader {
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+    color: white;
+}
+
+#toolHr {
+    position: absolute;
+    top: 5.7vh;
+    left: 1.5vw;
+    border: 1px solid #2b5d81;
+    width: 60vw;
+}
+
+#trainingTool {
+    position: absolute;
+    top: 12vh;
+    margin-left: 2vw;
+    width: 75vw;
+    height: 10vh;
+    border-radius: 1vw;
+    border: 1px solid #ffda52;
+    background-color: #ffda5215;
+}
+
+#trainingTool span {
+    position: absolute;
+    left: 2vw;
+    top: 2.2vh;
+    font-size: 2vw;
+    color: #ffda52;
+}
+
+#trainingTool button {
+    position: absolute;
+    right: 3vw;
+    top: 1.7vh;
+    font-size: 1.5vw;
+}
+
+#skinBoost {
+    position: absolute;
+    top: 25vh;
+    margin-left: 2vw;
+    width: 75vw;
+    height: 10vh;
+    border-radius: 1vw;
+    border: 1px solid #ffda52;
+    background-color: #ffda5215;
+}
+
+#skinBoost span {
+    position: absolute;
+    left: 2vw;
+    top: 2.2vh;
+    font-size: 2vw;
+    color: #ffda52;
+}
+
+#skinBoost button {
+    position: absolute;
+    right: 3vw;
+    top: 1.7vh;
+    font-size: 1.5vw;
+}
+
+#iconChange {
+    position: absolute;
+    top: 38vh;
+    margin-left: 2vw;
+    width: 75vw;
+    height: 10vh;
+    border-radius: 1vw;
+    border: 1px solid #ffda52;
+    background-color: #ffda5215;
+}
+
+#iconChange span {
+    position: absolute;
+    left: 2vw;
+    top: 2.2vh;
+    font-size: 2vw;
+    color: #ffda52;
+}
+
+#iconChange button {
+    position: absolute;
+    right: 3vw;
+    top: 1.7vh;
+    font-size: 1.5vw;
+}
+
+#backgroundChange {
+    position: absolute;
+    top: 51vh;
+    margin-left: 2vw;
+    width: 75vw;
+    height: 10vh;
+    border-radius: 1vw;
+    border: 1px solid #ffda52;
+    background-color: #ffda5215;
+}
+
+#backgroundChange span {
+    position: absolute;
+    left: 2vw;
+    top: 2.2vh;
+    font-size: 2vw;
+    color: #ffda52;
+}
+
+#backgroundChange button {
+    position: absolute;
+    right: 3vw;
+    top: 1.7vh;
+    font-size: 1.5vw;
+}
+
+#iconChangeTitle {
+    position: absolute;
+    color: white;
+    top: 2vh;
+    left: 2vw;
+}
+
+#iconChangeHr {
+    position: absolute;
+    border: 1px solid #2b5d81;
+    top: 6vh;
+    left: 2vw;
+    width: 60vw;
+}
+
+#changeIconMain {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 83vw;
+    text-align: center;
+}
+
+#changeIconMain img {
+    margin: 0.7vw;
+    width: 5vw;
+}
+
+#changeIconMain img:hover {
+    cursor: pointer;
+}
+
+
+#bgChangeTitle {
+    position: absolute;
+    color: white;
+    top: 2vh;
+    left: 2vw;
+}
+
+#bgChangeHr {
+    position: absolute;
+    border: 1px solid #2b5d81;
+    top: 6vh;
+    left: 2vw;
+    width: 60vw;
+}
+
+#changeBgMain {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 83vw;
+    text-align: center;
+}
+
+#bgSelectArea {
+    position: absolute;
+    background-color: #10233196;
+    border-radius: 3vw;
+	padding: 2vw;
+    width: 70vw;
+    top: 7vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#bgSelectChamp {
+    margin-bottom: 5vh;
+}
+
+#bgSelectSkin {
+    margin-bottom: 4vh;
+}
+
+#instalockTitle {
+    position: absolute;
+    color: white;
+    top: 2vh;
+    left: 2vw;
+}
+
+#instalockHr {
+    position: absolute;
+    border: 1px solid #2b5d81;
+    top: 6vh;
+    left: 2vw;
+    width: 60vw;
+}
+
+#instalockMain {
+    position: absolute;
+    top: 30vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 83vw;
+    text-align: center;
+}
+
+#instalock {
+    position: absolute;
+    top: 64vh;
+    margin-left: 2vw;
+    width: 75vw;
+    height: 10vh;
+    border-radius: 1vw;
+    border: 1px solid #ffda52;
+    background-color: #ffda5215;
+}
+
+#instalock span {
+    position: absolute;
+    left: 2vw;
+    top: 2.2vh;
+    font-size: 2vw;
+    color: #ffda52;
+}
+
+#instalock button {
+    position: absolute;
+    right: 3vw;
+    top: 1.7vh;
+    font-size: 1.5vw;
+}
+
+#instalockCheckboxArea {
+    margin-top: 1.3vh;
+}
+
+#selectChamp {
+    width: 40vw;
+    margin-right: 1vw;
+}
+
+#offline {
+    position: absolute;
+    top: 77vh;
+    margin-left: 2vw;
+    width: 75vw;
+    height: 10vh;
+    border-radius: 1vw;
+    border: 1px solid #ffda52;
+    background-color: #ffda5215;
+}
+
+#offline span {
+    position: absolute;
+    left: 2vw;
+    top: 2.2vh;
+    font-size: 2vw;
+    color: #ffda52;
+}
+
+#offline label {
+    position: absolute;
+    right: 3vw;
+    top: 0.5vh;
+    font-size: 1.5vw;
+}
+
+#offline #warning {
+    position: absolute;
+    color: #ff7171;
+    top: 3.6vh;
+    left: 17vw;
+    font-size: 1.1vw;
+}
+
+#summonerWallet {
+    position: absolute;
+    width: 12vw;
+    height: 10vh;
+    left: 2vw;
+    top: 2vh;
+}
+
+#summonerWallet img {
+    position: absolute;
+    width: 2vw;
+}
+
+#summonerIpImg {
+    left: 0;
+    top: 0;
+}
+
+#summonerRPImg {
+    left: 0;
+    bottom: 0.3vh;
+}
+
+#summonerWallet span {
+    position: absolute;
+    color: white;
+    font-size: 1.5vw;
+}
+
+#summonerIpSpan {
+    left: 2.5vw;
+}
+
+#summonerRPSpan {
+    left: 2.5vw;
+    bottom: 0;
+}
+
+#chatRank {
+    position: absolute;
+    top: 90vh;
+    margin-left: 2vw;
+    width: 75vw;
+    height: 10vh;
+    border-radius: 1vw;
+    border: 1px solid #ffda52;
+    background-color: #ffda5215;
+}
+
+#chatRank span {
+    position: absolute;
+    left: 2vw;
+    top: 2.2vh;
+    font-size: 2vw;
+    color: #ffda52;
+}
+
+#chatRank button {
+    position: absolute;
+    right: 3vw;
+    top: 1.7vh;
+    font-size: 1.5vw;
+}
+
+#chatRankTitle {
+    position: absolute;
+    color: white;
+    top: 2vh;
+    left: 2vw;
+}
+
+#chatRankHr {
+    position: absolute;
+    border: 1px solid #2b5d81;
+    top: 6vh;
+    left: 2vw;
+    width: 60vw;
+}
+
+#chatRankMain {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 83vw;
+    text-align: center;
+}
+
+#chatRankSelectArea {
+    position: absolute;
+    width: 70vw;
+    top: 7vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#chatRankSelectQueue {
+    margin-bottom: 5vh;
+}
+
+#chatRankSelectRank {
+    margin-bottom: 5vh;
+}
+
+#chatRankSelectDivision {
+    margin-bottom: 4vh;
+}
+
+#detailTurnBack {
+    color: white;
+    position: absolute;
+    top: 3vh;
+    left: 3vw;
+}
+
+#champDetailsName {
+    position: absolute;
+    color: #ffda52;
+    top: 17vh;
+    left: 7vw;
+    font-size: 4vw;
+}
+
+#champDetailsTitle {
+    position: absolute;
+    color: #ffda52;
+    top: 22vh;
+    left: 40vw;
+    right: 9vw;
+    text-align: right;
+    font-size: 2vw;
+}
+
+#champDetails {
+    color: white;
+    margin: 30vh auto auto auto;
+    width: 75vw;
+    font-size: 1.4vw;
+    background-color: #10233196;
+}
+
+#champDetails td {
+    border-color: #ffda52;
+    border-right: 1px solid #ffda52;
+}
+
+#champDetailsImg {
+    width: 18%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#champDetailsImg img {
+    width: 10vw;
+}
+
+#audioChampSelect{
+    position: absolute;
+    top: 65vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5vw;
+}
+
+#audioChampBan{
+    position: absolute;
+    top: 75vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5vw;
+}
