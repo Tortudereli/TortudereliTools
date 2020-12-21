@@ -2,7 +2,6 @@ const {
     ipcRenderer
 } = require("electron");
 const $ = require("jquery");
-const tt = require('electron-tooltip');
 const {
     shell
 } = require('electron');
