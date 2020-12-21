@@ -16,11 +16,11 @@ $("#github").click(() => {
 
 $("#eSampiyon").addClass("active");
 
-var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
 var summonerLevel = summonerData['summonerLevel'];
@@ -43,7 +43,7 @@ var iconId = getUrlVars()["id"];
 
 $("#champDetailsImg img").attr('src', `http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${iconId}.png`)
 
-var iconData = ipcRenderer.sendSync("get", `/lol-collections/v2/inventories/${summonerId}/summoner-icons`);
+var iconData = ipcRenderer.sendSync("get", `/lol-collections/v2/inventories/${summonerId}/summoner-icons`)['body'];
 
 iconData['summonerIcons'].forEach(element => {
     if (element['iconId'] == iconId) {

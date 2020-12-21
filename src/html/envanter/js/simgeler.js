@@ -13,11 +13,11 @@ $("#github").click(() => {
 
 $("#eSimge").addClass("active");
 
-var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var summonerId = summonerData['summonerId'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
@@ -30,8 +30,8 @@ $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
 version = null;
 
 
-var iconData = ipcRenderer.sendSync("get", `/lol-collections/v2/inventories/${summonerId}/summoner-icons`);
-var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var iconData = ipcRenderer.sendSync("get", `/lol-collections/v2/inventories/${summonerId}/summoner-icons`)['body'];
+var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
 

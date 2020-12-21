@@ -1,8 +1,8 @@
-const electron = require('electron')
-const request = require('request')
+const electron = require('electron');
+const request = require('request');
 const LCUConnector = require("lcu-connector");
 const connector = new LCUConnector();
-var btoa = require('btoa');
+const btoa = require('btoa');
 const {
     exec
 } = require("child_process");
@@ -49,7 +49,30 @@ function createWindow() {
                 json: true
             }
             request.get(options, (err, response, body) => {
-                event.returnValue = body;
+                event.returnValue = {
+                    "body": body,
+                    "status": response.statusCode
+                };
+            });
+        });
+
+        ipcMain.on("delete", (event, arg) => {
+            let options = {
+                url: clientUrl + arg,
+                strictSSL: false,
+                auth: {
+                    username: `${data['username']}`,
+                    password: `${data['password']}`
+                },
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }
+            request.delete(options, (err, response, body) => {
+                event.returnValue = {
+                    "body": body,
+                    "status": response.statusCode
+                };
             });
         });
 
@@ -67,7 +90,12 @@ function createWindow() {
                 },
                 json: arg['json']
             }
-            request.post(options)
+            request.post(options, (err, response, body) => {
+                event.returnValue = {
+                    "body": body,
+                    "status": response.statusCode
+                };
+            });
         });
 
         ipcMain.on("put", (event, arg) => {
@@ -84,7 +112,12 @@ function createWindow() {
                 },
                 json: arg['json']
             }
-            request.put(options);
+            request.put(options, (err, response, body) => {
+                event.returnValue = {
+                    "body": body,
+                    "status": response.statusCode
+                };
+            });
         });
 
         ipcMain.on("patch", (event, arg) => {
@@ -101,7 +134,12 @@ function createWindow() {
                 },
                 json: arg['json']
             }
-            request.patch(options);
+            request.patch(options, (err, response, body) => {
+                event.returnValue = {
+                    "body": body,
+                    "status": response.statusCode
+                };
+            });
         });
 
         ipcMain.on("getApi", (event, arg) => {
@@ -111,7 +149,9 @@ function createWindow() {
                 json: true
             }
             request.get(options, (err, response, body) => {
-                event.returnValue = body;
+                event.returnValue = {
+                    "body": body
+                };
             });
         });
 
@@ -139,7 +179,9 @@ function createWindow() {
                 }
                 var u8 = new Uint8Array(body);
                 var b64encoded = btoa(Uint8ToString(u8));
-                event.returnValue = "data:image/png;base64," + b64encoded;
+                event.returnValue = {
+                    "body": "data:image/png;base64," + b64encoded
+                }
             });
         });
 
@@ -167,12 +209,14 @@ function createWindow() {
                 }
                 var u8 = new Uint8Array(body);
                 var b64encoded = btoa(Uint8ToString(u8));
-                event.returnValue = "data:audio/ogg;base64," + b64encoded;
+                event.returnValue = {
+                    "body": "data:audio/ogg;base64," + b64encoded
+                }
             });
         });
 
         setTimeout(() => {
-            win.loadFile('src/index.html');
+            win.loadFile('src/html/info.html');
         }, 5000);
     });
 
@@ -199,7 +243,6 @@ function createWindow() {
 app.whenReady().then(createWindow)
 
 Menu.setApplicationMenu(null);
-
 
 app.on('window-all-closed', () => {
     exec("netsh advfirewall firewall delete rule name=\"LoLChatOffline\"", (error, data, getter) => {

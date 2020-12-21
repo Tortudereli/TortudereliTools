@@ -13,11 +13,11 @@ $("#github").click(() => {
 
 $("#eTotem").addClass("active");
 
-var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var summonerId = summonerData['summonerId'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
@@ -29,8 +29,8 @@ $("#currentSummonerName").text(displayName);
 $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
 version = null;
 
-var totemData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/${summonerId}/ward-skins`);
-var totemsData = ipcRenderer.sendSync("getApi", "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/ward-skins.json");
+var totemData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/${summonerId}/ward-skins`)['body'];
+var totemsData = ipcRenderer.sendSync("getApi", "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/ward-skins.json")['body'];
 
 function getTotemUrl(id) {
     for (let i = 0; i < totemsData.length; i++) {
@@ -43,7 +43,7 @@ function getTotemUrl(id) {
 totemData.forEach(element => {
     if (element['ownership']['owned'] == true) {
         var totemUrl = getTotemUrl(element['id']);
-        $('#totemAlan').append(`<img id="${element['id']}" src="${ipcRenderer.sendSync("getImg", totemUrl)}" alt="">`);
+        $('#totemAlan').append(`<img id="${element['id']}" src="${ipcRenderer.sendSync("getImg", totemUrl)['body']}" alt="">`);
         $(`#${element['id']}`).click(() => {
             window.location.href = `details/wardDetails.html?id=${element['id']}`;
         })

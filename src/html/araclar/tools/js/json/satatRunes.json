@@ -1,0 +1,26 @@
+[
+    {
+        "name": "HealthScaling",
+        "value": 5001
+    },
+    {
+        "name": "Armor",
+        "value": 5002
+    },
+    {
+        "name": "MagicRes",
+        "value": 5003
+    },
+    {
+        "name": "AttackSpeed",
+        "value": 5005
+    },
+    {
+        "name": "CDRScaling",
+        "value": 5007
+    },
+    {
+        "name": "Adaptive",
+        "value": 5008
+    }
+]

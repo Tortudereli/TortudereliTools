@@ -15,11 +15,11 @@ $("#github").click(() => {
 
 $("#eSampiyon").addClass("active");
 
-var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
 var summonerLevel = summonerData['summonerLevel'];
@@ -54,7 +54,7 @@ $("#trainingTool button").click(() => {
 })
 
 $("#skinBoost button").click(() => {
-    var wallet = ipcRenderer.sendSync("get", "/lol-store/v1/wallet")
+    var wallet = ipcRenderer.sendSync("get", "/lol-store/v1/wallet")['body'];
     var r = confirm(`Bu özellik kostüm takviyesi açılabilen oyun modunun şampiyon seçim ekranında çalışır. (Örneğin: ARAM)\n${displayName} hesabınızda ${wallet['rp']} RP vardır.\nEğer hesabınızda 95 RP ve üstü RP varsa ücret hesabınızdan düşürülür.\nRP'niz yokken aktifleştirilmesi tavsiye edilir.\nOlabilecek herhangi bir olumsuz sonuçtan yapımcı sorumlu değildir!\nOnaylıyor musunuz?`);
     if (r == true) {
         var json = {
@@ -111,4 +111,8 @@ $("#offlineCheckBox").change(() => {
 
 $("#chatRank button").click(() => {
     window.location.href = 'tools/chatRank.html';
+})
+
+$("#autoChampSelect button").click(() => {
+    window.location.href = 'tools/autoChampSelect.html';
 })

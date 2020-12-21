@@ -16,11 +16,11 @@ $("#github").click(() => {
 
 $("#eSampiyon").addClass("active");
 
-var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
 var summonerLevel = summonerData['summonerLevel'];
@@ -41,8 +41,8 @@ function getUrlVars() {
 }
 var emoteId = getUrlVars()["id"];
 
-var emoteData = ipcRenderer.sendSync("get", `/lol-inventory/v1/inventory/emotes`);
-var emotesData = ipcRenderer.sendSync("getApi", "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/summoner-emotes.json");
+var emoteData = ipcRenderer.sendSync("get", `/lol-inventory/v1/inventory/emotes`)['body'];
+var emotesData = ipcRenderer.sendSync("getApi", "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/summoner-emotes.json")['body'];
 
 function getEmoteUrl(id) {
     for (let i = 0; i < emotesData.length; i++) {
@@ -55,7 +55,7 @@ function getEmoteUrl(id) {
 emoteData.forEach(element => {
     if (element['itemId'] == emoteId) {
         var emoteUrl = getEmoteUrl(element['itemId']);
-        $("#champDetailsImg img").attr('src', `${ipcRenderer.sendSync("getImg", emoteUrl)}`)
+        $("#champDetailsImg img").attr('src', `${ipcRenderer.sendSync("getImg", emoteUrl)['body']}`);
         $("#emoteDetailsPurchaseDate").text(element['purchaseDate'].substring(6, 8) + "." + element['purchaseDate'].substring(4, 6) + "." + element['purchaseDate'].substring(0, 4) + " " + element['purchaseDate'].substring(9, 11) + ":" + element['purchaseDate'].substring(11, 13) + ":" + element['purchaseDate'].substring(13, 15));
     }
 });

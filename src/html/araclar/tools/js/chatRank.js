@@ -13,10 +13,10 @@ $("#github").click(() => {
 
 $("#eSampiyon").addClass("active");
 
-var version = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var version = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 version = version[0];
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
 var summonerLevel = summonerData['summonerLevel'];

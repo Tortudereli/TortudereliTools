@@ -13,11 +13,11 @@ $("#github").click(() => {
 
 $("#eSampiyon").addClass("active");
 
-var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
 var summonerLevel = summonerData['summonerLevel'];
@@ -39,16 +39,16 @@ function getUrlVars() {
 var skinId = getUrlVars()["id"];
 var champId = getUrlVars()["champId"];
 
-var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${champId}/skins/${skinId}`);
+var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${champId}/skins/${skinId}`)['body'];
 
 $("#champDetailsName").text(skinData['name']);
 document.title = skinData['name'];
 
-$("#champDetailsImg img").attr('src', `${ipcRenderer.sendSync("getImg", skinData['tilePath'])}`)
+$("#champDetailsImg img").attr('src', `${ipcRenderer.sendSync("getImg", skinData['tilePath'])['body']}`)
 $("#skinDetailsPurchaseDate").text(new Date(skinData['ownership']['rental']['purchaseDate']).toLocaleString("tr-TR"));
 
 $("#main").css({
-    "background": `url(${ipcRenderer.sendSync("getImg", skinData['splashPath'])}`,
+    "background": `url(${ipcRenderer.sendSync("getImg", skinData['splashPath'])['body']}`,
     "background-repeat": "no-repeat",
     "background-size": "100% 100vh",
 })

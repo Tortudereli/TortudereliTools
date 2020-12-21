@@ -16,10 +16,10 @@ $("#github").click(() => {
 
 $("#eSampiyon").addClass("active");
 
-var version = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var version = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 version = version[0];
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var summonerId = summonerData['summonerId'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
@@ -30,7 +30,7 @@ $("#currentSummonerIcon").attr('src', `http://ddragon.leagueoflegends.com/cdn/${
 $("#currentSummonerName").text(displayName);
 $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
 
-var iconData = ipcRenderer.sendSync("get", `/lol-collections/v2/inventories/${summonerId}/summoner-icons`);
+var iconData = ipcRenderer.sendSync("get", `/lol-collections/v2/inventories/${summonerId}/summoner-icons`)['body'];
 iconData = iconData['icons'];
 iconData.push(29);
 for (let index = 50; index < 79; index++) {

@@ -53,6 +53,20 @@ body {
     border-right: 1px solid black;
 }
 
+#ttVersion {
+    display: none;
+    position: absolute;
+    font-size: 1.8vw;
+    font-weight: bold;
+    right: 2vw;
+    top: 4vh;
+    transition: 1.5s;
+}
+
+#ttVersion:hover {
+    cursor: pointer;
+}
+
 #currentSummonerInfo {
     position: relative;
     width: 180px;
@@ -116,7 +130,7 @@ body {
     text-align: center;
 }
 
-#github:hover{
+#github:hover {
     cursor: pointer;
 }
 
@@ -325,7 +339,7 @@ body {
     left: 0;
     right: 0;
     text-align: center;
-	font-size: 1.2vw;
+    font-size: 1.2vw;
 }
 
 #secondChamp {
@@ -353,7 +367,7 @@ body {
     left: 0;
     right: 0;
     text-align: center;
-	font-size: 1vw;
+    font-size: 1vw;
 }
 
 #thirdChamp {
@@ -381,7 +395,7 @@ body {
     left: 0;
     right: 0;
     text-align: center;
-	font-size: 1vw;
+    font-size: 1vw;
 }
 
 #honorInfo {
@@ -786,31 +800,6 @@ body {
     font-size: 1.5vw;
 }
 
-#iconChangeTitle {
-    position: absolute;
-    color: white;
-    top: 2vh;
-    left: 2vw;
-}
-
-#iconChangeHr {
-    position: absolute;
-    border: 1px solid #2b5d81;
-    top: 6vh;
-    left: 2vw;
-    width: 60vw;
-}
-
-#changeIconMain {
-    position: absolute;
-    top: 10vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 83vw;
-    text-align: center;
-}
-
 #changeIconMain img {
     margin: 0.7vw;
     width: 5vw;
@@ -820,37 +809,11 @@ body {
     cursor: pointer;
 }
 
-
-#bgChangeTitle {
-    position: absolute;
-    color: white;
-    top: 2vh;
-    left: 2vw;
-}
-
-#bgChangeHr {
-    position: absolute;
-    border: 1px solid #2b5d81;
-    top: 6vh;
-    left: 2vw;
-    width: 60vw;
-}
-
-#changeBgMain {
-    position: absolute;
-    top: 10vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 83vw;
-    text-align: center;
-}
-
 #bgSelectArea {
     position: absolute;
     background-color: #10233196;
     border-radius: 3vw;
-	padding: 2vw;
+    padding: 2vw;
     width: 70vw;
     top: 7vh;
     left: 0;
@@ -866,29 +829,8 @@ body {
     margin-bottom: 4vh;
 }
 
-#instalockTitle {
-    position: absolute;
-    color: white;
-    top: 2vh;
-    left: 2vw;
-}
-
-#instalockHr {
-    position: absolute;
-    border: 1px solid #2b5d81;
-    top: 6vh;
-    left: 2vw;
-    width: 60vw;
-}
-
 #instalockMain {
-    position: absolute;
     top: 30vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 83vw;
-    text-align: center;
 }
 
 #instalock {
@@ -1024,14 +966,14 @@ body {
     font-size: 1.5vw;
 }
 
-#chatRankTitle {
+.toolsTitle {
     position: absolute;
     color: white;
     top: 2vh;
     left: 2vw;
 }
 
-#chatRankHr {
+.toolsHr {
     position: absolute;
     border: 1px solid #2b5d81;
     top: 6vh;
@@ -1039,7 +981,7 @@ body {
     width: 60vw;
 }
 
-#chatRankMain {
+.toolsMain {
     position: absolute;
     top: 10vh;
     left: 0;
@@ -1118,7 +1060,7 @@ body {
     width: 10vw;
 }
 
-#audioChampSelect{
+#audioChampSelect {
     position: absolute;
     top: 65vh;
     left: 0;
@@ -1130,7 +1072,7 @@ body {
     font-size: 1.5vw;
 }
 
-#audioChampBan{
+#audioChampBan {
     position: absolute;
     top: 75vh;
     left: 0;
@@ -1140,4 +1082,175 @@ body {
     cursor: pointer;
     color: white;
     font-size: 1.5vw;
+}
+
+#autoChampSelect {
+    position: absolute;
+    top: 103vh;
+    margin-left: 2vw;
+    width: 75vw;
+    height: 10vh;
+    border-radius: 1vw;
+    border: 1px solid #ffda52;
+    background-color: #ffda5215;
+}
+
+#autoChampSelect span {
+    position: absolute;
+    left: 2vw;
+    top: 2.2vh;
+    font-size: 2vw;
+    color: #ffda52;
+}
+
+#autoChampSelect button {
+    position: absolute;
+    right: 3vw;
+    top: 1.7vh;
+    font-size: 1.5vw;
+}
+
+#autoMatchingArea {
+    position: absolute;
+    width: 65vw;
+    height: 165vh;
+    top: 2vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+}
+
+#autoMatchingAcceptCheckboxArea {
+    position: absolute;
+    top: 1vh;
+    width: 30vw;
+    font-size: 1.2vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#autoMatchingBanCheckboxArea {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 1.2vw;
+    top: 10vh;
+    width: 50vw;
+}
+
+#autoMatchingSelectCheckboxArea {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 1.2vw;
+    margin: auto;
+    top: 25vh;
+    width: 50vw;
+}
+
+#autoMatchingPerksCheckboxArea {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 1.2vw;
+    margin: auto;
+    top: 44vh;
+    width: 60vw;
+    height: 80vh;
+}
+
+#autoMatchingPerksCheckboxArea select {
+    margin-bottom: 3vh;
+    width: 35vw;
+}
+
+#primaryPerksArea {
+    position: absolute;
+    bottom: 5vh;
+    left: 0;
+    right: 30vw;
+    margin: auto;
+    width: 30vw;
+    height: 48vh;
+}
+
+#primaryPerksArea img {
+    opacity: 0.3;
+    width: 5vw;
+    margin-bottom: 2vh;
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+
+#subPerksArea {
+    position: absolute;
+    left: 32vw;
+    right: 0;
+    bottom: 5vh;
+    width: 25vw;
+    height: 48vh;
+}
+
+#subPerksAreaRune img {
+    opacity: 0.3;
+    width: 3.5vw;
+    margin-bottom: 2vh;
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+
+#subPerksAreaStat {
+    display: none;
+}
+
+#subPerksAreaStat img {
+    opacity: 0.5;
+    width: 2vw;
+    margin-bottom: 2vh;
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+
+#autoMatchingSubmitCheckboxArea {
+    position: absolute;
+    bottom: 2vh;
+    width: 13vw;
+    font-size: 1.2vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#autoMatchingRuneSubmitCheckboxArea {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#autoMatchingSpellSelectCheckboxArea {
+    position: absolute;
+    top: 128vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 40vw;
+    height: 27vh;
+}
+
+#autoMatchingSpellSelectCheckboxArea select {
+    margin: 0.5vw;
+    width: 30vw;
+}
+
+#autoMatchingSpellSubmitCheckboxArea{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
 }

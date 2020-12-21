@@ -14,10 +14,10 @@ $("#github").click(() => {
 
 $("#eSampiyon").addClass("active");
 
-var version = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var version = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 version = version[0];
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var displayName = summonerData['displayName'];
 var summonerId = summonerData['summonerId'];
 var profileIconId = summonerData['profileIconId'];
@@ -28,36 +28,36 @@ $("#currentSummonerIcon").attr('src', `http://ddragon.leagueoflegends.com/cdn/${
 $("#currentSummonerName").text(displayName);
 $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
 
-var backgroundIdData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner/summoner-profile");
+var backgroundIdData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner/summoner-profile")['body'];
 var backgroundId = backgroundIdData['backgroundSkinId'];
 backgroundIdData = null;
 var backgroundChampId = String(backgroundId).substring(0, String(backgroundId).length - 3);
 
 switch (backgroundId) {
 	default:
-        var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/${backgroundId}`);
+        var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/${backgroundId}`)['body'];
         var backgroundImagePath = skinData['splashPath'];
         break;
 
     case 147002:
-        var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`);
+        var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`)['body'];
         var backgroundImagePath = skinData['questSkinInfo']['tiers'][1]['splashPath'];
         break;
 
     case 147003:
-        var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`);
+        var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`)['body'];
         var backgroundImagePath = skinData['questSkinInfo']['tiers'][2]['splashPath'];
         break;
 }
 
 skinData = null;
 $("#main").css({
-    "background": `url(${ipcRenderer.sendSync("getImg", `${backgroundImagePath}`)}`,
+    "background": `url(${ipcRenderer.sendSync("getImg", `${backgroundImagePath}`)['body']}`,
     "background-repeat": "no-repeat",
     "background-size": "100% 100vh"
 })
 
-var getChampions = ipcRenderer.sendSync("getApi", `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/tr_tr/v1/champion-summary.json`);
+var getChampions = ipcRenderer.sendSync("getApi", `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/tr_tr/v1/champion-summary.json`)['body'];
 
 getChampions.forEach(element => {
     if (element['id'] !== -1) {
@@ -93,7 +93,7 @@ $("#bgSelectChamp").change(() => {
     $("#bgSelectSkin option").remove();
     $('#bgSelectSkin').append(`<option id="defaultSkin">- Kostüm Seç -</option>`);
 
-	var getSkins = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${champId}/skins`);
+	var getSkins = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${champId}/skins`)['body'];
 	
 	getSkins.forEach(element => {
         $('#bgSelectSkin').append(`<option value="${element['id']}">${element['name']}</option>`);

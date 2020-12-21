@@ -13,18 +13,18 @@ $("#github").click(() => {
 
 $("#eSampiyon").addClass("active");
 
-var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
 var summonerLevel = summonerData['summonerLevel'];
 var summonerId = summonerData['summonerId'];
 summonerData = null;
 
-$("#currentSummonerIcon").attr('src', `http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${profileIconId}.png`)
+$("#currentSummonerIcon").attr('src', `http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${profileIconId}.png`);
 $("#currentSummonerName").text(displayName);
 $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
 
@@ -40,7 +40,7 @@ var champId = getUrlVars()["id"];
 
 
 
-var champData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${champId}`);
+var champData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${champId}`)['body'];
 
 $("#main").css({
     "background": `url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champData['alias']}_0.jpg`,
@@ -54,7 +54,7 @@ var champOwned = champData['ownership']['owned'];
 $("#champDetailsName").text(champData['name']);
 $("#champDetailsTitle").text(champData['title']);
 document.title = champData['title'] + " " + champData['name'];
-$("#champDetailsImg img").attr('src', `${ipcRenderer.sendSync("getImg", champData['squarePortraitPath'])}`)
+$("#champDetailsImg img").attr('src', `${ipcRenderer.sendSync("getImg", champData['squarePortraitPath'])['body']}`)
 
 
 if (champOwned) {
@@ -73,7 +73,7 @@ if (freeToPlay) {
 }
 
 
-var champMasteyData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/${summonerId}/champion-mastery`);
+var champMasteyData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/${summonerId}/champion-mastery`)['body'];
 
 champMasteyData.forEach(element => {
     if (element['championId'] == champId) {
@@ -94,18 +94,18 @@ champMasteyData.forEach(element => {
 
 });
 
-var snd1 = new Audio(ipcRenderer.sendSync("getAudio", champData['stingerSfxPath']));
+var snd1 = new Audio(ipcRenderer.sendSync("getAudio", champData['stingerSfxPath'])['body']);
 snd1.volume = 0.2;
 snd1.play();
 
 $("#audioChampSelect").click(() => {
-    var snd2 = new Audio(ipcRenderer.sendSync("getAudio", champData['chooseVoPath']));
+    var snd2 = new Audio(ipcRenderer.sendSync("getAudio", champData['chooseVoPath'])['body']);
 	snd2.volume = 0.2;
     snd2.play();
 });
 
 $("#audioChampBan").click(() => {
-    var snd3 = new Audio(ipcRenderer.sendSync("getAudio", champData['banVoPath']));
+    var snd3 = new Audio(ipcRenderer.sendSync("getAudio", champData['banVoPath'])['body']);
 	snd3.volume = 0.2;
     snd3.play();
 });

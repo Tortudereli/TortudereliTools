@@ -1,21 +1,41 @@
 const {
-    ipcRenderer
+    ipcRenderer,
+    shell
 } = require("electron");
 const $ = require("jquery");
-const {
-    shell
-} = require('electron')
+
 
 $("#github").click(() => {
     shell.openExternal('https://github.com/Tortudereli')
 })
 
+$("#ttVersion").click(() => {
+    shell.openExternal('https://github.com/Tortudereli/TortudereliTools')
+})
+
 try {
-    var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+    var currentVersion = 1.5;
+    var ttVersion = ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body'];
+    var ttVersion = ttVersion['version'];
+
+    if (ttVersion != currentVersion) {
+        $("#ttVersion").css("display", "block");
+        setInterval(() => {
+            var r = Math.floor((Math.random() * 255) + 1);
+            var g = Math.floor((Math.random() * 255) + 1);
+            var b = Math.floor((Math.random() * 255) + 1);
+            $("#ttVersion").css("color", `rgb(${r}, ${g}, ${b})`);
+        }, 2000);
+    } else {
+        $("#ttVersion").css("display", "none");
+    }
+
+
+    var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
     var version = versionData[0];
     versionData = null;
 
-    var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+    var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
     var displayName = summonerData['displayName'];
     var profileIconId = summonerData['profileIconId'];
     var rerollPoints = summonerData['rerollPoints']['numberOfRolls'];
@@ -27,24 +47,24 @@ try {
 
 
 
-    var backgroundIdData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner/summoner-profile");
+    var backgroundIdData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner/summoner-profile")['body'];
     var backgroundId = backgroundIdData['backgroundSkinId'];
     backgroundIdData = null;
     var backgroundChampId = String(backgroundId).substring(0, String(backgroundId).length - 3);
 
     switch (backgroundId) {
         default:
-            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/${backgroundId}`);
+            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/${backgroundId}`)['body'];
             var backgroundImagePath = skinData['splashPath'];
             break;
 
         case 147002:
-            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`);
+            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`)['body'];
             var backgroundImagePath = skinData['questSkinInfo']['tiers'][1]['splashPath'];
             break;
 
         case 147003:
-            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`);
+            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`)['body'];
             var backgroundImagePath = skinData['questSkinInfo']['tiers'][2]['splashPath'];
             break;
     }
@@ -57,7 +77,7 @@ try {
 
     skinData = null;
     $("#main").css({
-        "background": `url(${ipcRenderer.sendSync("getImg", `${backgroundImagePath}`)}`,
+        "background": `url(${ipcRenderer.sendSync("getImg", `${backgroundImagePath}`)['body']}`,
         "background-repeat": "no-repeat",
         "background-size": "100% 100vh"
     })
@@ -82,7 +102,7 @@ try {
     }
 
 
-    var rankedData = ipcRenderer.sendSync("get", "/lol-ranked/v1/current-ranked-stats");
+    var rankedData = ipcRenderer.sendSync("get", "/lol-ranked/v1/current-ranked-stats")['body'];
     var highDataDivision = rankedData['highestRankedEntry']['division'];
     var highDataLeaguePoints = rankedData['highestRankedEntry']['leaguePoints'];
     var highDataLosses = rankedData['highestRankedEntry']['losses'];
@@ -162,35 +182,32 @@ try {
     $("#highEloName").text(highDataQueueType);
     $("#highEloLP").text(highDataTier + " " + highDataDivision + " / " + highDataLeaguePoints + " LP");
     $("#highEloImg").attr('src', `images/rankedEmb/Emblem_${highDataTier}.png`);
+    $("#highEloImg").attr('data-bs-original-title', `${highDataWins} Zafer - ${highDataLosses} Bozgun`);
 
     $("#leftEloName").text(leftQueueType);
     $("#leftEloLP").text(leftTier + " " + leftDivision + " / " + leftLeaguePoints + " LP");
     $("#leftEloImg").attr('src', `images/rankedEmb/Emblem_${leftTier}.png`);
+    $("#leftEloImg").attr('data-bs-original-title', `${leftWins} Zafer - ${leftLosses} Bozgun`);
 
     $("#rightEloName").text(rightQueueType);
     $("#rightEloLP").text(rightTier + " " + rightDivision + " / " + rightLeaguePoints + " LP");
     $("#rightEloImg").attr('src', `images/rankedEmb/Emblem_${rightTier}.png`);
+    $("#rightEloImg").attr('data-bs-original-title', `${rightWins} Zafer - ${rightLosses} Bozgun`);
 
 
 
-    var masteryData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/${summonerId}/champion-mastery/top?limit=3`);
+    var masteryData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/${summonerId}/champion-mastery/top?limit=3`)['body'];
     var firstChampId = masteryData['masteries'][0]['championId'];
     var firstChampionLevel = masteryData['masteries'][0]['championLevel'];
     var firstChampionPoints = masteryData['masteries'][0]['championPoints'];
-    var firstChestGranted = masteryData['masteries'][0]['chestGranted'];
-    var firstHighestGrade = masteryData['masteries'][0]['highestGrade'];
 
     var secondChampId = masteryData['masteries'][1]['championId'];
     var secondChampionLevel = masteryData['masteries'][1]['championLevel'];
     var secondChampionPoints = masteryData['masteries'][1]['championPoints'];
-    var secondChestGranted = masteryData['masteries'][1]['chestGranted'];
-    var secondHighestGrade = masteryData['masteries'][1]['highestGrade'];
 
     var thirdChampId = masteryData['masteries'][2]['championId'];
     var thirdChampionLevel = masteryData['masteries'][2]['championLevel'];
     var thirdChampionPoints = masteryData['masteries'][2]['championPoints'];
-    var thirdChestGranted = masteryData['masteries'][2]['chestGranted'];
-    var thirdHighestGrade = masteryData['masteries'][2]['highestGrade'];
     masteryData = null;
 
     $("#highChampImg").attr('src', `https://cdn.communitydragon.org/${version}/champion/${firstChampId}/square`)
@@ -206,7 +223,7 @@ try {
     $("#thirdChampPoint").text(thirdChampionPoints.toLocaleString("tr-TR"));
 
 
-    var honorData = ipcRenderer.sendSync("get", `/lol-honor-v2/v1/profile`);
+    var honorData = ipcRenderer.sendSync("get", `/lol-honor-v2/v1/profile`)['body'];
     var checkpoint = honorData['checkpoint'];
     var honorLevel = honorData['honorLevel'];
     var rewardsLocked = honorData['rewardsLocked'];
@@ -250,9 +267,10 @@ try {
     $("#honorInfoCheckpoint").text(`${honorLevelText}`);
 
 
-    var chestData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/chest-eligibility`);
+    var chestData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/chest-eligibility`)['body'];
     var earnableChests = chestData['earnableChests'];
     var nextChestRechargeTime = chestData['nextChestRechargeTime'];
+    $("#summonerPerksChest").attr('data-bs-original-title', `Sonraki sandık hakkı ${new Date(nextChestRechargeTime).toLocaleString("tr-TR")}`);
     chestData = null;
     $("#summonerPerksChestText").text(`${earnableChests}`);
     if (earnableChests == 0) {
@@ -262,7 +280,7 @@ try {
     }
 
 
-    var activeBoost = ipcRenderer.sendSync("get", "/lol-active-boosts/v1/active-boosts");
+    var activeBoost = ipcRenderer.sendSync("get", "/lol-active-boosts/v1/active-boosts")['body'];
     if (activeBoost['xpBoostPerWinCount'] !== 0 || activeBoost['xpBoostEndDate'] !== "1970-01-01T00:00:00Z") {
         $("#summonerPerksBoost").attr('src', 'images/profile/perks_boost.png');
     } else {
@@ -271,7 +289,7 @@ try {
 
     activeBoost = null;
 
-    var wallet = ipcRenderer.sendSync("get", "/lol-store/v1/wallet")
+    var wallet = ipcRenderer.sendSync("get", "/lol-store/v1/wallet")['body'];
     var summonerIp = wallet['ip']
     var summonerRP = wallet['rp']
 

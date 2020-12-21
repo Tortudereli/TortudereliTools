@@ -43,17 +43,17 @@
 
         <div id="rankedInfo">
             <div id="highElo">
-                <img id="highEloImg" alt="">
+                <img id="highEloImg" alt="" data-bs-delay="1000" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-html="true">
                 <span id="highEloName"></span>
                 <span id="highEloLP"></span>
             </div>
             <div id="leftElo">
-                <img id="leftEloImg" alt="">
+                <img id="leftEloImg" alt="" data-bs-delay="1000" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-html="true">
                 <span id="leftEloName"></span>
                 <span id="leftEloLP"></span>
             </div>
             <div id="rightElo">
-                <img id="rightEloImg" alt="">
+                <img id="rightEloImg" alt="" data-bs-delay="1000" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-html="true">
                 <span id="rightEloName"></span>
                 <span id="rightEloLP"></span>
             </div>
@@ -98,7 +98,7 @@
                 </div>
             </div>
             <div id="summonerPerks">
-                <img id="summonerPerksChest" alt="">
+                <img id="summonerPerksChest" alt="" data-bs-delay="500" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-html="true">
                 <span id="summonerPerksChestText"></span>
                 <img id="summonerPerksBoost" alt="">
                 <img id="summonerPerksReroll" alt="">
@@ -106,10 +106,21 @@
             </div>
 
         </div>
+
+        <span id="ttVersion">Yeni Versiyon Mevcut</span>
     </div>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </body>
 
 </html>

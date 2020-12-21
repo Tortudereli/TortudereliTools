@@ -13,11 +13,11 @@ $("#github").click(() => {
 
 $("#eSampiyon").addClass("active");
 
-var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
 var summonerLevel = summonerData['summonerLevel'];
@@ -29,9 +29,9 @@ $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
 version = null;
 
 
-var champData = ipcRenderer.sendSync("get", `/lol-champions/v1/owned-champions-minimal`);
+var champData = ipcRenderer.sendSync("get", `/lol-champions/v1/owned-champions-minimal`)['body'];
 champData.forEach(element => {
-    $('#sampiyonAlan').append(`<img id="${element['id']}" src="${ipcRenderer.sendSync("getImg", element['baseLoadScreenPath'])}" alt="">`);
+    $('#sampiyonAlan').append(`<img id="${element['id']}" src="${ipcRenderer.sendSync("getImg", element['baseLoadScreenPath'])['body']}" alt="">`);
     $(`#${element['id']}`).click(() => {
         window.location.href = `details/championDetails.html?id=${element['id']}`;
     })

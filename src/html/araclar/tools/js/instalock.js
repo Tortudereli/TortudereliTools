@@ -13,10 +13,10 @@ $("#github").click(() => {
 
 $("#eSampiyon").addClass("active");
 
-var version = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json");
+var version = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 version = version[0];
 
-var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner");
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
 var displayName = summonerData['displayName'];
 var profileIconId = summonerData['profileIconId'];
 var summonerLevel = summonerData['summonerLevel'];
@@ -26,7 +26,7 @@ $("#currentSummonerIcon").attr('src', `http://ddragon.leagueoflegends.com/cdn/${
 $("#currentSummonerName").text(displayName);
 $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
 
-var getChampions = ipcRenderer.sendSync("get", `/lol-champions/v1/owned-champions-minimal`);
+var getChampions = ipcRenderer.sendSync("get", `/lol-champions/v1/owned-champions-minimal`)['body'];
 
 getChampions.forEach(element => {
     if (element['id'] != -1) {
@@ -81,8 +81,8 @@ $("#instalockCheckbox").change(() => {
                         }
                         ipcRenderer.send("patch", json);
 
-                        var kontrol = ipcRenderer.sendSync("get", "/lol-champ-select/v1/session");
-                        kontrol = kontrol['actions'][0];
+                        var kontrol = ipcRenderer.sendSync("get", "/lol-champ-select/v1/session")['body'];
+                        kontrol = kontrol['actions'][index - 1];
                         $.each(kontrol, function (indexInArray, valueOfElement) {
                             if (valueOfElement['championId'] == champId) {
                                 if (valueOfElement['completed'] == true) {

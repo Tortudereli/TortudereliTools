@@ -1,7 +1,7 @@
 {
   "name": "TortudereliTools",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.5.0",
+  "description": "League Of Legends Tool",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -10,8 +10,8 @@
   "author": "Tortudereli",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^10.1.5",
-    "electron-packager": "^15.1.0"
+    "electron": "^10.2.0",
+    "electron-packager": "^15.2.0"
   },
   "dependencies": {
     "btoa": "^1.2.1",
