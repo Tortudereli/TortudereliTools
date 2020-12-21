@@ -1,7 +1,7 @@
 {
-	"version": 1.6,
-	"status": 0,
-	"statusInfo": "Test Status",
+	"version": 1.5,
+	"status": 1,
+	"statusInfo": "",
 	"statusInfoColor": "#ffda52",
 	"minVersion": 1.5
 }
