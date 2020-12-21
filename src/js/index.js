@@ -14,6 +14,7 @@ $("#ttVersion").click(() => {
 })
 
 alert("test");
+alert("test");
 
 try {
     var currentVersion = 1.5;
