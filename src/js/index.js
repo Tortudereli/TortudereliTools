@@ -13,6 +13,8 @@ $("#ttVersion").click(() => {
     shell.openExternal('https://github.com/Tortudereli/TortudereliTools')
 })
 
+alert("test");
+
 try {
     var currentVersion = 1.5;
     var ttVersion = ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body'];
