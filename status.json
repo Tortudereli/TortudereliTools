@@ -1,5 +1,6 @@
 {
 	"version": 1.5,
-	"status": 0,
-	"statusInfo": "Bir hata nedeniyle uygulama devre dışı bırakıldı."
+	"status": 1,
+	"statusInfo": "",
+	"minVersion": 1.5
 }
