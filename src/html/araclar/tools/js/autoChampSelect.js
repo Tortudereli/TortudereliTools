@@ -1,10 +1,9 @@
 const {
-    ipcRenderer
+    ipcRenderer,
+    shell
 } = require("electron");
 const $ = require("jquery");
-const {
-    shell
-} = require('electron');
+
 const {
     getJSON,
     ready
@@ -513,7 +512,6 @@ $("#subPerksAreaStat31").attr("src", ipcRenderer.sendSync("getImg", getRuneData(
 $("#subPerksAreaStat32").attr("src", ipcRenderer.sendSync("getImg", getRuneData(5002)['iconPath'])['body']);
 $("#subPerksAreaStat33").attr("src", ipcRenderer.sendSync("getImg", getRuneData(5003)['iconPath'])['body']);
 
-console.log(getRuneData(5008));
 $("#subPerksAreaStat11").attr("data-bs-original-title", getRuneData(5008)['longDesc']);
 $("#subPerksAreaStat12").attr("data-bs-original-title", getRuneData(5005)['longDesc']);
 $("#subPerksAreaStat13").attr("data-bs-original-title", getRuneData(5007)['longDesc']);
