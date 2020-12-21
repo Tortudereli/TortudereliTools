@@ -1,7 +1,7 @@
 {
 	"version": 1.5,
-	"status": 0,
-	"statusInfo": "Test uygulaması",
-	"statusInfoColor": "red",
+	"status": 1,
+	"statusInfo": "",
+	"statusInfoColor": "#ffda52",
 	"minVersion": 1.5
 }
