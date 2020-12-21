@@ -2,5 +2,6 @@
 	"version": 1.5,
 	"status": 1,
 	"statusInfo": "",
+	"statusInfoColor": "red",
 	"minVersion": 1.5
 }
