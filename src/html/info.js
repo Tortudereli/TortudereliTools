@@ -6,7 +6,7 @@ const $ = require("jquery");
 
 var currentVersion = 1.5;
 var statusData = ipcRenderer.sendSync("getApi",
-    "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body'];
+    "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@main/status.json")['body'];
 
 if (statusData['status'] == 0) {
     $("#statusInfo").text(statusData['statusInfo']);
