@@ -3,5 +3,6 @@
 	"status": 1,
 	"statusInfo": "",
 	"statusInfoColor": "#ffda52",
-	"minVersion": 1.5
+	"minVersion": 1.5,
+	"jsStatus": 1
 }
