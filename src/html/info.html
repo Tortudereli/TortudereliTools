@@ -10,7 +10,19 @@
 <body style="font-family: 'Open Sans', sans-serif; background-color: #102331;">
     <h1 id="statusInfo" style="position: absolute; left: 0; right: 0; top: 35%; text-align: center; color: #ffda52;">
     </h1>
-    <script src="https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/info.js"></script>
+    <script>
+        fetch('https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json')
+            .then(res => res.json())
+            .then((out) => {
+                var elem = document.createElement('script');
+                if (out['infoJsStatus'] == 1) {
+                    elem.src = "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/info.js";
+                } else {
+                    elem.src = "info.js";
+                }
+                document.body.appendChild(elem);
+            }).catch(err => console.error(err));
+    </script>
 </body>
 
 </html>

@@ -45,8 +45,20 @@
         </table>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/envanter/details/js/wardDetails.js"></script>
+    <script>
+        fetch('https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json')
+            .then(res => res.json())
+            .then((out) => {
+                var elem = document.createElement('script');
+                if (out['wardDetailsJsStatus'] == 1) {
+                    elem.src =
+                        "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/envanter/details/js/wardDetails.js";
+                } else {
+                    elem.src = "js/wardDetails.js";
+                }
+                document.body.appendChild(elem);
+            }).catch(err => console.error(err));
+    </script>
 </body>
 
 </html>

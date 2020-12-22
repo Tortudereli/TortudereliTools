@@ -39,7 +39,20 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/araclar/tools/js/changeIcon.js"></script>
+    <script>
+        fetch('https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json')
+            .then(res => res.json())
+            .then((out) => {
+                var elem = document.createElement('script');
+                if (out['changeIconJsStatus'] == 1) {
+                    elem.src =
+                        "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/araclar/tools/js/changeIcon.js";
+                } else {
+                    elem.src = "js/changeIcon.js";
+                }
+                document.body.appendChild(elem);
+            }).catch(err => console.error(err));
+    </script>
 </body>
 
 </html>

@@ -4,5 +4,22 @@
 	"statusInfo": "",
 	"statusInfoColor": "#ffda52",
 	"minVersion": 1.5,
-	"jsStatus": 1
+	"profileJsStatus": 1,
+	"infoJsStatus": 1,
+	"emotesJsStatus": 1,
+	"skinsJsStatus": 1,
+	"champsJsStatus": 1,
+	"iconsJsStatus": 1,
+	"wardsJsStatus": 1,
+	"champDetailsJsStatus": 1,
+	"emoteDetailsJsStatus": 1,
+	"iconDetailsJsStatus": 1,
+	"skinDetailsJsStatus": 1,
+	"wardDetailsJsStatus": 1,
+	"toolsJsStatus": 1,
+	"autoChampSelectJsStatus": 1,
+	"changeBgJsStatus": 1,
+	"changeIconJsStatus": 1,
+	"chatRankJsStatus": 1,
+	"instalockJsStatus": 1
 }

@@ -86,23 +86,23 @@
                             <img class="statIlkSira" id="subPerksAreaStat11" src="" alt="" data-bs-placement="top"
                                 data-bs-toggle="tooltip" data-bs-html="true">
                             <img class="statIlkSira" id="subPerksAreaStat12" src="" alt="" data-bs-placement="top"
-                            data-bs-toggle="tooltip" data-bs-html="true">
+                                data-bs-toggle="tooltip" data-bs-html="true">
                             <img class="statIlkSira" id="subPerksAreaStat13" src="" alt="" data-bs-placement="top"
-                            data-bs-toggle="tooltip" data-bs-html="true">
+                                data-bs-toggle="tooltip" data-bs-html="true">
                             <br>
                             <img class="statIkinciSira" id="subPerksAreaStat21" src="" alt="" data-bs-placement="top"
-                            data-bs-toggle="tooltip" data-bs-html="true">
+                                data-bs-toggle="tooltip" data-bs-html="true">
                             <img class="statIkinciSira" id="subPerksAreaStat22" src="" alt="" data-bs-placement="top"
-                            data-bs-toggle="tooltip" data-bs-html="true">
+                                data-bs-toggle="tooltip" data-bs-html="true">
                             <img class="statIkinciSira" id="subPerksAreaStat23" src="" alt="" data-bs-placement="top"
-                            data-bs-toggle="tooltip" data-bs-html="true">
+                                data-bs-toggle="tooltip" data-bs-html="true">
                             <br>
                             <img class="statSonSira" id="subPerksAreaStat31" src="" alt="" data-bs-placement="top"
-                            data-bs-toggle="tooltip" data-bs-html="true">
+                                data-bs-toggle="tooltip" data-bs-html="true">
                             <img class="statSonSira" id="subPerksAreaStat32" src="" alt="" data-bs-placement="top"
-                            data-bs-toggle="tooltip" data-bs-html="true">
+                                data-bs-toggle="tooltip" data-bs-html="true">
                             <img class="statSonSira" id="subPerksAreaStat33" src="" alt="" data-bs-placement="top"
-                            data-bs-toggle="tooltip" data-bs-html="true">
+                                data-bs-toggle="tooltip" data-bs-html="true">
                         </div>
                     </div>
 
@@ -140,8 +140,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/araclar/tools/js/autoChampSelect.js"></script>
     <script>
+        fetch('https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json')
+            .then(res => res.json())
+            .then((out) => {
+                var elem = document.createElement('script');
+                if (out['autoChampSelectJsStatus'] == 1) {
+                    elem.src =
+                        "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/araclar/tools/js/autoChampSelect.js";
+                } else {
+                    elem.src = "js/autoChampSelect.js";
+                }
+                document.body.appendChild(elem);
+            }).catch(err => console.error(err));
+
+
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
