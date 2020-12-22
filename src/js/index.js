@@ -12,6 +12,11 @@ $("#ttVersion").click(() => {
     shell.openExternal('https://github.com/Tortudereli/TortudereliTools')
 })
 
+var statusData = ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body'];
+
+if (statusData['jsStatus'] == 1) {
+    $("body").append('<script src="https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/js/index.js"></script>');
+}
 try {
     var currentVersion = 1.5;
     var ttVersion = ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body'];
