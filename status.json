@@ -1,8 +1,8 @@
 {
 	"version": 1.5,
-	"status": 1,
-	"statusInfo": "",
-	"statusInfoColor": "#ffda52",
+	"status": 0,
+	"statusInfo": "Cihannnnnnnnnnnnnnnnnn. Program devre dışı!",
+	"statusInfoColor": "red",
 	"minVersion": 1.5,
 	"profileJsStatus": 0,
 	"infoJsStatus": 0,
