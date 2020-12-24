@@ -18,6 +18,7 @@ const {
     event
 } = require('jquery');
 
+
 function createWindow() {
     const win = new BrowserWindow({
         width: 1080,

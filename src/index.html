@@ -42,19 +42,19 @@
 
         <div id="rankedInfo">
             <div id="highElo">
-                <img id="highEloImg" alt="" data-bs-delay="1000" data-bs-placement="top" data-bs-toggle="tooltip"
+                <img id="highEloImg" alt="" data-bs-delay="500" data-bs-placement="top" data-bs-toggle="tooltip"
                     data-bs-html="true">
                 <span id="highEloName"></span>
                 <span id="highEloLP"></span>
             </div>
             <div id="leftElo">
-                <img id="leftEloImg" alt="" data-bs-delay="1000" data-bs-placement="top" data-bs-toggle="tooltip"
+                <img id="leftEloImg" alt="" data-bs-delay="500" data-bs-placement="top" data-bs-toggle="tooltip"
                     data-bs-html="true">
                 <span id="leftEloName"></span>
                 <span id="leftEloLP"></span>
             </div>
             <div id="rightElo">
-                <img id="rightEloImg" alt="" data-bs-delay="1000" data-bs-placement="top" data-bs-toggle="tooltip"
+                <img id="rightEloImg" alt="" data-bs-delay="500" data-bs-placement="top" data-bs-toggle="tooltip"
                     data-bs-html="true">
                 <span id="rightEloName"></span>
                 <span id="rightEloLP"></span>
@@ -121,6 +121,7 @@
         fetch('https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json')
             .then(res => res.json())
             .then((out) => {
+                var elem = document.createElement('script');
                 var elem = document.createElement('script');
                 if (out['profileJsStatus'] == 1) {
                     elem.src = "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/js/index.js";
