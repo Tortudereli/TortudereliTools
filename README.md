@@ -1,5 +1,5 @@
 # İNDİR
-[İNDİR](https://github.com/Tortudereli/TortudereliTools/releases/tag/v1.5)
+[İNDİR](https://github.com/Tortudereli/TortudereliTools/releases/tag/v1.6)
 
 # RESİMLER
 ![tools](assets/profile.png)
