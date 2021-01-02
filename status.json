@@ -1,9 +1,9 @@
 {
-	"version": 1.5,
+	"version": 1.6,
 	"status": 1,
 	"statusInfo": "",
 	"statusInfoColor": "red",
-	"minVersion": 1.5,
+	"minVersion": 1.6,
 	"profileJsStatus": 0,
 	"infoJsStatus": 0,
 	"emotesJsStatus": 0,
@@ -21,5 +21,6 @@
 	"changeBgJsStatus": 0,
 	"changeIconJsStatus": 0,
 	"chatRankJsStatus": 0,
-	"instalockJsStatus": 0
+	"instalockJsStatus": 0,
+	"patchInstallJsStatus": 0
 }

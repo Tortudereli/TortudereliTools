@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Araçlar</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 
 <body>
@@ -62,7 +62,8 @@
 
         <div id="offline">
             <span>Çevrimdışı Ol</span>
-            <span id="warning">Bu özellği kullanmak için programı yönetici olarak çalıştırmanız gerekir.</span>
+            <span id="offlineWarning1">Bu özellği kullanmak için programı yönetici olarak çalıştırmanız gerekir.</span>
+            <span id="offlineWarning2">Antivirüs programı bu özellğin aktifleşmesini engelleyebilir.</span>
             <label class="btn btn-outline-warning" id="instalockCheckboxArea">
                 <input type="checkbox" name="" id="offlineCheckBox" autocomplete="off"> Çevrimdışı
             </label>
@@ -75,6 +76,11 @@
 
         <div id="autoChampSelect">
             <span>Otomatik Eşleşme</span>
+            <button type="button" class="btn btn-outline-warning">Git</button>
+        </div>
+
+        <div id="patchInstall">
+            <span>Manuel Yama Yükle</span>
             <button type="button" class="btn btn-outline-warning">Git</button>
         </div>
     </div>

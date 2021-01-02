@@ -116,3 +116,7 @@ $("#chatRank button").click(() => {
 $("#autoChampSelect button").click(() => {
     window.location.href = 'tools/autoChampSelect.html';
 })
+
+$("#patchInstall button").click(() => {
+    window.location.href = 'tools/patchInstall.html';
+})

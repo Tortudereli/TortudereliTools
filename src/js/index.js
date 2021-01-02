@@ -13,12 +13,12 @@ $("#ttVersion").click(() => {
 })
 
 try {
-    var currentVersion = 1.5;
+    var currentVersion = 1.6;
     var ttVersion = ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body'];
     var ttVersion = ttVersion['version'];
 
-    if (ttVersion != currentVersion) {
-        $("#ttVersion").css("display", "block");
+    if (ttVersion > currentVersion) {
+        $("#ttVersion").css("display", "unset");
         setInterval(() => {
             var r = Math.floor((Math.random() * 255) + 1);
             var g = Math.floor((Math.random() * 255) + 1);

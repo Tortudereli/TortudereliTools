@@ -4,7 +4,7 @@ const {
 } = require("electron");
 const $ = require("jquery");
 
-var currentVersion = 1.5;
+var currentVersion = 1.6;
 var statusData = ipcRenderer.sendSync("getApi",
     "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body'];
 

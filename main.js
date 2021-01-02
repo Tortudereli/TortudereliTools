@@ -21,10 +21,10 @@ const {
 
 function createWindow() {
     const win = new BrowserWindow({
-        width: 1080,
-        minWidth: 950,
-        minHeight: 650,
-        height: 700,
+        width: 1280,
+        minWidth: 1024,
+        minHeight: 576,
+        height: 720,
         icon: "icon/icon.ico",
         title: "Tortudereli",
         webPreferences: {

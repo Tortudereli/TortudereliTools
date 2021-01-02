@@ -123,8 +123,8 @@ body {
 }
 
 #github {
-    margin-top: 80vh;
     position: absolute;
+    bottom: 5vh;
     height: 10vh;
     width: 180px;
     text-align: center;
@@ -176,7 +176,7 @@ body {
 
 #rankedInfo:hover {
     background-color: #000000d5;
-    transform: scale(1.2);
+    transform: scale(1.1);
     bottom: 5vw;
 }
 
@@ -310,7 +310,7 @@ body {
 
 #champInfo:hover {
     background-color: #000000d5;
-    transform: scale(1.2);
+    transform: scale(1.1);
     bottom: 5vw;
 }
 
@@ -413,7 +413,7 @@ body {
 
 #honorInfo:hover {
     background-color: #000000d5;
-    transform: scale(1.2);
+    transform: scale(1.1);
     bottom: 5vw;
 }
 
@@ -819,6 +819,7 @@ body {
     left: 0;
     right: 0;
     margin: auto;
+    text-align: center;
 }
 
 #bgSelectChamp {
@@ -831,6 +832,9 @@ body {
 
 #instalockMain {
     top: 30vh;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 
 #instalock {
@@ -894,10 +898,18 @@ body {
     font-size: 1.5vw;
 }
 
-#offline #warning {
+#offline #offlineWarning1 {
     position: absolute;
     color: #ff7171;
-    top: 3.6vh;
+    top: 1.5vh;
+    left: 17vw;
+    font-size: 1.1vw;
+}
+
+#offline #offlineWarning2 {
+    position: absolute;
+    color: #ff7171;
+    top: 5.5vh;
     left: 17vw;
     font-size: 1.1vw;
 }
@@ -966,6 +978,10 @@ body {
     font-size: 1.5vw;
 }
 
+#chatRankMain{
+    text-align: center;
+}
+
 .toolsTitle {
     position: absolute;
     color: white;
@@ -988,7 +1004,6 @@ body {
     right: 0;
     margin: auto;
     width: 83vw;
-    text-align: center;
 }
 
 #chatRankSelectArea {
@@ -1118,7 +1133,7 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    
+
 }
 
 #autoMatchingAcceptCheckboxArea {
@@ -1247,10 +1262,86 @@ body {
     width: 30vw;
 }
 
-#autoMatchingSpellSubmitCheckboxArea{
+#autoMatchingSpellSubmitCheckboxArea {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     margin: 0;
+}
+
+#patchInstall {
+    position: absolute;
+    top: 116vh;
+    margin-left: 2vw;
+    width: 75vw;
+    height: 10vh;
+    border-radius: 1vw;
+    border: 1px solid #ffda52;
+    background-color: #ffda5215;
+}
+
+#patchInstall span {
+    position: absolute;
+    left: 2vw;
+    top: 2.2vh;
+    font-size: 2vw;
+    color: #ffda52;
+}
+
+#patchInstall button {
+    position: absolute;
+    right: 3vw;
+    top: 1.7vh;
+    font-size: 1.5vw;
+}
+
+#pathTypeArea {
+    color: white;
+}
+
+#pathTypeArea label{
+    position: absolute;
+    margin-top: 1vw;
+}
+
+#typeSelectLabel {
+    position: absolute;
+    left: 0;
+    right: 55%;
+    text-align: right;
+}
+
+#typeUrlLabel {
+    position: absolute;
+    left: 55%;
+    right: 0;
+    text-align: left;
+}
+
+#selectPatchArea{
+    position: absolute;
+    top: 4vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 50vw;
+}
+
+#urlPatchArea{
+    position: absolute;
+    top: 4vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 50vw;
+    display: none;
+}
+
+#buttonPatchArea{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 9vw;
+    text-align: center;
 }
