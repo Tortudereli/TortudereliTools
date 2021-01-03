@@ -49,7 +49,7 @@ $("#typeUrl").change(() => {
 })
 
 $("#infoPatchButton").click(() => {
-    var r = confirm(`Bunu sadece eski veya yeni yamadaki oyun dosyalarına erişmek için kullanın!\nYama yaptıktan sonra eşleşmeli oyuna girmeye çalışmayın!\nOyunu kapatıp tekrar açınca otomatik olarak mevcut yama yüklenecektir. Mevcut yama dışında eşleşmeli oyuna girmeyin!\nOluşabilecek olumsuz sonuçlardan yapımcı sorumlu değildir!\nOnayladığınız takdirde "Yükle" butonu aktifleşecektir.`);
+    var r = confirm(`Bunu sadece eski veya yeni yamadaki oyun dosyalarına erişmek için kullanın!\nYama yaptıktan sonra eşleşmeli oyuna girmeye çalışmayın!\nOyunu kapatıp tekrar açınca otomatik olarak mevcut yama yüklenecektir. Mevcut yama dışında eşleşmeli oyuna girmeyin!\nEşleşmeli oyuna girmeden önce tam onarım yapın!\nOluşabilecek olumsuz sonuçlardan yapımcı sorumlu değildir!\nOnayladığınız takdirde "Yükle" butonu aktifleşecektir.`);
     if (r == true) {
         $("#submitPatchButton").prop('disabled', false);
     } else {
@@ -101,7 +101,6 @@ $("#submitPatchButton").click(() => {
             alert("Yama yüklenmeye başlandı!");
         } else {
             alert("Yama yüklenemedi!");
-            console.log(status1['status']);
         }
     } else {
         alert("Hatalı yama seçimi!");
