@@ -193,8 +193,6 @@ try {
     $("#rightEloImg").attr('src', `images/rankedEmb/Emblem_${rightTier}.png`);
     $("#rightEloImg").attr('data-bs-original-title', `${rightWins} Zafer - ${rightLosses} Bozgun`);
 
-
-
     var masteryData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/${summonerId}/champion-mastery/top?limit=3`)['body'];
     var firstChampId = masteryData['masteries'][0]['championId'];
     var firstChampionLevel = masteryData['masteries'][0]['championLevel'];
@@ -208,16 +206,26 @@ try {
     var thirdChampionLevel = masteryData['masteries'][2]['championLevel'];
     var thirdChampionPoints = masteryData['masteries'][2]['championPoints'];
     masteryData = null;
+	
+	var champIdToAliasData = ipcRenderer.sendSync("getApi", `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json`)['body'];
 
-    $("#highChampImg").attr('src', `https://cdn.communitydragon.org/${version}/champion/${firstChampId}/square`)
+	function champIdToAlias(id) {
+        for (let index = 0; index < champIdToAliasData.length; index++) {
+            if (champIdToAliasData[index]['id'] == id) {
+                return champIdToAliasData[index]['alias'];
+            }
+        }
+    }
+
+    $("#highChampImg").attr('src', `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champIdToAlias(firstChampId)}.png`)
     $("#highChampBanner").attr('src', `images/masteryBanner/banner-mastery-small-lvl${firstChampionLevel}.png`);
     $("#highChampPoint").text(firstChampionPoints.toLocaleString("tr-TR"));
 
-    $("#secondChampImg").attr('src', `https://cdn.communitydragon.org/${version}/champion/${secondChampId}/square`)
+    $("#secondChampImg").attr('src', `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champIdToAlias(secondChampId)}.png`)
     $("#secondChampBanner").attr('src', `images/masteryBanner/banner-mastery-small-lvl${secondChampionLevel}.png`);
     $("#secondChampPoint").text(secondChampionPoints.toLocaleString("tr-TR"));
 
-    $("#thirdChampImg").attr('src', `https://cdn.communitydragon.org/${version}/champion/${thirdChampId}/square`)
+    $("#thirdChampImg").attr('src', `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champIdToAlias(thirdChampId)}.png`)
     $("#thirdChampBanner").attr('src', `images/masteryBanner/banner-mastery-small-lvl${thirdChampionLevel}.png`);
     $("#thirdChampPoint").text(thirdChampionPoints.toLocaleString("tr-TR"));
 
