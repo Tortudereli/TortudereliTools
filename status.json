@@ -1,9 +1,9 @@
 {
 	"version": 1.6,
-	"status": 0,
+	"status": 1,
 	"statusInfo": "v2.0 çıkışı nedeniyle uygulama geçici olarak devre dışı bırakılmıştır.",
 	"statusInfoColor": "red",
-	"minVersion": 1.6,
+	"minVersion": 2.0,
 	"profileJsStatus": 0,
 	"infoJsStatus": 0,
 	"emotesJsStatus": 0,
