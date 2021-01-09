@@ -2,63 +2,70 @@
 <html lang="tr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Totemler</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Totemler</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../../css/style.css" />
 </head>
 
 <body>
-    <div id="leftMenu">
-        <div id="currentSummonerInfo">
-            <img src="" id="currentSummonerIcon">
-            <span id="currentSummonerName"></span>
-            <span id="currentSummonerLevel"></span>
-        </div>
-
-        <div id="nav">
-            <ul>
-                <li><a href="../../../index.html">Profil</a></li>
-                <li><a href="../sampiyonlar.html">Envanter</a></li>
-                <li><a href="../../araclar/index.html">Araçlar</a></li>
-            </ul>
-        </div>
-
-        <div id="github">
-            <img src="../../../images/GitHub.png" alt="">
-            <span id="githubName">Tortudereli</span>
-        </div>
+  <div id="leftMenu">
+    <div id="currentSummonerInfo">
+      <img src="" id="currentSummonerIcon" />
+      <span id="currentSummonerName"></span>
+      <span id="currentSummonerLevel"></span>
     </div>
 
-    <div id="main">
-        <a href="../totemler.html" id="detailTurnBack">Geri Dön</a>
-        <span id="champDetailsName"></span>
-        <table id="champDetails" class="table">
-            <tr>
-                <td rowspan="5" id="champDetailsImg"><img src="" alt=""></td>
-            </tr>
-            <tr>
-                <td style="vertical-align: middle; text-align: center;">Satın Alma Tarihi: <span id="wardDetailsPurchaseDate">-</span></td>
-            </tr>
-
-        </table>
+    <div id="nav">
+      <ul>
+        <li><a href="../../../index.html">Profil</a></li>
+        <li><a href="../sampiyonlar.html">Envanter</a></li>
+        <li><a href="../../araclar/index.html">Araçlar</a></li>
+      </ul>
     </div>
 
-    <script>
-        fetch('https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json')
-            .then(res => res.json())
-            .then((out) => {
-                var elem = document.createElement('script');
-                if (out['wardDetailsJsStatus'] == 1) {
-                    elem.src =
-                        "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/envanter/details/js/wardDetails.js";
-                } else {
-                    elem.src = "js/wardDetails.js";
-                }
-                document.body.appendChild(elem);
-            }).catch(err => console.error(err));
-    </script>
+    <div id="github">
+      <img src="../../../images/GitHub.png" alt="" />
+      <span id="githubName">Tortudereli</span>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="loadingArea">
+      <img src="../../../images/spin.gif" />
+    </div>
+    <a href="../totemler.html" id="detailTurnBack">Geri Dön</a>
+    <span id="champDetailsName"></span>
+    <table id="champDetails" class="table">
+      <tr>
+        <td rowspan="5" id="champDetailsImg"><img src="" alt="" /></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: middle; text-align: center">
+          Satın Alma Tarihi: <span id="wardDetailsPurchaseDate">-</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    fetch(
+        "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json"
+      )
+      .then((res) => res.json())
+      .then((out) => {
+        var elem = document.createElement("script");
+        if (out["wardDetailsJsStatus"] == 1) {
+          elem.src =
+            "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/envanter/details/js/wardDetails.js";
+        } else {
+          elem.src = "js/wardDetails.js";
+        }
+        document.body.appendChild(elem);
+      })
+      .catch((err) => console.error(err));
+  </script>
 </body>
 
 </html>

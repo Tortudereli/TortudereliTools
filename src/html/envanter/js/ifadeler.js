@@ -55,3 +55,11 @@ emoteData.forEach(element => {
 
 emoteData = null;
 emotesData = null;
+
+$().ready(() => {
+    $("#loadingArea").css({
+        "display": "none"
+    });
+})
+
+$("img, a").attr("draggable", false);

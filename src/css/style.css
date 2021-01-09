@@ -1,1347 +1,1312 @@
 ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-button {
-    width: 0px;
-    height: 0px;
+  width: 0px;
+  height: 0px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #e1e1e1;
-    border: 0px none #ffffff;
-    border-radius: 50px;
+  background: #15508e;
+  border: 0px none #ffffff;
+  border-radius: 50px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #787878;
+  background: #ffd13b;
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background: #000000;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0074c7;
-    border: 0px none #ffffff;
-    border-radius: 50px;
+  background: #ffffff;
+  border: 0px none #ffffff;
+  border-radius: 50px;
 }
 
 ::-webkit-scrollbar-track:hover {
-    background: #014a7e;
+  background: #ffffff;
 }
 
 ::-webkit-scrollbar-track:active {
-    background: #002038;
+  background: #999999;
 }
 
 ::-webkit-scrollbar-corner {
-    background: transparent;
+  background: transparent;
+}
+
+@font-face {
+  font-family: beaufortforlol-regular;
+  src: url("../font/spiegel/spiegel-regular.otf");
+}
+
+#loadingArea {
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #102331;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+#loadingArea img {
+  position: absolute;
+  top: 40vh;
+  width: 5vw;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #102331;
-    margin: 0;
+  font-family: "beaufortforlol-regular";
+  background-color: #102331;
+  margin: 0;
+  cursor: default;
+  user-select: none;
 }
 
 #leftMenu {
-    position: fixed;
-    width: 180px;
-    height: 100vh;
-    border-right: 1px solid black;
+  position: fixed;
+  width: 180px;
+  height: 100vh;
+  border-right: 1px solid black;
 }
 
 #ttVersion {
-    display: none;
-    position: absolute;
-    font-size: 1.8vw;
-    font-weight: bold;
-    right: 2vw;
-    top: 4vh;
-    transition: 1.5s;
+  display: none;
+  position: absolute;
+  font-size: 1.8vw;
+  font-weight: bold;
+  right: 2vw;
+  top: 4vh;
+  transition: 1.5s;
 }
 
 #ttVersion:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #currentSummonerInfo {
-    position: relative;
-    width: 180px;
-    height: 48px;
-    margin: 4px auto 4px 4px;
+  position: relative;
+  width: 180px;
+  height: 48px;
+  margin: 4px auto 4px 4px;
 }
 
 #currentSummonerIcon {
-    position: absolute;
-    top: 0;
-    width: 48px;
+  position: absolute;
+  top: 0;
+  width: 48px;
 }
 
 #currentSummonerName {
-    color: white;
-    font-size: 12px;
-    position: absolute;
-    left: 55px;
-    right: 0;
-    top: 7px;
-    text-align: left;
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  left: 55px;
+  right: 0;
+  top: 7px;
+  text-align: left;
 }
 
 #currentSummonerLevel {
-    color: white;
-    font-size: 12px;
-    position: absolute;
-    left: 55px;
-    right: 0;
-    top: 25px;
-    text-align: left;
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  left: 55px;
+  right: 0;
+  top: 25px;
+  text-align: left;
 }
 
 #nav {
-    border-top: 1px solid black;
-    padding-top: 3vh;
-    position: absolute;
-    width: 180px;
-    text-align: center;
+  border-top: 1px solid black;
+  padding-top: 3vh;
+  position: absolute;
+  width: 180px;
+  text-align: center;
 }
 
 #nav ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 #nav ul li {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 #nav ul li a {
-    text-decoration: none;
-    color: #ffda52;
+  text-decoration: none;
+  color: #ffda52;
 }
 
 #github {
-    position: absolute;
-    bottom: 5vh;
-    height: 10vh;
-    width: 180px;
-    text-align: center;
+  position: absolute;
+  bottom: 5vh;
+  height: 10vh;
+  width: 180px;
+  text-align: center;
 }
 
 #github:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #github img {
-    margin-top: 0.5vh;
-    width: 2vw;
+  margin-top: 0.5vh;
+  width: 2vw;
 }
 
 #githubName {
-    color: white;
-    position: absolute;
-    top: 5vh;
-    left: 0;
-    right: 0;
-    text-align: center;
+  color: white;
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 #main {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 180px;
-    width: 100% - 180px;
-    height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 180px;
+  width: 100% - 180px;
+  height: 100vh;
 }
 
 .navbar {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 #rankedInfo {
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
-    position: absolute;
-    bottom: 2vw;
-    left: 2vw;
-    width: 20vw;
-    height: 22vw;
-    background-color: #00000090;
-    transition: 0.5s;
-    border: 1px solid black;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  position: absolute;
+  bottom: 2vw;
+  left: 2vw;
+  width: 20vw;
+  height: 22vw;
+  background-color: #00000090;
+  transition: 0.5s;
+  border: 1px solid black;
 }
 
 #rankedInfo:hover {
-    background-color: #000000d5;
-    transform: scale(1.1);
-    bottom: 5vw;
+  background-color: #000000d5;
+  transform: scale(1.1);
+  bottom: 5vw;
 }
 
 #highElo {
-    position: absolute;
-    margin: auto;
-    left: 0;
-    right: 0;
-    width: 70%;
-    height: 14vw;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 70%;
+  height: 14vw;
 }
 
 #leftElo {
-    position: absolute;
-    left: 0;
-    right: 9vw;
-    top: 14vw;
-    margin: auto;
-    width: 9vw;
-    height: 8vw;
+  position: absolute;
+  left: 0;
+  right: 9vw;
+  top: 14vw;
+  margin: auto;
+  width: 9vw;
+  height: 8vw;
 }
 
 #rightElo {
-    position: absolute;
-    left: 9vw;
-    right: 0px;
-    top: 14vw;
-    margin: auto;
-    width: 9vw;
-    height: 8vw;
+  position: absolute;
+  left: 9vw;
+  right: 0px;
+  top: 14vw;
+  margin: auto;
+  width: 9vw;
+  height: 8vw;
 }
 
 #highElo img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 9vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 9vw;
 }
 
 #highEloName {
-    color: white;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 10.5vw;
-    text-align: center;
-    font-size: 1.2vw;
+  color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 10.5vw;
+  text-align: center;
+  font-size: 1.2vw;
 }
 
 #highEloLP {
-    color: white;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 12vw;
-    text-align: center;
-    font-size: 1vw;
+  color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 12vw;
+  text-align: center;
+  font-size: 1vw;
 }
 
 #leftElo img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0px;
-    margin: auto;
-    width: 5vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0px;
+  margin: auto;
+  width: 5vw;
 }
 
 #leftEloName {
-    position: absolute;
-    top: 5.7vw;
-    color: white;
-    font-size: 0.9vw;
-    left: 0;
-    right: 0;
-    text-align: center;
+  position: absolute;
+  top: 5.7vw;
+  color: white;
+  font-size: 0.9vw;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 #leftEloLP {
-    color: white;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 6.7vw;
-    text-align: center;
-    font-size: 0.7vw;
+  color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6.7vw;
+  text-align: center;
+  font-size: 0.7vw;
 }
 
 #rightElo img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0px;
-    margin: auto;
-    width: 5vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0px;
+  margin: auto;
+  width: 5vw;
 }
 
 #rightEloName {
-    position: absolute;
-    top: 5.7vw;
-    color: white;
-    font-size: 0.9vw;
-    left: 0;
-    right: 0;
-    text-align: center;
+  position: absolute;
+  top: 5.7vw;
+  color: white;
+  font-size: 0.9vw;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 #rightEloLP {
-    color: white;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 6.7vw;
-    text-align: center;
-    font-size: 0.7vw;
+  color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6.7vw;
+  text-align: center;
+  font-size: 0.7vw;
 }
 
 #champInfo {
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
-    position: absolute;
-    bottom: 2vw;
-    left: 23vw;
-    width: 20vw;
-    height: 22vw;
-    background-color: #00000090;
-    transition: 0.5s;
-    border: 1px solid black;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  position: absolute;
+  bottom: 2vw;
+  left: 23vw;
+  width: 20vw;
+  height: 22vw;
+  background-color: #00000090;
+  transition: 0.5s;
+  border: 1px solid black;
 }
 
 #champInfo:hover {
-    background-color: #000000d5;
-    transform: scale(1.1);
-    bottom: 5vw;
+  background-color: #000000d5;
+  transform: scale(1.1);
+  bottom: 5vw;
 }
 
 #highChamp {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 1vw;
-    margin: auto;
-    width: 10vw;
-    height: 11vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1vw;
+  margin: auto;
+  width: 10vw;
+  height: 11vw;
 }
 
 #highChamp img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 6vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 6vw;
 }
 
 #highChampPoint {
-    position: absolute;
-    color: white;
-    top: 10.3vw;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 1.2vw;
+  position: absolute;
+  color: white;
+  top: 10.3vw;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 1.2vw;
 }
 
 #secondChamp {
-    position: absolute;
-    left: 0;
-    right: 10vw;
-    top: 13vw;
-    margin: auto;
-    width: 5vw;
-    height: 8vw;
+  position: absolute;
+  left: 0;
+  right: 10vw;
+  top: 13vw;
+  margin: auto;
+  width: 5vw;
+  height: 8vw;
 }
 
 #secondChamp img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 4vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 4vw;
 }
 
 #secondChampPoint {
-    position: absolute;
-    color: white;
-    top: 7vw;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 1vw;
+  position: absolute;
+  color: white;
+  top: 7vw;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 1vw;
 }
 
 #thirdChamp {
-    position: absolute;
-    left: 10vw;
-    right: 0;
-    top: 13vw;
-    margin: auto;
-    width: 5vw;
-    height: 8vw;
+  position: absolute;
+  left: 10vw;
+  right: 0;
+  top: 13vw;
+  margin: auto;
+  width: 5vw;
+  height: 8vw;
 }
 
 #thirdChamp img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 4vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 4vw;
 }
 
 #thirdChampPoint {
-    position: absolute;
-    color: white;
-    top: 7vw;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 1vw;
+  position: absolute;
+  color: white;
+  top: 7vw;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 1vw;
 }
 
 #honorInfo {
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
-    position: absolute;
-    bottom: 2vw;
-    left: 45vw;
-    width: 14.1vw;
-    height: 22vw;
-    background-color: #00000090;
-    transition: 0.5s;
-    border: 1px solid black;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  position: absolute;
+  bottom: 2vw;
+  left: 45vw;
+  width: 14.1vw;
+  height: 22vw;
+  background-color: #00000090;
+  transition: 0.5s;
+  border: 1px solid black;
 }
 
 #honorInfo:hover {
-    background-color: #000000d5;
-    transform: scale(1.1);
-    bottom: 5vw;
+  background-color: #000000d5;
+  transform: scale(1.1);
+  bottom: 5vw;
 }
 
 #honorInfo img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 1vw auto auto auto;
-    width: 14vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 1vw auto auto auto;
+  width: 14vw;
 }
 
 #honorInfo span {
-    position: absolute;
-    left: 0;
-    right: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
 
-    text-align: center;
-    color: white;
-    font-size: 0.9vw;
+  text-align: center;
+  color: white;
+  font-size: 0.9vw;
 }
 
 #honorInfoLevel {
-    top: 14.5vw;
+  top: 14.5vw;
 }
 
 #honorInfoCheckpoint {
-    top: 16.5vw;
+  top: 16.5vw;
 }
 
 #summonerFlag {
-    border-top-left-radius: 10%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    right: 0;
-    margin-left: auto;
-    width: 20vw;
-    height: 35vw;
-    transition: 0.5s;
-    background-color: #00000090;
-    border: 1px solid black;
+  border-top-left-radius: 10%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 0;
+  margin-left: auto;
+  width: 20vw;
+  height: 35vw;
+  transition: 0.5s;
+  background-color: #00000090;
+  border: 1px solid black;
 }
 
 #summonerFlag:hover {
-    background-color: #000000d5;
-    transform: scale(1.1);
-    right: 1vw;
-    bottom: 3vw;
+  background-color: #000000d5;
+  transform: scale(1.1);
+  right: 1vw;
+  bottom: 3vw;
 }
 
 #levelFrame {
-    position: absolute;
-    width: 15vw;
-    top: 0vw;
-    left: 0;
-    right: 0;
-    margin: auto;
+  position: absolute;
+  width: 15vw;
+  top: 0vw;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 #summonerIcon {
-    position: absolute;
-    top: 4.5vw;
-    width: 6.4vw;
-    left: 0;
-    right: 0;
-    margin: auto;
-    border-radius: 50%;
+  position: absolute;
+  top: 4.5vw;
+  width: 6.4vw;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
 }
 
 #summonerLevel {
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;
-    top: 10.5vw;
-    font-size: 1vw;
-    color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 10.5vw;
+  font-size: 1vw;
+  color: white;
 }
 
 #summonerName {
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;
-    top: 14vw;
-    font-size: 1.3vw;
-    color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 14vw;
+  font-size: 1.3vw;
+  color: white;
 }
 
 #levelBar {
-    width: 14vw;
-    height: 2.5vw;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 19vw;
+  width: 14vw;
+  height: 2.5vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 19vw;
 }
 
 .progress {
-    background-color: #17a3b877;
-    margin: auto;
-    height: 1vw;
-    width: 10vw;
-    box-shadow: 0 0 60px 25px #17a2b850;
+  background-color: #17a3b877;
+  margin: auto;
+  height: 1vw;
+  width: 10vw;
+  box-shadow: 0 0 60px 25px #17a2b850;
 }
 
 .progress-bar {
-    width: var(--levelBar);
-    animation: barAnm 3s;
+  width: var(--levelBar);
+  animation: barAnm 3s;
 }
 
 @keyframes barAnm {
-    0% {
-        width: 0;
-    }
+  0% {
+    width: 0;
+  }
 
-    100% {
-        width: var(--levelBar);
-    }
+  100% {
+    width: var(--levelBar);
+  }
 }
 
 #target {
-    position: absolute;
-    left: 0;
-    right: 0;
-    color: white;
-    text-align: center;
-    top: 1.8vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  color: white;
+  text-align: center;
+  top: 1.8vw;
 }
 
 #nextLevel {
-    position: absolute;
-    right: 0;
-    color: white;
-    top: 0.5vw;
-    font-size: 0.9vw;
+  position: absolute;
+  right: 0;
+  color: white;
+  top: 0.5vw;
+  font-size: 0.9vw;
 }
 
 #level {
-    position: absolute;
-    left: 0;
-    color: white;
-    top: 0.5vw;
-    font-size: 0.9vw;
+  position: absolute;
+  left: 0;
+  color: white;
+  top: 0.5vw;
+  font-size: 0.9vw;
 }
 
 #summonerPerks {
-    position: absolute;
-    width: 11vw;
-    height: 3.4vw;
-    left: 0;
-    right: 0;
-    bottom: 4.5vw;
-    margin: auto;
+  position: absolute;
+  width: 11vw;
+  height: 3.4vw;
+  left: 0;
+  right: 0;
+  bottom: 4.5vw;
+  margin: auto;
 }
 
 #summonerPerks img {
-    position: absolute;
-    width: 2.3vw;
+  position: absolute;
+  width: 2.3vw;
 }
 
 #summonerPerks span {
-    position: absolute;
-    color: white;
-    bottom: 0;
-    font-size: 0.9vw;
+  position: absolute;
+  color: white;
+  bottom: 0;
+  font-size: 0.9vw;
 }
 
 #summonerPerksChest {
-    left: 0;
+  left: 0;
 }
 
 #summonerPerksChestText {
-    left: 1vw;
+  left: 1vw;
 }
 
 #summonerPerksBoost {
-    left: 0;
-    right: 0;
-    margin: auto;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 #summonerPerksReroll {
-    right: 0;
+  right: 0;
 }
 
 #summonerPerksRerollText {
-    right: 1vw;
+  right: 1vw;
 }
 
 #sampiyonAlan {
-    padding-top: 1vw;
-    padding-left: 1vw;
-    text-align: center;
+  padding-top: 1vw;
+  padding-left: 1vw;
+  text-align: center;
 }
 
 #sampiyonAlan img {
-    width: 7vw;
-    margin: 1vw;
+  width: 7vw;
+  margin: 1vw;
 }
 
 #sampiyonAlan img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #kostumAlan {
-    padding-top: 1vw;
-    padding-left: 1vw;
-    text-align: center;
+  padding-top: 1vw;
+  padding-left: 1vw;
+  text-align: center;
 }
 
 #kostumAlan img {
-    width: 7vw;
-    margin: 1vw;
+  width: 7vw;
+  margin: 1vw;
 }
 
 #kostumAlan img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #simgeAlan {
-    padding-top: 1vw;
-    padding-left: 1vw;
-    text-align: center;
+  padding-top: 1vw;
+  padding-left: 1vw;
+  text-align: center;
 }
 
 #simgeAlan img {
-    width: 7vw;
-    margin: 1vw;
+  width: 7vw;
+  margin: 1vw;
 }
 
 #simgeAlan img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #ifadeAlan {
-    padding-top: 1vw;
-    padding-left: 1vw;
-    text-align: center;
+  padding-top: 1vw;
+  padding-left: 1vw;
+  text-align: center;
 }
 
 #ifadeAlan img {
-    width: 7vw;
-    margin: 1vw;
+  width: 7vw;
+  margin: 1vw;
 }
 
 #ifadeAlan img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #totemAlan {
-    padding-top: 1vw;
-    padding-left: 1vw;
-    text-align: center;
+  padding-top: 1vw;
+  padding-left: 1vw;
+  text-align: center;
 }
 
 #totemAlan img {
-    width: 7vw;
-    margin: 1vw;
+  width: 7vw;
+  margin: 1vw;
 }
 
 #totemAlan img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #toolsHeader {
-    position: absolute;
-    top: 2vh;
-    left: 2vw;
-    color: white;
+  position: absolute;
+  top: 2vh;
+  left: 3vw;
+  color: #ffe48a;
 }
 
 #toolHr {
-    position: absolute;
-    top: 5.7vh;
-    left: 1.5vw;
-    border: 1px solid #2b5d81;
-    width: 60vw;
-}
-
-#trainingTool {
-    position: absolute;
-    top: 12vh;
-    margin-left: 2vw;
-    width: 75vw;
-    height: 10vh;
-    border-radius: 1vw;
-    border: 1px solid #ffda52;
-    background-color: #ffda5215;
-}
-
-#trainingTool span {
-    position: absolute;
-    left: 2vw;
-    top: 2.2vh;
-    font-size: 2vw;
-    color: #ffda52;
-}
-
-#trainingTool button {
-    position: absolute;
-    right: 3vw;
-    top: 1.7vh;
-    font-size: 1.5vw;
-}
-
-#skinBoost {
-    position: absolute;
-    top: 25vh;
-    margin-left: 2vw;
-    width: 75vw;
-    height: 10vh;
-    border-radius: 1vw;
-    border: 1px solid #ffda52;
-    background-color: #ffda5215;
-}
-
-#skinBoost span {
-    position: absolute;
-    left: 2vw;
-    top: 2.2vh;
-    font-size: 2vw;
-    color: #ffda52;
-}
-
-#skinBoost button {
-    position: absolute;
-    right: 3vw;
-    top: 1.7vh;
-    font-size: 1.5vw;
-}
-
-#iconChange {
-    position: absolute;
-    top: 38vh;
-    margin-left: 2vw;
-    width: 75vw;
-    height: 10vh;
-    border-radius: 1vw;
-    border: 1px solid #ffda52;
-    background-color: #ffda5215;
-}
-
-#iconChange span {
-    position: absolute;
-    left: 2vw;
-    top: 2.2vh;
-    font-size: 2vw;
-    color: #ffda52;
-}
-
-#iconChange button {
-    position: absolute;
-    right: 3vw;
-    top: 1.7vh;
-    font-size: 1.5vw;
-}
-
-#backgroundChange {
-    position: absolute;
-    top: 51vh;
-    margin-left: 2vw;
-    width: 75vw;
-    height: 10vh;
-    border-radius: 1vw;
-    border: 1px solid #ffda52;
-    background-color: #ffda5215;
-}
-
-#backgroundChange span {
-    position: absolute;
-    left: 2vw;
-    top: 2.2vh;
-    font-size: 2vw;
-    color: #ffda52;
-}
-
-#backgroundChange button {
-    position: absolute;
-    right: 3vw;
-    top: 1.7vh;
-    font-size: 1.5vw;
+  position: absolute;
+  top: 5.7vh;
+  left: 3vw;
+  border: 1px solid #ffd13b;
+  width: 60vw;
 }
 
 #changeIconMain img {
-    margin: 0.7vw;
-    width: 5vw;
+  margin: 0.7vw;
+  width: 5vw;
 }
 
 #changeIconMain img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #bgSelectArea {
-    position: absolute;
-    background-color: #10233196;
-    border-radius: 3vw;
-    padding: 2vw;
-    width: 70vw;
-    top: 7vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-    text-align: center;
+  position: absolute;
+  background-color: #10233196;
+  border-radius: 3vw;
+  border: 2px solid #102331;
+  padding: 2vw;
+  width: 70vw;
+  top: 7vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  transition: 500ms;
+}
+
+#bgSelectArea:hover {
+  background-color: #102331c5;
+  border: 2px solid #ffda52;
 }
 
 #bgSelectChamp {
-    margin-bottom: 5vh;
+  margin-bottom: 5vh;
 }
 
 #bgSelectSkin {
-    margin-bottom: 4vh;
+  margin-bottom: 4vh;
+}
+
+#submitBg {
+  width: 8vw;
+  height: 3vw;
 }
 
 #instalockMain {
-    top: 30vh;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
-
-#instalock {
-    position: absolute;
-    top: 64vh;
-    margin-left: 2vw;
-    width: 75vw;
-    height: 10vh;
-    border-radius: 1vw;
-    border: 1px solid #ffda52;
-    background-color: #ffda5215;
-}
-
-#instalock span {
-    position: absolute;
-    left: 2vw;
-    top: 2.2vh;
-    font-size: 2vw;
-    color: #ffda52;
-}
-
-#instalock button {
-    position: absolute;
-    right: 3vw;
-    top: 1.7vh;
-    font-size: 1.5vw;
+  top: 30vh;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 #instalockCheckboxArea {
-    margin-top: 1.3vh;
+  margin-top: 0.5vw;
+  width: 9vw;
+  font-size: 1.1vw;
+  height: 3vw;
+  padding: 0.6vw;
 }
 
 #selectChamp {
-    width: 40vw;
-    margin-right: 1vw;
-}
-
-#offline {
-    position: absolute;
-    top: 77vh;
-    margin-left: 2vw;
-    width: 75vw;
-    height: 10vh;
-    border-radius: 1vw;
-    border: 1px solid #ffda52;
-    background-color: #ffda5215;
-}
-
-#offline span {
-    position: absolute;
-    left: 2vw;
-    top: 2.2vh;
-    font-size: 2vw;
-    color: #ffda52;
-}
-
-#offline label {
-    position: absolute;
-    right: 3vw;
-    top: 0.5vh;
-    font-size: 1.5vw;
-}
-
-#offline #offlineWarning1 {
-    position: absolute;
-    color: #ff7171;
-    top: 1.5vh;
-    left: 17vw;
-    font-size: 1.1vw;
-}
-
-#offline #offlineWarning2 {
-    position: absolute;
-    color: #ff7171;
-    top: 5.5vh;
-    left: 17vw;
-    font-size: 1.1vw;
+  width: 40vw;
+  margin-right: 1vw;
 }
 
 #summonerWallet {
-    position: absolute;
-    width: 12vw;
-    height: 10vh;
-    left: 2vw;
-    top: 2vh;
+  position: absolute;
+  width: 12vw;
+  height: 10vh;
+  left: 2vw;
+  top: 2vh;
 }
 
 #summonerWallet img {
-    position: absolute;
-    width: 2vw;
+  position: absolute;
+  width: 2vw;
 }
 
 #summonerIpImg {
-    left: 0;
-    top: 0;
+  left: 0;
+  top: 0;
 }
 
 #summonerRPImg {
-    left: 0;
-    bottom: 0.3vh;
+  left: 0;
+  bottom: 0;
 }
 
 #summonerWallet span {
-    position: absolute;
-    color: white;
-    font-size: 1.5vw;
+  position: absolute;
+  color: white;
+  font-size: 1.5vw;
 }
 
 #summonerIpSpan {
-    left: 2.5vw;
+  left: 2.5vw;
+  top: 0;
 }
 
 #summonerRPSpan {
-    left: 2.5vw;
-    bottom: 0;
+  left: 2.5vw;
+  bottom: 0;
 }
 
-#chatRank {
-    position: absolute;
-    top: 90vh;
-    margin-left: 2vw;
-    width: 75vw;
-    height: 10vh;
-    border-radius: 1vw;
-    border: 1px solid #ffda52;
-    background-color: #ffda5215;
+#chatRankMain {
+  text-align: center;
 }
 
-#chatRank span {
-    position: absolute;
-    left: 2vw;
-    top: 2.2vh;
-    font-size: 2vw;
-    color: #ffda52;
-}
-
-#chatRank button {
-    position: absolute;
-    right: 3vw;
-    top: 1.7vh;
-    font-size: 1.5vw;
-}
-
-#chatRankMain{
-    text-align: center;
+#submitChatRank {
+  width: 7vw;
+  height: 3vw;
 }
 
 .toolsTitle {
-    position: absolute;
-    color: white;
-    top: 2vh;
-    left: 2vw;
+  position: absolute;
+  color: #ffe48a;
+  top: 2vh;
+  left: 2vw;
 }
 
 .toolsHr {
-    position: absolute;
-    border: 1px solid #2b5d81;
-    top: 6vh;
-    left: 2vw;
-    width: 60vw;
+  position: absolute;
+  border: 1px solid #ffd13b;
+  top: 6vh;
+  left: 2vw;
+  width: 60vw;
 }
 
 .toolsMain {
-    position: absolute;
-    top: 10vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 83vw;
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 83vw;
 }
 
 #chatRankSelectArea {
-    position: absolute;
-    width: 70vw;
-    top: 7vh;
-    left: 0;
-    right: 0;
-    margin: auto;
+  position: absolute;
+  width: 70vw;
+  top: 7vh;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 #chatRankSelectQueue {
-    margin-bottom: 5vh;
+  margin-bottom: 5vh;
 }
 
 #chatRankSelectRank {
-    margin-bottom: 5vh;
+  margin-bottom: 5vh;
 }
 
 #chatRankSelectDivision {
-    margin-bottom: 4vh;
+  margin-bottom: 4vh;
 }
 
 #detailTurnBack {
-    color: white;
-    position: absolute;
-    top: 3vh;
-    left: 3vw;
+  color: white;
+  position: absolute;
+  top: 3vh;
+  left: 3vw;
 }
 
 #champDetailsName {
-    position: absolute;
-    color: #ffda52;
-    top: 17vh;
-    left: 7vw;
-    font-size: 4vw;
+  position: absolute;
+  color: #ffda52;
+  top: 9vw;
+  left: 6vw;
+  font-size: 4vw;
 }
 
 #champDetailsTitle {
-    position: absolute;
-    color: #ffda52;
-    top: 22vh;
-    left: 40vw;
-    right: 9vw;
-    text-align: right;
-    font-size: 2vw;
+  position: absolute;
+  color: #ffda52;
+  top: 11.5vw;
+  left: 40vw;
+  right: 9vw;
+  text-align: right;
+  font-size: 2vw;
 }
 
 #champDetails {
-    color: white;
-    margin: 30vh auto auto auto;
-    width: 75vw;
-    font-size: 1.4vw;
-    background-color: #10233196;
+  color: white;
+  margin: 30vh auto auto auto;
+  width: 75vw;
+  font-size: 1.4vw;
+  background-color: #10233196;
 }
 
 #champDetails td {
-    border-color: #ffda52;
-    border-right: 1px solid #ffda52;
+  border-color: #ffda52;
+  border-right: 1px solid #ffda52;
 }
 
 #champDetailsImg {
-    width: 18%;
-    vertical-align: middle;
-    text-align: center;
+  width: 18%;
+  vertical-align: middle;
+  text-align: center;
 }
 
 #champDetailsImg img {
-    width: 10vw;
+  width: 10vw;
 }
 
 #audioChampSelect {
-    position: absolute;
-    top: 65vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-    text-align: center;
-    cursor: pointer;
-    color: white;
-    font-size: 1.5vw;
+  position: absolute;
+  left: 0;
+  right: 50%;
 }
 
 #audioChampBan {
-    position: absolute;
-    top: 75vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-    text-align: center;
-    cursor: pointer;
-    color: white;
-    font-size: 1.5vw;
+  position: absolute;
+  left: 50%;
+  right: 0;
 }
 
-#autoChampSelect {
-    position: absolute;
-    top: 103vh;
-    margin-left: 2vw;
-    width: 75vw;
-    height: 10vh;
-    border-radius: 1vw;
-    border: 1px solid #ffda52;
-    background-color: #ffda5215;
+#audioChampSelect,
+#audioChampBan {
+  bottom: 3vh;
+  width: 22vw;
+  height: 4vw;
+  margin: auto;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.5vw;
+  opacity: 0.6;
+  transition: 500ms;
 }
 
-#autoChampSelect span {
-    position: absolute;
-    left: 2vw;
-    top: 2.2vh;
-    font-size: 2vw;
-    color: #ffda52;
-}
-
-#autoChampSelect button {
-    position: absolute;
-    right: 3vw;
-    top: 1.7vh;
-    font-size: 1.5vw;
+#audioChampSelect:hover,
+#audioChampBan:hover {
+  opacity: unset;
 }
 
 #autoMatchingArea {
-    position: absolute;
-    width: 65vw;
-    height: 165vh;
-    top: 2vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-
+  position: absolute;
+  width: 65vw;
+  height: 165vh;
+  top: 2vh;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 #autoMatchingAcceptCheckboxArea {
-    position: absolute;
-    top: 1vh;
-    width: 30vw;
-    font-size: 1.2vw;
-    left: 0;
-    right: 0;
-    margin: auto;
+  position: absolute;
+  top: 1vh;
+  width: 20vw;
+  font-size: 1.2vw;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 #autoMatchingBanCheckboxArea {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    font-size: 1.2vw;
-    top: 10vh;
-    width: 50vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 1.2vw;
+  top: 10vh;
+  width: 50vw;
 }
 
 #autoMatchingSelectCheckboxArea {
-    position: absolute;
-    left: 0;
-    right: 0;
-    font-size: 1.2vw;
-    margin: auto;
-    top: 25vh;
-    width: 50vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 1.2vw;
+  margin: auto;
+  top: 25vh;
+  width: 50vw;
 }
 
 #autoMatchingPerksCheckboxArea {
-    position: absolute;
-    left: 0;
-    right: 0;
-    font-size: 1.2vw;
-    margin: auto;
-    top: 44vh;
-    width: 60vw;
-    height: 80vh;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 1.2vw;
+  margin: auto;
+  top: 44vh;
+  width: 60vw;
+  height: 80vh;
 }
 
 #autoMatchingPerksCheckboxArea select {
-    margin-bottom: 3vh;
-    width: 35vw;
+  margin-bottom: 3vh;
+  width: 35vw;
 }
 
 #primaryPerksArea {
-    position: absolute;
-    bottom: 5vh;
-    left: 0;
-    right: 30vw;
-    margin: auto;
-    width: 30vw;
-    height: 48vh;
+  position: absolute;
+  bottom: 5vh;
+  left: 0;
+  right: 30vw;
+  margin: auto;
+  width: 30vw;
+  height: 48vh;
 }
 
 #primaryPerksArea img {
-    opacity: 0.3;
-    width: 5vw;
-    margin-bottom: 2vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
+  opacity: 0.3;
+  width: 5vw;
+  margin-bottom: 2vh;
+  margin-right: 1vw;
+  margin-left: 1vw;
 }
 
 #subPerksArea {
-    position: absolute;
-    left: 32vw;
-    right: 0;
-    bottom: 5vh;
-    width: 25vw;
-    height: 48vh;
+  position: absolute;
+  left: 32vw;
+  right: 0;
+  bottom: 5vh;
+  width: 25vw;
+  height: 48vh;
 }
 
 #subPerksAreaRune img {
-    opacity: 0.3;
-    width: 3.5vw;
-    margin-bottom: 2vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
+  opacity: 0.3;
+  width: 3.5vw;
+  margin-bottom: 2vh;
+  margin-right: 1vw;
+  margin-left: 1vw;
 }
 
 #subPerksAreaStat {
-    display: none;
+  display: none;
 }
 
 #subPerksAreaStat img {
-    opacity: 0.5;
-    width: 2vw;
-    margin-bottom: 2vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
+  opacity: 0.5;
+  width: 2vw;
+  margin-bottom: 2vh;
+  margin-right: 1vw;
+  margin-left: 1vw;
 }
 
 #autoMatchingSubmitCheckboxArea {
-    position: absolute;
-    bottom: 2vh;
-    width: 13vw;
-    font-size: 1.2vw;
-    left: 0;
-    right: 0;
-    margin: auto;
+  position: absolute;
+  bottom: 2vh;
+  width: 13vw;
+  font-size: 1.2vw;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 #autoMatchingRuneSubmitCheckboxArea {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 #autoMatchingSpellSelectCheckboxArea {
-    position: absolute;
-    top: 128vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 40vw;
-    height: 27vh;
+  position: absolute;
+  top: 128vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 40vw;
+  height: 27vh;
 }
 
 #autoMatchingSpellSelectCheckboxArea select {
-    margin: 0.5vw;
-    width: 30vw;
+  margin: 0.5vw;
+  width: 30vw;
 }
 
 #autoMatchingSpellSubmitCheckboxArea {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
-}
-
-#patchInstall {
-    position: absolute;
-    top: 116vh;
-    margin-left: 2vw;
-    width: 75vw;
-    height: 10vh;
-    border-radius: 1vw;
-    border: 1px solid #ffda52;
-    background-color: #ffda5215;
-}
-
-#patchInstall span {
-    position: absolute;
-    left: 2vw;
-    top: 2.2vh;
-    font-size: 2vw;
-    color: #ffda52;
-}
-
-#patchInstall button {
-    position: absolute;
-    right: 3vw;
-    top: 1.7vh;
-    font-size: 1.5vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
 }
 
 #pathTypeArea {
-    color: white;
+  color: white;
 }
 
-#pathTypeArea label{
-    position: absolute;
-    margin-top: 1vw;
+#pathTypeArea label {
+  position: absolute;
+  margin-top: 1vw;
 }
 
 #typeSelectLabel {
-    position: absolute;
-    left: 0;
-    right: 55%;
-    text-align: right;
+  position: absolute;
+  left: 0;
+  right: 55%;
+  text-align: right;
 }
 
 #typeUrlLabel {
-    position: absolute;
-    left: 55%;
-    right: 0;
-    text-align: left;
+  position: absolute;
+  left: 55%;
+  right: 0;
+  text-align: left;
 }
 
-#selectPatchArea{
-    position: absolute;
-    top: 4vw;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 50vw;
+#selectPatchArea {
+  position: absolute;
+  top: 4vw;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50vw;
 }
 
-#urlPatchArea{
-    position: absolute;
-    top: 4vw;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 50vw;
-    display: none;
+#urlPatchArea {
+  position: absolute;
+  top: 4vw;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50vw;
+  display: none;
 }
 
-#buttonPatchArea{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 9vw;
-    text-align: center;
+#buttonPatchArea {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 9vw;
+  text-align: center;
+}
+
+#infoPatchButton,
+#submitPatchButton {
+  width: 13vw;
+  height: 3vw;
+  font-size: 1.1vw;
+}
+
+.button {
+  -webkit-appearance: none;
+  color: #ffd13b;
+  border: none;
+  outline: none;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("../images/buttons/default/default.png");
+  transform: 500ms;
+}
+
+.button:disabled {
+  color: #7c7c7c;
+  outline: none;
+  background-image: url("../images/buttons/1/disabled.png");
+}
+
+.button:enabled:hover {
+  color: #ffdd6e;
+  outline: none;
+  background-image: url("../images/buttons/default/hover.png");
+}
+
+.button:enabled:active {
+  color: #c0a131;
+  outline: none;
+  background-image: url("../images/buttons/default/click.png");
+}
+
+.button:enabled:not(:hover) {
+  color: #ffd13b;
+  outline: none;
+  background-image: url("../images/buttons/default/default.png");
+}
+
+.button1 {
+  -webkit-appearance: none;
+  color: #ffde70;
+  border: none;
+  outline: none;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("../images/buttons/1/default.png");
+  transform: 500ms;
+}
+
+.button1:enabled:hover {
+  color: #ffecae;
+  outline: none;
+  background-image: url("../images/buttons/1/hover.png");
+}
+
+.button1:enabled:active {
+  color: #ffd028;
+  outline: none;
+  background-image: url("../images/buttons/1/click.png");
+}
+
+.button1:enabled:not(:hover) {
+  color: #ffde70;
+  outline: none;
+  background-image: url("../images/buttons/1/default.png");
+}
+
+#toolsMain {
+  position: absolute;
+  top: 5vw;
+  left: 5vw;
+  right: 5vw;
+}
+
+.toolArea {
+  float: left;
+  width: 21vw;
+  height: 21vw;
+  border-radius: 1vw;
+  border: 2px solid #003355;
+  background-color: #0e263b;
+  text-align: center;
+  transition: 500ms;
+  margin: 1vw;
+}
+
+.toolArea:hover {
+  background-color: #001831;
+  border: 2px solid #ffda52;
+}
+
+.toolsImg {
+  width: 100%;
+  height: 55%;
+}
+
+.toolsImg img {
+  margin-top: 1.2vw;
+  width: 10vw;
+}
+
+#patchInstallVersion {
+  margin-top: 5vw;
+  font-size: 2vw;
+  color: #ffda52;
+}
+
+.checkBoxArea {
+  margin-top: 1vw;
+  color: #ffda52;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("../images/buttons/default/default.png");
+  transform: 500ms;
+  cursor: pointer;
+  transition: 500ms;
+}
+
+.checkBoxArea:hover {
+  color: #ffdd6e;
+  outline: none;
+  background-image: url("../images/buttons/default/hover.png");
+}
+
+.checkBoxArea:active {
+  color: #c0a131;
+  outline: none;
+  background-image: url("../images/buttons/default/click.png");
+}
+
+.checkBoxArea:not(:hover) {
+  color: #ffda52;
+  outline: none;
+  background-image: url("../images/buttons/default/default.png");
+}
+
+.checkBoxArea .checkBoxSpan {
+  cursor: pointer;
+  font-size: 1vw;
+  margin-top: 0.8vw;
+}
+
+.toolArea span {
+  margin-top: 1vw;
+  display: block;
+  font-size: 1.3vw;
+  color: #ffda52;
+}
+
+.toolArea button {
+  font-size: 1vw;
+  transition: 200ms;
+  width: 9vw;
+  height: 6vh;
+  margin-top: 1vw;
 }

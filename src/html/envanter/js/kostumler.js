@@ -43,3 +43,11 @@ skinData.forEach(element => {
 });
 
 skinData = null;
+
+$().ready(() => {
+    $("#loadingArea").css({
+        "display": "none"
+    });
+})
+
+$("img, a").attr("draggable", false);

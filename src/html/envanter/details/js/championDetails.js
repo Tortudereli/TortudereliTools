@@ -11,8 +11,6 @@ $("#github").click(() => {
     shell.openExternal('https://github.com/Tortudereli')
 })
 
-$("#eSampiyon").addClass("active");
-
 var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
@@ -98,17 +96,32 @@ var snd1 = new Audio(ipcRenderer.sendSync("getAudio", champData['stingerSfxPath'
 snd1.volume = 0.2;
 snd1.play();
 
+var snd2 = new Audio(ipcRenderer.sendSync("getAudio", champData['chooseVoPath'])['body']);
+var snd3 = new Audio(ipcRenderer.sendSync("getAudio", champData['banVoPath'])['body']);
+snd2.volume = 0.4;
+snd3.volume = 0.4;
+
 $("#audioChampSelect").click(() => {
-    var snd2 = new Audio(ipcRenderer.sendSync("getAudio", champData['chooseVoPath'])['body']);
-	snd2.volume = 0.2;
+    snd3.pause();
+    snd2.pause();
+    snd2.currentTime = 0;
     snd2.play();
 });
 
 $("#audioChampBan").click(() => {
-    var snd3 = new Audio(ipcRenderer.sendSync("getAudio", champData['banVoPath'])['body']);
-	snd3.volume = 0.2;
+    snd2.pause();
+    snd3.pause();
+    snd3.currentTime = 0;
     snd3.play();
 });
 
 champMasteyData = null;
 version = null;
+
+$().ready(() => {
+    $("#loadingArea").css({
+        "display": "none"
+    });
+})
+
+$("img, a").attr("draggable", false);

@@ -2,84 +2,91 @@
 <html lang="tr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sohbet Derece Değiştir</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sohbet Derece Değiştir</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../../css/style.css" />
 </head>
 
 <body>
-    <div id="leftMenu">
-        <div id="currentSummonerInfo">
-            <img id="currentSummonerIcon">
-            <span id="currentSummonerName"></span>
-            <span id="currentSummonerLevel"></span>
-        </div>
-
-        <div id="nav">
-            <ul>
-                <li><a href="../../../index.html">Profil</a></li>
-                <li><a href="../../envanter/sampiyonlar.html">Envanter</a></li>
-                <li><a href="../index.html">Araçlar</a></li>
-            </ul>
-        </div>
-
-        <div id="github">
-            <img src="../../../images/GitHub.png" alt="">
-            <span id="githubName">Tortudereli</span>
-        </div>
+  <div id="leftMenu">
+    <div id="currentSummonerInfo">
+      <img id="currentSummonerIcon" />
+      <span id="currentSummonerName"></span>
+      <span id="currentSummonerLevel"></span>
     </div>
 
-    <div id="main">
-        <h3 id="chatRankTitle" class="toolsTitle">Ligi Seçin</h3>
-        <hr id="chatRankHr" class="toolsHr">
-        <div id="chatRankMain" class="toolsMain">
-
-            <div class="form-group" id="chatRankSelectArea">
-                <select class="custom-select" name="" id="chatRankSelectQueue">
-                    <option id="SOLO">Dereceli Tek/Çift</option>
-                    <option id="FLEX">Dereceli Esnek</option>
-                    <option id="FLEX">Dereceli TFT</option>
-                </select>
-
-                <select class="custom-select" name="" id="chatRankSelectRank">
-                    <option id="IRON">IRON</option>
-                    <option id="BRONZE">BRONZE</option>
-                    <option id="SILVER">SILVER</option>
-                    <option id="GOLD">GOLD</option>
-                    <option id="PLATINUM">PLATINUM</option>
-                    <option id="DIAMOND">DIAMOND</option>
-                    <option id="MASTER">MASTER</option>
-                    <option id="GRANDMASTER">GRANDMASTER</option>
-                    <option id="CHALLENGER">CHALLENGER</option>
-                </select>
-
-                <select class="custom-select" name="" id="chatRankSelectDivision">
-                    <option id="I">I</option>
-                    <option id="II">II</option>
-                    <option id="III">III</option>
-                    <option id="IV">IV</option>
-                </select>
-                <button id="submitChatRank" type="button" class="btn btn-outline-primary">Değiştir</button>
-            </div>
-        </div>
+    <div id="nav">
+      <ul>
+        <li><a href="../../../index.html">Profil</a></li>
+        <li><a href="../../envanter/sampiyonlar.html">Envanter</a></li>
+        <li><a href="../index.html">Araçlar</a></li>
+      </ul>
     </div>
 
-    <script>
-        fetch('https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json')
-            .then(res => res.json())
-            .then((out) => {
-                var elem = document.createElement('script');
-                if (out['chatRankJsStatus'] == 1) {
-                    elem.src =
-                        "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/araclar/tools/js/chatRank.js";
-                } else {
-                    elem.src = "js/chatRank.js";
-                }
-                document.body.appendChild(elem);
-            }).catch(err => console.error(err));
-    </script>
+    <div id="github">
+      <img src="../../../images/GitHub.png" alt="" />
+      <span id="githubName">Tortudereli</span>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="loadingArea">
+      <img src="../../../images/spin.gif" />
+    </div>
+    <h3 id="chatRankTitle" class="toolsTitle">Ligi Seçin</h3>
+    <hr id="chatRankHr" class="toolsHr" />
+    <div id="chatRankMain" class="toolsMain">
+      <div class="form-group" id="chatRankSelectArea">
+        <select class="custom-select" name="" id="chatRankSelectQueue">
+          <option id="SOLO">Dereceli Tek/Çift</option>
+          <option id="FLEX">Dereceli Esnek</option>
+          <option id="FLEX">Dereceli TFT</option>
+        </select>
+
+        <select class="custom-select" name="" id="chatRankSelectRank">
+          <option id="IRON">IRON</option>
+          <option id="BRONZE">BRONZE</option>
+          <option id="SILVER">SILVER</option>
+          <option id="GOLD">GOLD</option>
+          <option id="PLATINUM">PLATINUM</option>
+          <option id="DIAMOND">DIAMOND</option>
+          <option id="MASTER">MASTER</option>
+          <option id="GRANDMASTER">GRANDMASTER</option>
+          <option id="CHALLENGER">CHALLENGER</option>
+        </select>
+
+        <select class="custom-select" name="" id="chatRankSelectDivision">
+          <option id="I">I</option>
+          <option id="II">II</option>
+          <option id="III">III</option>
+          <option id="IV">IV</option>
+        </select>
+        <button id="submitChatRank" type="button" class="button">
+          Değiştir
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    fetch(
+        "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json"
+      )
+      .then((res) => res.json())
+      .then((out) => {
+        var elem = document.createElement("script");
+        if (out["chatRankJsStatus"] == 1) {
+          elem.src =
+            "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/araclar/tools/js/chatRank.js";
+        } else {
+          elem.src = "js/chatRank.js";
+        }
+        document.body.appendChild(elem);
+      })
+      .catch((err) => console.error(err));
+  </script>
 </body>
 
 </html>

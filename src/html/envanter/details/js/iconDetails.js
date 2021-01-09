@@ -14,8 +14,6 @@ $("#github").click(() => {
     shell.openExternal('https://github.com/Tortudereli')
 })
 
-$("#eSampiyon").addClass("active");
-
 var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
 var version = versionData[0];
 versionData = null;
@@ -51,3 +49,11 @@ iconData['summonerIcons'].forEach(element => {
     }
 });
 version = null;
+
+$().ready(() => {
+    $("#loadingArea").css({
+        "display": "none"
+    });
+})
+
+$("img, a").attr("draggable", false);

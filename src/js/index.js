@@ -13,7 +13,7 @@ $("#ttVersion").click(() => {
 })
 
 try {
-    var currentVersion = 1.6;
+    var currentVersion = 2.0;
     var ttVersion = ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body'];
     var ttVersion = ttVersion['version'];
 
@@ -43,7 +43,6 @@ try {
     var xpSinceLastLevel = summonerData['xpSinceLastLevel'];
     var xpUntilNextLevel = summonerData['xpUntilNextLevel'];
     summonerData = null;
-
 
 
     var backgroundIdData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner/summoner-profile")['body'];
@@ -81,8 +80,6 @@ try {
         "background-size": "100% 100vh"
     })
 
-
-
     $("#currentSummonerIcon").attr('src', `http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${profileIconId}.png`)
     $("#currentSummonerName").text(displayName);
     $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
@@ -98,6 +95,49 @@ try {
         $("#summonerPerksReroll").attr('src', 'images/profile/perks_reroll_disabled.png');
     } else {
         $("#summonerPerksReroll").attr('src', 'images/profile/perks_reroll.png');
+    }
+    if (1 <= summonerLevel <= 29) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_001-029.png');
+    } else if (30 <= summonerLevel <= 49) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_030-049.png');
+    } else if (50 <= summonerLevel <= 74) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_050-074.png');
+    } else if (75 <= summonerLevel <= 99) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_075-099.png');
+    } else if (100 <= summonerLevel <= 124) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_100-124.png');
+    } else if (125 <= summonerLevel <= 149) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_125-149.png');
+    } else if (150 <= summonerLevel <= 174) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_150-174.png');
+    } else if (175 <= summonerLevel <= 199) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_175-199.png');
+    } else if (200 <= summonerLevel <= 224) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_200-224.png');
+    } else if (225 <= summonerLevel <= 249) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_225-249.png');
+    } else if (250 <= summonerLevel <= 274) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_250-274.png');
+    } else if (275 <= summonerLevel <= 299) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_275-299.png');
+    } else if (300 <= summonerLevel <= 324) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_300-324.png');
+    } else if (325 <= summonerLevel <= 349) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_325-349.png');
+    } else if (350 <= summonerLevel <= 374) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_350-374.png');
+    } else if (375 <= summonerLevel <= 399) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_375-399.png');
+    } else if (400 <= summonerLevel <= 424) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_400-424.png');
+    } else if (425 <= summonerLevel <= 449) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_425-449.png');
+    } else if (450 <= summonerLevel <= 474) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_450-474.png');
+    } else if (475 <= summonerLevel <= 499) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_475-499.png');
+    } else if (500 <= summonerLevel) {
+        $("#levelFrame").attr('src', 'images/frameLevel/lvl_500.png');
     }
 
 
@@ -193,6 +233,8 @@ try {
     $("#rightEloImg").attr('src', `images/rankedEmb/Emblem_${rightTier}.png`);
     $("#rightEloImg").attr('data-bs-original-title', `${rightWins} Zafer - ${rightLosses} Bozgun`);
 
+
+
     var masteryData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/${summonerId}/champion-mastery/top?limit=3`)['body'];
     var firstChampId = masteryData['masteries'][0]['championId'];
     var firstChampionLevel = masteryData['masteries'][0]['championLevel'];
@@ -206,10 +248,10 @@ try {
     var thirdChampionLevel = masteryData['masteries'][2]['championLevel'];
     var thirdChampionPoints = masteryData['masteries'][2]['championPoints'];
     masteryData = null;
-	
-	var champIdToAliasData = ipcRenderer.sendSync("getApi", `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json`)['body'];
 
-	function champIdToAlias(id) {
+    var champIdToAliasData = ipcRenderer.sendSync("getApi", `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json`)['body'];
+
+    function champIdToAlias(id) {
         for (let index = 0; index < champIdToAliasData.length; index++) {
             if (champIdToAliasData[index]['id'] == id) {
                 return champIdToAliasData[index]['alias'];
@@ -309,3 +351,11 @@ try {
         location.reload();
     }, 1000);
 }
+
+$().ready(() => {
+    $("#loadingArea").css({
+        "display": "none"
+    });
+})
+
+$("img, a").attr("draggable", false);

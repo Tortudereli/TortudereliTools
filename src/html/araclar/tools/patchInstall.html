@@ -2,82 +2,90 @@
 <html lang="tr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel Yama Yükleme</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manuel Yama Yükleme</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../../css/style.css" />
 </head>
 
 <body>
-    <div id="leftMenu">
-        <div id="currentSummonerInfo">
-            <img id="currentSummonerIcon">
-            <span id="currentSummonerName"></span>
-            <span id="currentSummonerLevel"></span>
-        </div>
-
-        <div id="nav">
-            <ul>
-                <li><a href="../../../index.html">Profil</a></li>
-                <li><a href="../../envanter/sampiyonlar.html">Envanter</a></li>
-                <li><a href="../index.html">Araçlar</a></li>
-            </ul>
-        </div>
-
-        <div id="github">
-            <img src="../../../images/GitHub.png" alt="">
-            <span id="githubName">Tortudereli</span>
-        </div>
+  <div id="leftMenu">
+    <div id="currentSummonerInfo">
+      <img id="currentSummonerIcon" />
+      <span id="currentSummonerName"></span>
+      <span id="currentSummonerLevel"></span>
     </div>
 
-    <div id="main">
-        <h3 id="patchTitle" class="toolsTitle">Manuel Yama Yükleme</h3>
-        <hr id="patchHr" class="toolsHr">
-        <div id="patchMain" class="toolsMain">
-            <div id="pathTypeArea">
-                <label class="form-check-label" id="typeSelectLabel">
-                    <input type="radio" class="form-check-input" name="patchType" id="typeSelect" value="checkedValue"
-                        checked>
-                    Yama seç ve yükle
-                </label>
-                <label class="form-check-label" id="typeUrlLabel">
-                    <input type="radio" class="form-check-input" name="patchType" id="typeUrl" value="checkedValue">
-                    URL ile yama yükle
-                </label>
-            </div>
-            <div id="selectPatchArea">
-                <select class="custom-select" name="" id="selectPatch">
-                    <option value="0" selected>Yama Seçin!</option>
-                </select>
-            </div>
-            <div id="urlPatchArea">
-                <input type="text" class="form-control" id="urlPath" aria-describedby="helpId"
-                    placeholder="URL Girin!">
-            </div>
-            <div id="buttonPatchArea">
-                <button id="infoPatchButton" type="button" class="btn btn-info">Bilgilendirme Metni</button>
-                <br>
-                <br>
-                <button id="submitPatchButton" type="button" class="btn btn-success" disabled>Yükle</button>
-            </div>
-        </div>
+    <div id="nav">
+      <ul>
+        <li><a href="../../../index.html">Profil</a></li>
+        <li><a href="../../envanter/sampiyonlar.html">Envanter</a></li>
+        <li><a href="../index.html">Araçlar</a></li>
+      </ul>
     </div>
 
-    <script>
-        fetch('https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json')
-            .then(res => res.json())
-            .then((out) => {
-                var elem = document.createElement('script');
-                if (out['patchInstallJsStatus'] == 1) {
-                    elem.src =
-                        "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/araclar/tools/js/patchInstall.js";
-                } else {
-                    elem.src = "js/patchInstall.js";
-                }
-                document.body.appendChild(elem);
-            }).catch(err => console.error(err));
-    </script>
+    <div id="github">
+      <img src="../../../images/GitHub.png" alt="" />
+      <span id="githubName">Tortudereli</span>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="loadingArea">
+      <img src="../../../images/spin.gif" />
+    </div>
+
+    <h3 id="patchTitle" class="toolsTitle">Manuel Yama Yükleme</h3>
+    <hr id="patchHr" class="toolsHr" />
+    <div id="patchMain" class="toolsMain">
+      <div id="pathTypeArea">
+        <label class="form-check-label" id="typeSelectLabel">
+          <input type="radio" class="form-check-input" name="patchType" id="typeSelect" value="checkedValue" checked />
+          Yama seç ve yükle
+        </label>
+        <label class="form-check-label" id="typeUrlLabel">
+          <input type="radio" class="form-check-input" name="patchType" id="typeUrl" value="checkedValue" />
+          URL ile yama yükle
+        </label>
+      </div>
+      <div id="selectPatchArea">
+        <select class="custom-select" name="" id="selectPatch">
+          <option value="0" selected>Yama Seçin!</option>
+        </select>
+      </div>
+      <div id="urlPatchArea">
+        <input type="text" class="form-control" id="urlPath" aria-describedby="helpId" placeholder="URL Girin!" />
+      </div>
+      <div id="buttonPatchArea">
+        <button id="infoPatchButton" type="button" class="button">
+          BİLGİLENDİRME METNİ
+        </button>
+        <br />
+        <br />
+        <button id="submitPatchButton" type="button" class="button" disabled>
+          YÜKLE
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    fetch(
+        "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json"
+      )
+      .then((res) => res.json())
+      .then((out) => {
+        var elem = document.createElement("script");
+        if (out["patchInstallJsStatus"] == 1) {
+          elem.src =
+            "https://cdn.jsdelivr.net/gh/Tortudereli/TortudereliTools@latest/src/html/araclar/tools/js/patchInstall.js";
+        } else {
+          elem.src = "js/patchInstall.js";
+        }
+        document.body.appendChild(elem);
+      })
+      .catch((err) => console.error(err));
+  </script>
 </body>
 
 </html>

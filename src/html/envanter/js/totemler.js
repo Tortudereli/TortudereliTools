@@ -53,3 +53,11 @@ totemData.forEach(element => {
 summonerId = null;
 champData = null;
 totemsData = null;
+
+$().ready(() => {
+    $("#loadingArea").css({
+        "display": "none"
+    });
+})
+
+$("img, a").attr("draggable", false);

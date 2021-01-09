@@ -45,3 +45,11 @@ iconData['icons'].forEach(element => {
 summonerId = null;
 iconData = null;
 version = null;
+
+$().ready(() => {
+    $("#loadingArea").css({
+        "display": "none"
+    });
+})
+
+$("img, a").attr("draggable", false);
