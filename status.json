@@ -1,7 +1,7 @@
 {
-	"version": 1.6,
+	"version": 2.0,
 	"status": 1,
-	"statusInfo": "v2.0 çıkışı nedeniyle uygulama geçici olarak devre dışı bırakılmıştır.",
+	"statusInfo": "",
 	"statusInfoColor": "red",
 	"minVersion": 2.0,
 	"profileJsStatus": 0,
