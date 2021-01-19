@@ -48,13 +48,13 @@ var backgroundChampId = String(backgroundId).substring(
   String(backgroundId).length - 3
 );
 
+var backgroundWebmPath = false;
 switch (backgroundId) {
   default:
     var skinData = ipcRenderer.sendSync(
       "get",
       `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/${backgroundId}`
     )["body"];
-    var backgroundImagePath = skinData["splashPath"];
     break;
 
   case 147002:
@@ -62,8 +62,7 @@ switch (backgroundId) {
       "get",
       `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`
     )["body"];
-    var backgroundImagePath =
-      skinData["questSkinInfo"]["tiers"][1]["splashPath"];
+    skinData = skinData["questSkinInfo"]["tiers"][1];
     break;
 
   case 147003:
@@ -71,19 +70,31 @@ switch (backgroundId) {
       "get",
       `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`
     )["body"];
-    var backgroundImagePath =
-      skinData["questSkinInfo"]["tiers"][2]["splashPath"];
+    skinData = skinData["questSkinInfo"]["tiers"][2];
     break;
 }
 
+if (skinData['splashVideoPath']) {
+  backgroundWebmPath = true;
+  backgroundImagePath = skinData["splashVideoPath"];
+} else {
+  var backgroundImagePath = skinData["splashPath"];
+}
+
 skinData = null;
-$("#main").css({
-  background: `url(${
-    ipcRenderer.sendSync("getImg", `${backgroundImagePath}`)["body"]
-  }`,
-  "background-repeat": "no-repeat",
-  "background-size": "100% 100vh",
-});
+if (backgroundWebmPath == true) {
+  $("#webmArea").append(
+    `<video autoplay muted loop style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; height: 100vh;"><source src="${ipcRenderer.sendSync("getWebm", backgroundImagePath)['body']}" type="video/webm"></video>`
+  );
+} else {
+  $("#main").css({
+    background: `url(${
+      ipcRenderer.sendSync("getImg", `${backgroundImagePath}`)["body"]
+    }`,
+    "background-repeat": "no-repeat",
+    "background-size": "100% 100vh",
+  });
+}
 
 var getChampions = ipcRenderer.sendSync(
   "getApi",

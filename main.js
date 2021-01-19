@@ -216,9 +216,39 @@ function createWindow() {
             });
         });
 
+        ipcMain.on("getWebm", (event, arg) => {
+            let options = {
+                url: clientUrl + arg,
+                strictSSL: false,
+                encoding: null,
+                auth: {
+                    username: `${data['username']}`,
+                    password: `${data['password']}`
+                },
+                headers: {
+                    'content-type': 'video/webm'
+                }
+            }
+            request.get(options, (err, response, body) => {
+                function Uint8ToString(u8a) {
+                    var CHUNK_SZ = 0x8000;
+                    var c = [];
+                    for (var i = 0; i < u8a.length; i += CHUNK_SZ) {
+                        c.push(String.fromCharCode.apply(null, u8a.subarray(i, i + CHUNK_SZ)));
+                    }
+                    return c.join("");
+                }
+                var u8 = new Uint8Array(body);
+                var b64encoded = btoa(Uint8ToString(u8));
+                event.returnValue = {
+                    "body": "data:video/webm;base64," + b64encoded
+                }
+            });
+        });
+
         setTimeout(() => {
             win.loadFile('src/html/info.html');
-        }, 5000);
+        }, 10000);
     });
 
     connector.on('disconnect', () => {

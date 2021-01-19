@@ -118,14 +118,140 @@ $("#offlineActive").click(() => {
     'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.202.166 protocol=any action=block',
     (error, data, getter) => {
       if (error) {
-        console.log("error", error.message);
+        console.log("error TR: ", error.message);
         return;
       }
       if (getter) {
-        console.log("data", data);
+        console.log("data TR: ", data);
         return;
       }
-      console.log("data", data);
+      console.log("data TR: ", data);
+    }
+  );
+  exec(
+    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.212.1 protocol=any action=block',
+    (error, data, getter) => {
+      if (error) {
+        console.log("error BR: ", error.message);
+        return;
+      }
+      if (getter) {
+        console.log("data BR: ", data);
+        return;
+      }
+      console.log("data BR: ", data);
+    }
+  );
+  exec(
+    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.223.136 protocol=any action=block',
+    (error, data, getter) => {
+      if (error) {
+        console.log("error EUN: ", error.message);
+        return;
+      }
+      if (getter) {
+        console.log("data EUN: ", data);
+        return;
+      }
+      console.log("data EUN: ", data);
+    }
+  );
+  exec(
+    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.252.238 protocol=any action=block',
+    (error, data, getter) => {
+      if (error) {
+        console.log("error EUW: ", error.message);
+        return;
+      }
+      if (getter) {
+        console.log("data EUW: ", data);
+        return;
+      }
+      console.log("data EUW: ", data);
+    }
+  );
+  exec(
+    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.217.212 protocol=any action=block',
+    (error, data, getter) => {
+      if (error) {
+        console.log("error JP: ", error.message);
+        return;
+      }
+      if (getter) {
+        console.log("data JP: ", data);
+        return;
+      }
+      console.log("data JP: ", data);
+    }
+  );
+  exec(
+    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.250.49 protocol=any action=block',
+    (error, data, getter) => {
+      if (error) {
+        console.log("error LA1: ", error.message);
+        return;
+      }
+      if (getter) {
+        console.log("data LA1: ", data);
+        return;
+      }
+      console.log("data LA1: ", data);
+    }
+  );
+  exec(
+    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.194.233 protocol=any action=block',
+    (error, data, getter) => {
+      if (error) {
+        console.log("error LA2: ", error.message);
+        return;
+      }
+      if (getter) {
+        console.log("data LA2: ", data);
+        return;
+      }
+      console.log("data LA2: ", data);
+    }
+  );
+  exec(
+    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.244.155 protocol=any action=block',
+    (error, data, getter) => {
+      if (error) {
+        console.log("error NA: ", error.message);
+        return;
+      }
+      if (getter) {
+        console.log("data NA: ", data);
+        return;
+      }
+      console.log("data NA: ", data);
+    }
+  );
+  exec(
+    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.208.61 protocol=any action=block',
+    (error, data, getter) => {
+      if (error) {
+        console.log("error OC: ", error.message);
+        return;
+      }
+      if (getter) {
+        console.log("data OC: ", data);
+        return;
+      }
+      console.log("data OC: ", data);
+    }
+  );
+  exec(
+    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.192.156 protocol=any action=block',
+    (error, data, getter) => {
+      if (error) {
+        console.log("error RU: ", error.message);
+        return;
+      }
+      if (getter) {
+        console.log("data RU: ", data);
+        return;
+      }
+      console.log("data RU: ", data);
     }
   );
 });

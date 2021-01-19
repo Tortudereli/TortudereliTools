@@ -13,7 +13,7 @@ $("#ttVersion").click(() => {
 })
 
 try {
-    var currentVersion = 2.0;
+    var currentVersion = 2.1;
     var ttVersion = ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body'];
     var ttVersion = ttVersion['version'];
 
@@ -28,12 +28,20 @@ try {
     } else {
         $("#ttVersion").css("display", "none");
     }
+} catch (error) {
+    alert("Uygulama versiyon kontrol hatası!\nHata: " + error);
+}
 
-
+try {
     var versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json")['body'];
     var version = versionData[0];
     versionData = null;
+} catch (error) {
+    alert("Ddragon versiyon veri çekme hatası!\nHata: " + error);
+}
 
+
+try {
     var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
     var displayName = summonerData['displayName'];
     var profileIconId = summonerData['profileIconId'];
@@ -43,43 +51,9 @@ try {
     var xpSinceLastLevel = summonerData['xpSinceLastLevel'];
     var xpUntilNextLevel = summonerData['xpUntilNextLevel'];
     summonerData = null;
-
-
-    var backgroundIdData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner/summoner-profile")['body'];
-    var backgroundId = backgroundIdData['backgroundSkinId'];
-    backgroundIdData = null;
-    var backgroundChampId = String(backgroundId).substring(0, String(backgroundId).length - 3);
-
-    switch (backgroundId) {
-        default:
-            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/${backgroundId}`)['body'];
-            var backgroundImagePath = skinData['splashPath'];
-            break;
-
-        case 147002:
-            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`)['body'];
-            var backgroundImagePath = skinData['questSkinInfo']['tiers'][1]['splashPath'];
-            break;
-
-        case 147003:
-            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`)['body'];
-            var backgroundImagePath = skinData['questSkinInfo']['tiers'][2]['splashPath'];
-            break;
-    }
-
-    if (typeof backgroundImagePath == 'undefined') {
-        setTimeout(() => {
-            location.reload();
-        }, 1000);
-    }
-
-    skinData = null;
-    $("#main").css({
-        "background": `url(${ipcRenderer.sendSync("getImg", `${backgroundImagePath}`)['body']}`,
-        "background-repeat": "no-repeat",
-        "background-size": "100% 100vh"
-    })
-
+} catch (error) {
+    alert("Sihirdar bilgileri veri çekme hatası!\nHata: " + error);
+} finally {
     $("#currentSummonerIcon").attr('src', `http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${profileIconId}.png`)
     $("#currentSummonerName").text(displayName);
     $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
@@ -139,8 +113,42 @@ try {
     } else if (500 <= summonerLevel) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_500.png');
     }
+}
 
 
+try {
+    var backgroundIdData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner/summoner-profile")['body'];
+    var backgroundId = backgroundIdData['backgroundSkinId'];
+    backgroundIdData = null;
+    var backgroundChampId = String(backgroundId).substring(0, String(backgroundId).length - 3);
+
+    switch (backgroundId) {
+        default:
+            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/${backgroundId}`)['body'];
+            var backgroundImagePath = skinData['splashPath'];
+            break;
+
+        case 147002:
+            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`)['body'];
+            var backgroundImagePath = skinData['questSkinInfo']['tiers'][1]['splashPath'];
+            break;
+
+        case 147003:
+            var skinData = ipcRenderer.sendSync("get", `/lol-champions/v1/inventories/${summonerId}/champions/${backgroundChampId}/skins/147001`)['body'];
+            var backgroundImagePath = skinData['questSkinInfo']['tiers'][2]['splashPath'];
+            break;
+    }
+    skinData = null;
+    $("#main").css({
+        "background": `url(${ipcRenderer.sendSync("getImg", `${backgroundImagePath}`)['body']}`,
+        "background-repeat": "no-repeat",
+        "background-size": "100% 100vh"
+    })
+} catch (error) {
+    alert("Profil arkaplan resmi veri çekme hatası!\nHatanın tekrarlanması durumunda profil arkaplan resmini değiştirip tekrar deneyin.\nHata: " + error);
+}
+
+try {
     var rankedData = ipcRenderer.sendSync("get", "/lol-ranked/v1/current-ranked-stats")['body'];
     var highDataDivision = rankedData['highestRankedEntry']['division'];
     var highDataLeaguePoints = rankedData['highestRankedEntry']['leaguePoints'];
@@ -148,7 +156,9 @@ try {
     var highDataQueueType = rankedData['highestRankedEntry']['queueType'];
     var highDataTier = rankedData['highestRankedEntry']['tier'];
     var highDataWins = rankedData['highestRankedEntry']['wins'];
-
+} catch (error) {
+    alert("Dereceli bilgileri veri çekme hatası!\nHata: " + error);
+} finally {
     if (highDataQueueType == "RANKED_SOLO_5x5") {
         var leftDivision = rankedData['queueMap']['RANKED_FLEX_SR']['division'];
         var leftLeaguePoints = rankedData['queueMap']['RANKED_FLEX_SR']['leaguePoints'];
@@ -232,9 +242,9 @@ try {
     $("#rightEloLP").text(rightTier + " " + rightDivision + " / " + rightLeaguePoints + " LP");
     $("#rightEloImg").attr('src', `images/rankedEmb/Emblem_${rightTier}.png`);
     $("#rightEloImg").attr('data-bs-original-title', `${rightWins} Zafer - ${rightLosses} Bozgun`);
+}
 
-
-
+try {
     var masteryData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/${summonerId}/champion-mastery/top?limit=3`)['body'];
     var firstChampId = masteryData['masteries'][0]['championId'];
     var firstChampionLevel = masteryData['masteries'][0]['championLevel'];
@@ -248,9 +258,12 @@ try {
     var thirdChampionLevel = masteryData['masteries'][2]['championLevel'];
     var thirdChampionPoints = masteryData['masteries'][2]['championPoints'];
     masteryData = null;
+} catch (error) {
+    alert("Şampiyon ustalık veri çekme hatası!\nHata: " + error);
+}
 
+try {
     var champIdToAliasData = ipcRenderer.sendSync("getApi", `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json`)['body'];
-
     function champIdToAlias(id) {
         for (let index = 0; index < champIdToAliasData.length; index++) {
             if (champIdToAliasData[index]['id'] == id) {
@@ -270,14 +283,19 @@ try {
     $("#thirdChampImg").attr('src', `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champIdToAlias(thirdChampId)}.png`)
     $("#thirdChampBanner").attr('src', `images/masteryBanner/banner-mastery-small-lvl${thirdChampionLevel}.png`);
     $("#thirdChampPoint").text(thirdChampionPoints.toLocaleString("tr-TR"));
+} catch (error) {
+    alert("Ustalık şampiyon resim veri çekme hatası!\nHata: " + error);
+}
 
-
+try {
     var honorData = ipcRenderer.sendSync("get", `/lol-honor-v2/v1/profile`)['body'];
     var checkpoint = honorData['checkpoint'];
     var honorLevel = honorData['honorLevel'];
     var rewardsLocked = honorData['rewardsLocked'];
     honorData = null;
-
+} catch (error) {
+    alert("Takdir bilgisi veri çekme hatası!\nHata: " + error);
+} finally {
     let honorImg;
     let honorLevelText;
     if (honorLevel == 0) {
@@ -305,20 +323,22 @@ try {
         } else if (checkpoint == 3) {
             honorLevelText = '3. Dönüm Noktası';
         }
-
         honorImg = `images/honor/emblem_${honorLevel}-${checkpoint}.png`;
     } else {
         honorImg = 'images/honor/emblem_generic.png';
     }
-
     $("#honorInfoImg").attr('src', `${honorImg}`);
     $("#honorInfoLevel").text(`${honorLevel}. Seviye`);
     $("#honorInfoCheckpoint").text(`${honorLevelText}`);
+}
 
-
+try {
     var chestData = ipcRenderer.sendSync("get", `/lol-collections/v1/inventories/chest-eligibility`)['body'];
     var earnableChests = chestData['earnableChests'];
     var nextChestRechargeTime = chestData['nextChestRechargeTime'];
+} catch (error) {
+    alert("Sandık bilgi veri çekme hatası!\nHata: " + error);
+} finally {
     $("#summonerPerksChest").attr('data-bs-original-title', `Sonraki sandık hakkı ${new Date(nextChestRechargeTime).toLocaleString("tr-TR")}`);
     chestData = null;
     $("#summonerPerksChestText").text(`${earnableChests}`);
@@ -327,29 +347,30 @@ try {
     } else {
         $("#summonerPerksChest").attr('src', 'images/profile/perks_chest.png');
     }
+}
 
-
+try {
     var activeBoost = ipcRenderer.sendSync("get", "/lol-active-boosts/v1/active-boosts")['body'];
     if (activeBoost['xpBoostPerWinCount'] !== 0 || activeBoost['xpBoostEndDate'] !== "1970-01-01T00:00:00Z") {
         $("#summonerPerksBoost").attr('src', 'images/profile/perks_boost.png');
     } else {
         $("#summonerPerksBoost").attr('src', 'images/profile/perks_boost_disabled.png');
     }
-
     activeBoost = null;
+} catch (error) {
+    alert("Takviye bilgisi veri çekme hatası!\nHata: " + error);
+}
 
+try {
     var wallet = ipcRenderer.sendSync("get", "/lol-store/v1/wallet")['body'];
     var summonerIp = wallet['ip']
     var summonerRP = wallet['rp']
-
+} catch (error) {
+    alert("Mavi öz ve RP veri çekme hatası!");
+} finally {
     $("#summonerIpSpan").text(summonerIp);
     $("#summonerRPSpan").text(summonerRP);
     wallet = null;
-
-} catch (error) {
-    setTimeout(() => {
-        location.reload();
-    }, 1000);
 }
 
 $().ready(() => {

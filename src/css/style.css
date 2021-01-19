@@ -745,11 +745,13 @@ body {
   margin: auto;
   text-align: center;
   transition: 500ms;
+  opacity: 0.4;
 }
 
 #bgSelectArea:hover {
   background-color: #102331c5;
   border: 2px solid #ffda52;
+  opacity: unset;
 }
 
 #bgSelectChamp {
