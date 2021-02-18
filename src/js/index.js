@@ -13,7 +13,7 @@ $("#ttVersion").click(() => {
 })
 
 try {
-    var currentVersion = 2.1;
+    var currentVersion = 2.2;
     var ttVersion = ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body'];
     var ttVersion = ttVersion['version'];
 
@@ -26,7 +26,7 @@ try {
             $("#ttVersion").css("color", `rgb(${r}, ${g}, ${b})`);
         }, 2000);
     } else {
-        $("#ttVersion").css("display", "none");
+        $("#ttVersion").text("v" + currentVersion);
     }
 } catch (error) {
     alert("Uygulama versiyon kontrol hatası!\nHata: " + error);
@@ -39,7 +39,6 @@ try {
 } catch (error) {
     alert("Ddragon versiyon veri çekme hatası!\nHata: " + error);
 }
-
 
 try {
     var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")['body'];
@@ -70,45 +69,45 @@ try {
     } else {
         $("#summonerPerksReroll").attr('src', 'images/profile/perks_reroll.png');
     }
-    if (1 <= summonerLevel <= 29) {
+    if (1 <= summonerLevel && summonerLevel <= 29) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_001-029.png');
-    } else if (30 <= summonerLevel <= 49) {
+    } else if (30 <= summonerLevel && summonerLevel <= 49) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_030-049.png');
-    } else if (50 <= summonerLevel <= 74) {
+    } else if (50 <= summonerLevel && summonerLevel <= 74) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_050-074.png');
-    } else if (75 <= summonerLevel <= 99) {
+    } else if (75 <= summonerLevel && summonerLevel <= 99) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_075-099.png');
-    } else if (100 <= summonerLevel <= 124) {
+    } else if (100 <= summonerLevel && summonerLevel <= 124) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_100-124.png');
-    } else if (125 <= summonerLevel <= 149) {
+    } else if (125 <= summonerLevel && summonerLevel <= 149) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_125-149.png');
-    } else if (150 <= summonerLevel <= 174) {
+    } else if (150 <= summonerLevel && summonerLevel <= 174) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_150-174.png');
-    } else if (175 <= summonerLevel <= 199) {
+    } else if (175 <= summonerLevel && summonerLevel <= 199) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_175-199.png');
-    } else if (200 <= summonerLevel <= 224) {
+    } else if (200 <= summonerLevel && summonerLevel <= 224) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_200-224.png');
-    } else if (225 <= summonerLevel <= 249) {
+    } else if (225 <= summonerLevel && summonerLevel <= 249) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_225-249.png');
-    } else if (250 <= summonerLevel <= 274) {
+    } else if (250 <= summonerLevel && summonerLevel <= 274) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_250-274.png');
-    } else if (275 <= summonerLevel <= 299) {
+    } else if (275 <= summonerLevel && summonerLevel <= 299) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_275-299.png');
-    } else if (300 <= summonerLevel <= 324) {
+    } else if (300 <= summonerLevel && summonerLevel <= 324) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_300-324.png');
-    } else if (325 <= summonerLevel <= 349) {
+    } else if (325 <= summonerLevel && summonerLevel <= 349) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_325-349.png');
-    } else if (350 <= summonerLevel <= 374) {
+    } else if (350 <= summonerLevel && summonerLevel <= 374) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_350-374.png');
-    } else if (375 <= summonerLevel <= 399) {
+    } else if (375 <= summonerLevel && summonerLevel <= 399) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_375-399.png');
-    } else if (400 <= summonerLevel <= 424) {
+    } else if (400 <= summonerLevel && summonerLevel <= 424) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_400-424.png');
-    } else if (425 <= summonerLevel <= 449) {
+    } else if (425 <= summonerLevel && summonerLevel <= 449) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_425-449.png');
-    } else if (450 <= summonerLevel <= 474) {
+    } else if (450 <= summonerLevel && summonerLevel <= 474) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_450-474.png');
-    } else if (475 <= summonerLevel <= 499) {
+    } else if (475 <= summonerLevel && summonerLevel <= 499) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_475-499.png');
     } else if (500 <= summonerLevel) {
         $("#levelFrame").attr('src', 'images/frameLevel/lvl_500.png');

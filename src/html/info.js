@@ -4,7 +4,7 @@ const {
 } = require("electron");
 const $ = require("jquery");
 
-var currentVersion = 2.1;
+var currentVersion = 2.2;
 var statusData = ipcRenderer.sendSync(
   "getApi",
   "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json"
@@ -32,7 +32,7 @@ if (statusData["status"] == 0) {
   });
   setTimeout(() => {
     window.location.href = "../index.html";
-  }, 10000);
+  }, statusData["infoTimer"]);
 } else {
   window.location.href = "../index.html";
 }

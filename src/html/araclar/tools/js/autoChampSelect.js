@@ -120,6 +120,37 @@ $("#autoMatchingSelectChamp").change(() => {
   selectChampId = $("#autoMatchingSelectChamp").val();
 });
 
+
+function getPerksUrl(runeName) {
+  var perksURL;
+  var perkStatusData = ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body']['perksJsonStatus'];
+  switch (perkStatusData) {
+    case 1:
+      perksURL = `https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/src/html/araclar/tools/js/json/${runeName}Runes.json`;
+      break;
+
+    default:
+      perksURL = `js/json/${runeName}Runes.json`;
+      break;
+  }
+  return perksURL;
+}
+
+function getPerkStyleURL() {
+  var perkStyleURL;
+  var perkStyleStatusData = ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")['body']['perkStyleJsonStatus'];
+  switch (perkStyleStatusData) {
+    case 1:
+      perkStyleURL = "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/src/html/araclar/tools/js/json/perkStyle.json";
+      break;
+
+    default:
+      perkStyleURL = "js/json/perkStyle.json";
+      break;
+  }
+  return perkStyleURL;
+}
+
 var primaryRune1 = 0,
   primaryRune2 = 0,
   primaryRune3 = 0,
@@ -143,7 +174,7 @@ $("#autoMatchingPrimaryStyle").change(() => {
     } else if (primaryStyleText == "İlham") {
       runeDataName = "ilham";
     }
-    $.getJSON(`js/json/${runeDataName}Runes.json`, function (data) {
+    $.getJSON(getPerksUrl(runeDataName), function (data) {
       $("#primaryPerksArea img").remove();
       $("#primaryPerksArea br").remove();
       $("#autoMatchingSubStyle option").remove();
@@ -154,7 +185,7 @@ $("#autoMatchingPrimaryStyle").change(() => {
       $("#autoMatchingSubStyle").append(
         `<option id="defaultSubStyle" value="0">- İkincil Rün Seç -</option>`
       );
-      $.getJSON("js/json/perkStyle.json", function (data1) {
+      $.getJSON(getPerkStyleURL(), function (data1) {
         data1.forEach((element) => {
           if (primaryStyleText != element["name"]) {
             $("#autoMatchingSubStyle").append(
@@ -333,7 +364,7 @@ $("#autoMatchingSubStyle").change(() => {
     } else if (subStyleText == "İlham") {
       runeDataName = "ilham";
     }
-    $.getJSON(`js/json/${runeDataName}Runes.json`, function (data) {
+    $.getJSON(getPerksUrl(runeDataName), function (data) {
       $("#subPerksAreaRune img").remove();
       $("#subPerksAreaRune br").remove();
       $("#subPerksAreaStat").css("display", "block");
@@ -887,77 +918,45 @@ setInterval(() => {
       } catch (error) {}
     }
 
-    if (
-      ipcRenderer.sendSync("get", "/lol-champ-select/v1/session")["status"] ==
-      200
-    ) {
+    var champSelectData = ipcRenderer.sendSync("get", "/lol-champ-select/v1/session");
+    var currentActorId = null;
+    if (champSelectData["status"] == 200) {
+      if (currentActorId == null) {
+        currentActorId = champSelectData['body']['localPlayerCellId'];
+      }
+
       if (banChampId != 0) {
-        try {
-          var oldI = 0;
-          var oldJ = 0;
-          var data = ipcRenderer.sendSync(
-            "get",
-            "/lol-champ-select/v1/session"
-          )["body"];
-          for (let i = 0; i < data["actions"].length; i++) {
-            for (let j = 0; j < data["actions"][i].length; j++) {
-              if (
-                data["actions"][oldI][oldJ]["championId"] == banChampId &&
-                data["actions"][oldI][oldJ]["type"] == "ban"
-              ) {
-                break;
-              } else {
-                if (data["actions"][i][j]["type"] == "ban") {
-                  var json = {
-                    url: `/lol-champ-select/v1/session/actions/${data["actions"][i][j]["id"]}`,
-                    json: {
-                      championId: banChampId,
-                      completed: true,
-                    },
-                  };
-                  ipcRenderer.send("patch", json);
-                }
-              }
-              oldJ = j;
+        champSelectData['body']['actions'].forEach(element => {
+          element.forEach(element => {
+            if (element['type'] == "ban" && element['actorCellId'] == currentActorId) {
+              var json = {
+                url: `/lol-champ-select/v1/session/actions/${element["id"]}`,
+                json: {
+                  championId: banChampId,
+                  completed: true,
+                },
+              };
+              ipcRenderer.send("patch", json);
             }
-            oldI = i;
-          }
-        } catch (error) {}
+          });
+        });
       }
 
       if (selectChampId != 0) {
-        try {
-          var oldI = 0;
-          var oldJ = 0;
-          var data = ipcRenderer.sendSync(
-            "get",
-            "/lol-champ-select/v1/session"
-          )["body"];
-
-          for (let i = 0; i < data["actions"].length; i++) {
-            for (let j = 0; j < data["actions"][i].length; j++) {
-              if (
-                data["actions"][oldI][oldJ]["championId"] == selectChampId &&
-                data["actions"][oldI][oldJ]["type"] == "pick"
-              ) {
-                break;
-              } else {
-                if (data["actions"][i][j]["type"] == "pick") {
-                  var json = {
-                    url: `/lol-champ-select/v1/session/actions/${data["actions"][i][j]["id"]}`,
-                    json: {
-                      championId: selectChampId,
-                      completed: true,
-                    },
-                  };
-                  ipcRenderer.send("patch", json);
-                }
-              }
-              oldJ = j;
+        champSelectData['body']['actions'].forEach(element => {
+          element.forEach(element => {
+            if (element['type'] == "pick" && element['actorCellId'] == currentActorId) {
+              var json = {
+                url: `/lol-champ-select/v1/session/actions/${element["id"]}`,
+                json: {
+                  championId: selectChampId,
+                  completed: true,
+                },
+              };
+              ipcRenderer.send("patch", json);
             }
-            oldI = i;
-          }
-        } catch (error) {}
+          });
+        });
       }
 
       var runeSubmit = $("#runeSubmit").prop("checked");

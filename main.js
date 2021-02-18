@@ -1,4 +1,4 @@
-const electron = require('electron');
+const path = require('path');
 const request = require('request');
 const LCUConnector = require("lcu-connector");
 const connector = new LCUConnector();
@@ -11,12 +11,8 @@ const {
     app,
     BrowserWindow,
     Menu,
-    ipcMain,
-    ipcRenderer
+    ipcMain
 } = require('electron');
-const {
-    event
-} = require('jquery');
 
 
 function createWindow() {
@@ -25,7 +21,7 @@ function createWindow() {
         minWidth: 1024,
         minHeight: 576,
         height: 720,
-        icon: "icon/icon.ico",
+        icon: path.join(__dirname, "icon/icon.ico"),
         title: "Tortudereli",
         webPreferences: {
             nodeIntegration: true
@@ -247,7 +243,7 @@ function createWindow() {
         });
 
         setTimeout(() => {
-            win.loadFile('src/html/info.html');
+            win.loadFile(path.join(__dirname, 'src/html/info.html'));
         }, 10000);
     });
 
@@ -266,8 +262,8 @@ function createWindow() {
         app.quit();
     });
 
-    connector.start()
-    win.loadFile('src/html/waitingLoL.html')
+    connector.start();
+    win.loadFile(path.join(__dirname, 'src/html/waitingLoL.html'));
 }
 
 

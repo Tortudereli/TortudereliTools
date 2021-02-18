@@ -59,7 +59,7 @@ var infoSound = new Audio("../../../sounds/sfx-ps-ui-nav-button-click.ogg");
 $("#infoPatchButton").click(() => {
   infoSound.play();
   var r = confirm(
-    `Bunu sadece eski veya yeni yamadaki oyun dosyalarına erişmek için kullanın!\nYama yaptıktan sonra eşleşmeli oyuna girmeye çalışmayın!\nOyunu kapatıp tekrar açınca otomatik olarak mevcut yama yüklenecektir. Mevcut yama dışında eşleşmeli oyuna girmeyin!\nEşleşmeli oyuna girmeden önce tam onarım yapın!\nOluşabilecek olumsuz sonuçlardan yapımcı sorumlu değildir!\nOnayladığınız takdirde "Yükle" butonu aktifleşecektir.`
+    `Bunu sadece eski veya yeni yamadaki oyun dosyalarına erişmek için kullanın!\nYama yaptıktan sonra eşleşmeli oyuna girmeye çalışmayın!\nOyunu kapatıp tekrar açınca otomatik olarak mevcut yama yüklenecektir. Mevcut yama dışında eşleşmeli oyuna girmeyin!\nEşleşmeli oyuna girmeden önce tam onarım yapmanız önerilir.!\nOluşabilecek olumsuz sonuçlardan yapımcı sorumlu değildir!\nOnayladığınız takdirde "Yükle" butonu aktifleşecektir.`
   );
   if (r == true) {
     $("#submitPatchButton").prop("disabled", false);

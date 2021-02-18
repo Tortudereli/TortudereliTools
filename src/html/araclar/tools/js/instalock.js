@@ -22,6 +22,7 @@ var summonerData = ipcRenderer.sendSync(
   "/lol-summoner/v1/current-summoner"
 )["body"];
 var displayName = summonerData["displayName"];
+var summonerId = summonerData["summonerId"];
 var profileIconId = summonerData["profileIconId"];
 var summonerLevel = summonerData["summonerLevel"];
 summonerData = null;
@@ -67,10 +68,15 @@ function sortSelect(selElem) {
 }
 
 var champId = -1;
+var messageLane = 0;
 var timer;
 $("#selectChamp").val(-1);
 $("#selectChamp").change(() => {
   champId = $("#selectChamp").val();
+});
+
+$("#messageLane").change(() => {
+  messageLane = $("#messageLane").val();
 });
 
 $("#instalockChat").keyup(() => {
@@ -78,51 +84,98 @@ $("#instalockChat").keyup(() => {
 });
 
 var activeSound = new Audio("../../../sounds/sfx-ps-ui-nav-button-click.ogg");
-$("#instalockCheckbox").change(() => {
-  var checked = $("#instalockCheckbox").prop("checked");
-  if (checked == true) {
+var successSound = new Audio("../../../sounds/sfx-cs-notif-boost-unlocked.ogg");
+var currentActorId = null;
+checkCheckBoxTimer = setInterval(() => {
+  if ($("#instalockCheckbox").prop("checked") == true) {
     if (champId != -1) {
       activeSound.play();
-      timer = setInterval(() => {
-        for (let index = 1; index < 11; index++) {
-          var json = {
-            url: `/lol-champ-select/v1/session/actions/${index}`,
-            json: {
-              championId: champId,
-              completed: true,
-            },
-          };
-          ipcRenderer.send("patch", json);
-
-          var kontrol = ipcRenderer.sendSync(
-            "get",
-            "/lol-champ-select/v1/session"
-          )["body"];
-          kontrol = kontrol["actions"][index - 1];
-          $.each(kontrol, function (indexInArray, valueOfElement) {
-            if (valueOfElement["championId"] == champId) {
-              if (valueOfElement["completed"] == true) {
-                $("#instalockCheckbox").prop("checked", false);
-                clearInterval(timer);
-                return;
+      var champSelectData = ipcRenderer.sendSync("get", "/lol-champ-select/v1/session");
+      if (champSelectData["status"] == 200) {
+        if (currentActorId == null) {
+          currentActorId = champSelectData['body']['localPlayerCellId'];
+          champSelectData['body']['actions'].forEach(element => {
+            element.forEach(element => {
+              if (element['type'] == "pick" && element['actorCellId'] == currentActorId) {
+                var json = {
+                  url: `/lol-champ-select/v1/session/actions/${element['id']}`,
+                  json: {
+                    "championId": champId,
+                    "completed": true,
+                  }
+                };
+                champSelectStatus = ipcRenderer.sendSync("patch", json);
               }
-            }
+            });
           });
         }
-      }, 500);
+
+        if (champSelectStatus['status'] == 204) {
+          $("#instalockCheckbox").prop("checked", false);
+          successSound.volume = 0.3;
+          successSound.play();
+          if (messageLane != 0) {
+            chatCheck(messageLane);
+          }
+        }
+      } else {
+        currentActorId = null;
+      }
     } else {
       $("#instalockCheckbox").prop("checked", false);
       alert("Şampiyon seçin!");
     }
-  } else {
-    clearInterval(timer);
   }
-});
+}, 300);
 
 $().ready(() => {
   $("#loadingArea").css({
-    display: "none",
+    display: "none"
   });
 });
 
 $("img, a").attr("draggable", false);
+
+function chatCheck(msg) {
+  try {
+    var groupChatId = null;
+    do {
+      var groupChatData = ipcRenderer.sendSync("get", "/lol-chat/v1/conversations");
+      groupChatData['body'].forEach(element => {
+        if (element['type'] == "championSelect") {
+          groupChatId = element['id'];
+        }
+      });
+
+      if (groupChatId != null) {
+        sendMessage(msg, groupChatId);
+      }
+
+    } while (groupChatId == null);
+
+  } catch (error) {
+    console.log(error);
+  };
+}
+
+function sendMessage(msg, id) {
+  var sohbetJson = {
+    url: `/lol-chat/v1/conversations/${id}/messages`,
+    json: {
+      "body": msg
+    }
+  };
+  ipcRenderer.sendSync("post", sohbetJson);
+  var sendMessageIndex = 0;
+  sendMessageTimer = setInterval(() => {
+    var sendMessageStatus = 404;
+    if (sendMessageIndex < 3) {
+      sendMessageStatus = ipcRenderer.sendSync("post", sohbetJson)['status'];
+    } else {
+      clearInterval(sendMessageTimer);
+    }
+    if (sendMessageStatus == 200) {
+      sendMessageIndex++;
+    }
+  }, 500)
+}

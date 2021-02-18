@@ -81,13 +81,13 @@ body {
 }
 
 #ttVersion {
-  display: none;
   position: absolute;
   font-size: 1.8vw;
   font-weight: bold;
   right: 2vw;
   top: 4vh;
   transition: 1.5s;
+  color: #60ffea;
 }
 
 #ttVersion:hover {
@@ -551,7 +551,7 @@ body {
 
 .progress-bar {
   width: var(--levelBar);
-  animation: barAnm 3s;
+  animation: barAnm 5s;
 }
 
 @keyframes barAnm {
@@ -765,6 +765,7 @@ body {
 #submitBg {
   width: 8vw;
   height: 3vw;
+  font-size: 1.2vw;
 }
 
 #instalockMain {
@@ -776,14 +777,19 @@ body {
 
 #instalockCheckboxArea {
   margin-top: 0.5vw;
-  width: 9vw;
-  font-size: 1.1vw;
-  height: 3vw;
-  padding: 0.6vw;
+  width: 120px;
+  font-size: 14px;
+  height: 40px;
+  padding: 10px;
 }
 
 #selectChamp {
   width: 40vw;
+  margin-right: 1vw;
+}
+
+#messageLane {
+  width: 10vw;
   margin-right: 1vw;
 }
 
@@ -818,12 +824,12 @@ body {
 
 #summonerIpSpan {
   left: 2.5vw;
-  top: 0;
+  top: 0.2vw;
 }
 
 #summonerRPSpan {
   left: 2.5vw;
-  bottom: 0;
+  bottom: -0.2vw;
 }
 
 #chatRankMain {
@@ -833,6 +839,7 @@ body {
 #submitChatRank {
   width: 7vw;
   height: 3vw;
+  font-size: 1.2vw;
 }
 
 .toolsTitle {
