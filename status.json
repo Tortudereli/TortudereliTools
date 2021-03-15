@@ -4,7 +4,7 @@
 	"status": 1,
 	"statusInfo": "",
 	"statusInfoColor": "red",
-	"info": 0,
+	"info": 1,
 	"infoText": "Bir sorun nedeniyle envanter bölümündeki simgeler sayfası ve simge değiştirme aracı devre dışı bırakıldı. Profil sayfasına yönlendiriliyorsunuz.",
 	"infoTextColor": "#ffeb7b",
 	"infoTimer": 10000,
