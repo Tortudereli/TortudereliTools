@@ -1,3 +1,5 @@
+window.location.href = "sampiyonlar.html";
+
 const {
     ipcRenderer
 } = require("electron");
