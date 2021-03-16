@@ -72,7 +72,6 @@ $("#trainingTool button").click(() => {
 $("#iconChange button").click(() => {
   window.location.href = "tools/changeIcon.html";
 });
-$("#iconChange button").attr('disabled', true);
 
 $("#backgroundChange button").click(() => {
   window.location.href = "tools/changeBg.html";

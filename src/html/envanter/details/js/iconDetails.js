@@ -41,11 +41,11 @@ var iconId = getUrlVars()["id"];
 
 $("#champDetailsImg img").attr('src', `http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${iconId}.png`)
 
-var iconData = ipcRenderer.sendSync("get", `/lol-collections/v2/inventories/${summonerId}/summoner-icons`)['body'];
+var iconData = ipcRenderer.sendSync("get", `/lol-inventory/v2/inventory/SUMMONER_ICON`)['body'];
 
-iconData['summonerIcons'].forEach(element => {
-    if (element['iconId'] == iconId) {
-        $("#iconDetailsPurchaseDate").text(new Date(element['ownership']['rental']['purchaseDate']).toLocaleString("tr-TR"));
+iconData.forEach(element => {
+    if (element['itemId'] == iconId) {
+        $("#iconDetailsPurchaseDate").text(`${element['purchaseDate'].substring(6,8)}/${element['purchaseDate'].substring(4,6)}/${element['purchaseDate'].substring(0,4)}`);
     }
 });
 version = null;

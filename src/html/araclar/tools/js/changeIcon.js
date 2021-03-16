@@ -2,9 +2,6 @@ const {
   ipcRenderer
 } = require("electron");
 const $ = require("jquery");
-const {
-  post
-} = require("request");
 
 const {
   shell
@@ -20,11 +17,7 @@ var version = ipcRenderer.sendSync(
 )["body"];
 version = version[0];
 
-var summonerData = ipcRenderer.sendSync(
-  "get",
-  "/lol-summoner/v1/current-summoner"
-)["body"];
-var summonerId = summonerData["summonerId"];
+var summonerData = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner")["body"];
 var displayName = summonerData["displayName"];
 var profileIconId = summonerData["profileIconId"];
 var summonerLevel = summonerData["summonerLevel"];
@@ -37,26 +30,30 @@ $("#currentSummonerIcon").attr(
 $("#currentSummonerName").text(displayName);
 $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
 
-var iconData = ipcRenderer.sendSync(
-  "get",
-  `/lol-collections/v2/inventories/${summonerId}/summoner-icons`
-)["body"];
-iconData = iconData["icons"];
-iconData.push(29);
+var iconData = ipcRenderer.sendSync("get", `/lol-inventory/v2/inventory/SUMMONER_ICON`)["body"];
+
+for (let index = 0; index < 30; index++) {
+  iconData.push({
+    "itemId": index
+  });
+}
+
 for (let index = 50; index < 79; index++) {
-  iconData.push(index);
+  iconData.push({
+    "itemId": index
+  });
 }
 
 iconData.forEach((element) => {
   $("#changeIconMain").append(
-    `<img id="icon${element}" src="http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${element}.png" alt="">`
+    `<img id="icon${element['itemId']}" src="http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${element['itemId']}.png" alt="">`
   );
 
-  $(`#icon${element}`).click(() => {
+  $(`#icon${element['itemId']}`).click(() => {
     var postData = {
       url: "/lol-summoner/v1/current-summoner/icon",
       json: {
-        profileIconId: element,
+        profileIconId: element['itemId'],
       },
     };
     ipcRenderer.send("put", postData);
