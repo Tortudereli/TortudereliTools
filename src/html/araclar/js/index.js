@@ -69,6 +69,33 @@ $("#trainingTool button").click(() => {
   ipcRenderer.send("post", json);
 });
 
+document.getElementById("toolsMain").innerHTML += "<div id=\"skinBoost\" class=\"toolArea\"><div class=\"toolsImg\"><img src=\"../../images/boost_xp_win.png\"  /></div><span>KOSTÜM TAKVİYESİ</span><button class=\"button\" type=\"button\">AKTİFLEŞTİR</button></div>";
+
+$("#skinBoost button").click(() => {
+  buttonSound.pause();
+  buttonSound.currentTime = 0;
+  buttonSound.play();
+  var wallet = ipcRenderer.sendSync("get", "/lol-store/v1/wallet")["body"];
+  var r = confirm(
+    `Bu özellik kostüm takviyesi açılabilen oyun modunun şampiyon seçim ekranında çalışır. (Örneğin: ARAM)\n${displayName} hesabınızda ${wallet["rp"]} RP vardır.\nEğer hesabınızda 95 RP ve üstü RP varsa ücret hesabınızdan düşürülür.\nRP'niz yokken aktifleştirilmesi tavsiye edilir.\nOlabilecek herhangi bir olumsuz sonuçtan yapımcı sorumlu değildir!\nOnaylıyor musunuz?`
+  );
+  if (r == true) {
+    var json = {
+      url: "/lol-champ-select/v1/team-boost/purchase",
+      json: "",
+    };
+    var durum = ipcRenderer.sendSync("post", json);
+    if (durum['status'] == 204) {
+      var boostSound = new Audio("../../sounds/sfx-cs-notif-boost-unlocked.ogg");
+      boostSound.play();
+    } else {
+      alert("Kostüm takviyesi aktifleştirilemedi!");
+    }
+  }
+  wallet = null;
+  r = null;
+});
+
 $("#iconChange button").click(() => {
   window.location.href = "tools/changeIcon.html";
 });
