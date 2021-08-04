@@ -44,7 +44,8 @@ version = null;
 
 var buttonSound = new Audio("../../sounds/sfx-uikit-button-gold-click.ogg");
 var activeSound = new Audio("../../sounds/sfx-ps-ui-nav-button-click.ogg");
-$("#trainingTool button").click(() => {
+
+$(document).on("click", "#trainingTool button", function () {
   buttonSound.pause();
   buttonSound.currentTime = 0;
   buttonSound.play();
