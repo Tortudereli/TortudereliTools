@@ -32,12 +32,6 @@ $("#currentSummonerLevel").text(summonerLevel + ". Seviye");
 
 var iconData = ipcRenderer.sendSync("get", `/lol-inventory/v2/inventory/SUMMONER_ICON`)["body"];
 
-for (let index = 0; index < 30; index++) {
-  iconData.push({
-    "itemId": index
-  });
-}
-
 for (let index = 50; index < 79; index++) {
   iconData.push({
     "itemId": index
