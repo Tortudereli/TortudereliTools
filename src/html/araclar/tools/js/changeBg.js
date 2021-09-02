@@ -6,9 +6,6 @@ const $ = require("jquery");
 const {
   shell
 } = require("electron");
-const {
-  isEmptyObject
-} = require("jquery");
 
 $("#github").click(() => {
   shell.openExternal("https://github.com/Tortudereli");
@@ -181,6 +178,8 @@ $().ready(() => {
   $("#loadingArea").css({
     display: "none",
   });
+  $(`#bgSelectChamp`).val(backgroundChampId).change();
+  $(`#bgSelectSkin`).val(backgroundId).change();
 });
 
 $("img, a").attr("draggable", false);

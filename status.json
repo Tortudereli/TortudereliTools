@@ -24,7 +24,7 @@
 	"wardDetailsJsStatus": 0,
 	"toolsJsStatus": 1,
 	"autoChampSelectJsStatus": 0,
-	"changeBgJsStatus": 0,
+	"changeBgJsStatus": 1,
 	"changeIconJsStatus": 1,
 	"chatRankJsStatus": 0,
 	"instalockJsStatus": 0,
