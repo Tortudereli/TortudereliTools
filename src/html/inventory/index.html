@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory - Champions</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <div id="navbar">
+        <ul id="navbarList">
+            <li><a id="goProfile">PROFILE</a></li>
+            <li><a id="goInventory" style="color: #43a4ff;">INVENTORY</a></li>
+            <li><a id="goTools">TOOLS</a></li>
+        </ul>
+
+        <ul id="navbarListRight">
+            <li><span id="bugReport">Bug Report</span></li>
+            <li><span id="donateButton">DONATE</span></li>
+            <li><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" id="gitHubImg"></li>
+            <li><span id="currentVersion">v3.0</span></li>
+        </ul>
+    </div>
+
+    <div id="inventoryHeader">
+        <ul id="inventoryHLinks">
+            <li><span onclick="location.href = `${dirname}\\src\\html\\inventory\\index.html`" style="color: #43a4ff;">Champions</span></li>
+            <li><span onclick="location.href = `${dirname}\\src\\html\\inventory\\skins.html`">Skins</span></li>
+            <li><span onclick="location.href = `${dirname}\\src\\html\\inventory\\wards.html`">Wards</span></li>
+            <li><span onclick="location.href = `${dirname}\\src\\html\\inventory\\icons.html`">Icons</span></li>
+            <li><span onclick="location.href = `${dirname}\\src\\html\\inventory\\emotes.html`">Emotes</span></li>
+        </ul>
+    </div>
+
+    <div id="inventoryArea"></div>
+
+    <script src="js/index.js"></script>
+    <script src="../publicJS.js"></script>
+</body>
+
+</html>

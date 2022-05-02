@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install Patch</title>
+    <link rel="stylesheet" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+    <div id="navbar">
+        <ul id="navbarList">
+            <li><a id="goProfile">PROFILE</a></li>
+            <li><a id="goInventory">INVENTORY</a></li>
+            <li><a id="goTools" style="color: #43a4ff;">TOOLS</a></li>
+        </ul>
+
+        <ul id="navbarListRight">
+            <li><span id="bugReport">Bug Report</span></li>
+            <li><span id="donateButton">DONATE</span></li>
+            <li><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" id="gitHubImg">
+            </li>
+            <li><span id="currentVersion">v3.0</span></li>
+        </ul>
+    </div>
+
+    <span id="backTools" onclick="location.href = `${dirname}\\src\\html\\tools\\index.html`">Back to tools</span>
+    <div id="installPatchArea">
+        <label id="methodSelect"><input type="radio" name="method" id="methodSelectRadio" checked>Select Patch</label>
+        <label id="methodURL"><input type="radio" name="method" id="methodURLRadio">URL</label>
+
+        <div id="installArea">
+
+            <div id="methodSelectDiv">
+                <select id="selectVersion"></select>
+            </div>
+
+            <div id="methodURLDiv" style="display: none;">
+                <input type="text" name="" id="inputURL" placeholder=".manifest">
+                <span style="font-size: 1.1vw; color: #ff6767;">If the wrong URL is entered, the game and the application will be closed.</span>
+            </div>
+
+            <button id="installButton">INSTALL</button>
+        </div>
+        <span id="statusInfo" style="position: relative; bottom: -2vh; left: 0; right: 0; text-align: center; color: #ffffff; font-size: 1.5vw;">Status</span>
+    </div>
+
+    <span
+        style="position: absolute; bottom: 10vh; left: 0; right: 0; text-align: center; color: #ffd447; font-size: 1.5vw;">For data mining</span>
+
+    <script src="js/installPatch.js"></script>
+    <script src="../../publicJS.js"></script>
+</body>
+ 
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <div id="navbar">
+        <ul id="navbarList">
+            <li><a id="goProfile">PROFILE</a></li>
+            <li><a id="goInventory">INVENTORY</a></li>
+            <li><a id="goTools" style="color: #43a4ff;">TOOLS</a></li>
+        </ul>
+
+        <ul id="navbarListRight">
+            <li><span id="bugReport">Bug Report</span></li>
+            <li><span id="donateButton">DONATE</span></li>
+            <li><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" id="gitHubImg">
+            </li>
+            <li><span id="currentVersion">v3.0</span></li>
+        </ul>
+    </div>
+
+    <div id="tools">
+        <div id="installPatch">
+            <span id="patchInstallVersion"></span>
+            <span class="toolsName">INSTALL PATCH</span>
+            <span class="toolGo"
+                onclick="location.href = `${dirname}\\src\\html\\tools\\tool\\installPatch.html`">GO</span>
+        </div>
+
+        <div id="instalockTool">
+            <img id="instalockToolImg" alt="">
+            <span class="toolsName">INSTALOCK</span>
+            <span class="toolGo"
+                onclick="location.href = `${dirname}\\src\\html\\tools\\tool\\instalock.html`">GO</span>
+        </div>
+
+        <div id="practiceTool">
+            <img src="https://raw.githubusercontent.com/Tortudereli/TortudereliToolsCDN/main/img/tools/practicetool.png"
+                alt="">
+            <span class="toolsName">PRACTICE TOOL 5 BOT</span>
+            <span class="toolGo" onclick="createPracticeTool()">GO</span>
+        </div>
+
+        <div id="changeBgImg">
+            <img id="bgImage" alt="">
+            <span class="toolsName">CHANGE BACKGROUND IMAGE</span>
+            <span class="toolGo" onclick="location.href = `${dirname}\\src\\html\\tools\\tool\\bgImage.html`">GO</span>
+        </div>
+
+        <div id="offline">
+            <img src="https://raw.githubusercontent.com/Tortudereli/TortudereliToolsCDN/main/img/tools/offline.jpg"
+                id="offlineImg" alt="">
+            <span class="toolsName">OFFLINE</span>
+            <span class="toolGo" onclick="offline()">ON-OFF</span>
+        </div>
+    </div>
+
+
+    <script src="js/index.js"></script>
+    <script src="../publicJS.js"></script>
+    <script>
+        const {
+            exec
+        } = require("child_process");
+
+        function createPracticeTool() {
+            const options = {
+                url: `/lol-lobby/v2/lobby`,
+                json: {
+                    "customGameLobby": {
+                        "configuration": {
+                            "gameMode": "PRACTICETOOL",
+                            "mapId": 11,
+                            "mutators": {
+                                "id": 1
+                            },
+                            "teamSize": 5
+                        },
+                        "lobbyName": "Tortudereli Practice Tool",
+                        "lobbyPassword": ""
+                    },
+                    "isCustom": true
+                }
+            }
+            var reqData = ipcRenderer.sendSync("post", options);
+
+            if (reqData.status === 200) {
+                ipcRenderer.send("alert", {
+                    message: "Lobby created!",
+                    type: "info",
+                    title: "Information"
+                });
+            } else {
+                ipcRenderer.send("alert", {
+                    message: "Lobby not created!",
+                    type: "warning",
+                    title: "Warning"
+                });
+            }
+        }
+
+        var offlineController = false;
+
+        function offline() {
+            if (offlineController == false) {
+                ipcRenderer.send("alert", {
+                    message: "To use this feature, you must run the program as an administrator. Antivirus software may block the use of this feature.\n\nOffline enabled",
+                    type: "info",
+                    title: "Information"
+                });
+                offlineController = true;
+                exec(
+                    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.202.166 protocol=any action=block',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error TR: ", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data TR: ", data);
+                            return;
+                        }
+                        console.log("data TR: ", data);
+                    }
+                );
+                exec(
+                    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.212.1 protocol=any action=block',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error BR: ", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data BR: ", data);
+                            return;
+                        }
+                        console.log("data BR: ", data);
+                    }
+                );
+                exec(
+                    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.223.136 protocol=any action=block',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error EUN: ", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data EUN: ", data);
+                            return;
+                        }
+                        console.log("data EUN: ", data);
+                    }
+                );
+                exec(
+                    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.252.238 protocol=any action=block',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error EUW: ", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data EUW: ", data);
+                            return;
+                        }
+                        console.log("data EUW: ", data);
+                    }
+                );
+                exec(
+                    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.217.212 protocol=any action=block',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error JP: ", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data JP: ", data);
+                            return;
+                        }
+                        console.log("data JP: ", data);
+                    }
+                );
+                exec(
+                    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.250.49 protocol=any action=block',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error LA1: ", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data LA1: ", data);
+                            return;
+                        }
+                        console.log("data LA1: ", data);
+                    }
+                );
+                exec(
+                    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.194.233 protocol=any action=block',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error LA2: ", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data LA2: ", data);
+                            return;
+                        }
+                        console.log("data LA2: ", data);
+                    }
+                );
+                exec(
+                    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.244.155 protocol=any action=block',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error NA: ", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data NA: ", data);
+                            return;
+                        }
+                        console.log("data NA: ", data);
+                    }
+                );
+                exec(
+                    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.208.61 protocol=any action=block',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error OC: ", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data OC: ", data);
+                            return;
+                        }
+                        console.log("data OC: ", data);
+                    }
+                );
+                exec(
+                    'netsh advfirewall firewall add rule name="LoLChatOffline" dir=out remoteip=172.65.192.156 protocol=any action=block',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error RU: ", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data RU: ", data);
+                            return;
+                        }
+                        console.log("data RU: ", data);
+                    }
+                );
+            } else {
+                ipcRenderer.send("alert", {
+                    message: "To use this feature, you must run the program as an administrator. Antivirus software may block the use of this feature.\n\nOffline disabled",
+                    type: "info",
+                    title: "Information"
+                });
+                offlineController = false;
+                exec(
+                    'netsh advfirewall firewall delete rule name="LoLChatOffline"',
+                    (error, data, getter) => {
+                        if (error) {
+                            console.log("error", error.message);
+                            return;
+                        }
+                        if (getter) {
+                            console.log("data", data);
+                            return;
+                        }
+                        console.log("data", data);
+                    }
+                );
+            }
+        }
+    </script>
+</body>
+
+</html>

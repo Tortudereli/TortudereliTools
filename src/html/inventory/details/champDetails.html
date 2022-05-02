@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body style="background-attachment: fixed;">
+    <div id="navbar">
+        <ul id="navbarList">
+            <li><a id="goProfile">PROFILE</a></li>
+            <li><a id="goInventory" style="color: #43a4ff;">INVENTORY</a></li>
+            <li><a id="goTools">TOOLS</a></li>
+        </ul>
+
+        <ul id="navbarListRight">
+            <li><span id="bugReport">Bug Report</span></li>
+            <li><span id="donateButton">DONATE</span></li>
+            <li><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" id="gitHubImg">
+            </li>
+            <li><span id="currentVersion">v3.0</span></li>
+        </ul>
+    </div>
+
+    <div id="detailsArea">
+        <h1 id="champHeader"></h1>
+        <table id="champAllDataTable">
+            <tr>
+                <td colspan="2">
+                    <h3>Champion Data</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>Stats:</h4>
+                    <span id="stats"></span>
+                    <br>
+                    <h4>Info:</h4>
+                    <span id="info"></span>
+                    <br>
+                    <h4>Tags:</h4>
+                    <span id="tags"></span>
+                    <br>
+                    <h4>Ally Tips:</h4>
+                    <span id="allytips"></span>
+                    <br>
+                    <h4>Enemy Tips:</h4>
+                    <span id="enemytips"></span>
+                </td>
+                <td>
+                    <h4>Spells:</h4>
+                    <span id="passive">
+                        <span>Passive</span>
+                        <br>
+                    </span>
+                    <span id="spells"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="js/champDetails.js"></script>
+    <script src="../../publicJS.js"></script>
+</body>
+
+</html>

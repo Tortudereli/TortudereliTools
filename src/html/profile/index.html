@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <div id="navbar">
+        <ul id="navbarList">
+            <li><a id="goProfile" style="color: #43a4ff;">PROFILE</a></li>
+            <li><a id="goInventory">INVENTORY</a></li>
+            <li><a id="goTools">TOOLS</a></li>
+        </ul>
+
+        <ul id="navbarListRight">
+            <li><span id="bugReport">Bug Report</span></li>
+            <li><span id="donateButton">DONATE</span></li>
+            <li><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" id="gitHubImg"></li>
+            <li><span id="currentVersion">v3.0</span></li>
+        </ul>
+    </div>
+
+    <div id="wallet">
+        <img src="https://raw.githubusercontent.com/Tortudereli/TortudereliToolsCDN/main/img/profile/be-icon.png" id="walletIpImg"><span id="walletIp"></span>
+        <img src="https://raw.githubusercontent.com/Tortudereli/TortudereliToolsCDN/main/img/profile/icon-rp.png" id="walletIpRp"><span id="walletRp"></span>
+    </div>
+
+    <div id="summonerData">
+        <div id="summonerDataImg">
+            <img id="summonerDataLevelFrame">
+            <img id="summonerDataProfileIcon">
+            <span id="summonerDataLevel"></span>
+        </div>
+
+        <div id="summonerMoreData">
+            <span id="summonerMoreDataName"></span>
+            <div id="summonerMoreDataLevelBar">
+                <div class="progress">
+                    <div class="progress-bar bg-info" id="levelbar"></div>
+                </div>
+            </div>
+            <div id="summonerMoreDataBoost">
+                <img id="profileChest" alt="">
+                <span id="profileChestNumber"></span>
+                <img id="profileBoost" alt="">
+                <img id="profileReroll" alt="">
+                <span id="profileRerollNumber"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="summonerChampMasteryData">
+        <div id="summonerChampMasteryDataFirstChamp">
+            <img id="summonerChampMasteryDataFirstChampFrameImg">
+            <img id="summonerChampMasteryDataFirstChampImg">
+            <span id="summonerChampMasteryDataFirstChampText"></span>
+        </div>
+        <div id="summonerChampMasteryDataSecondChamp">
+            <img id="summonerChampMasteryDataSecondChampFrameImg">
+            <img id="summonerChampMasteryDataSecondChampImg">
+            <span id="summonerChampMasteryDataSecondChampText"></span>
+        </div>
+        <div id="summonerChampMasteryDataThirdChamp">
+            <img id="summonerChampMasteryDataThirdChampFrameImg">
+            <img id="summonerChampMasteryDataThirdChampImg">
+            <span id="summonerChampMasteryDataThirdChampText"></span>
+        </div>
+    </div>
+
+    <div id="summonerRankedData">
+        <div id="summonerRankedDataFirstRank">
+            <img id="summonerRankedDataFirstRankImg">
+            <span id="summonerRankedDataFirstRankText"></span>
+        </div>
+        <div id="summonerRankedDataSecondRank">
+            <img id="summonerRankedDataSecondRankImg">
+            <span id="summonerRankedDataSecondRankText"></span>
+        </div>
+        <div id="summonerRankedDataThirdRank">
+            <img id="summonerRankedDataThirdRankImg">
+            <span id="summonerRankedDataThirdRankText"></span>
+        </div>
+    </div>
+
+    <div id="summonerHonorData">
+        <img id="summonerHonorDataImg">
+        <span id="summonerHonorDataHonorLevel"></span>
+        <span id="summonerHonorDataCheckpoint"></span>
+    </div>
+
+    <script src="js/index.js"></script>
+    <script src="../publicJS.js"></script>
+</body>
+
+</html>
