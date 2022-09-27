@@ -33,6 +33,38 @@ async function getData() {
         return;
     }
 
+    document.getElementById("acceptToMatch").addEventListener("click", () => {
+        var json = {
+            url: `/lol-matchmaking/v1/ready-check/accept`,
+            json: ""
+        };
+        var reqData = ipcRenderer.sendSync("post", json);
+        if (reqData["status"] == 204) {
+            ipcRenderer.send("alert", {
+                message: "Match accepted successfully!",
+                type: "info",
+                title: "Information"
+            });
+        }else{
+            ipcRenderer.send("alert", {
+                message: "Unsuccessful",
+                type: "error",
+                title: "Information"
+            });
+        }
+
+    })
+
+    setInterval(() => {
+        if (document.getElementById("autoAccept").checked) {
+            var json = {
+                url: `/lol-matchmaking/v1/ready-check/accept`,
+                json: ""
+            };
+            ipcRenderer.sendSync("post", json);
+        }
+    }, 1000);
+
     setInterval(() => {
         if (document.getElementById("instalockActive").checked) {
             var champSelectData = ipcRenderer.sendSync("get", "/lol-champ-select/v1/session");

@@ -59,8 +59,9 @@ body {
     padding: 0;
     font-size: 1.2vw;
     display: inline-flex;
+    position: absolute;
     margin-top: 1vw;
-    margin-left: 40vw;
+    right: 0;
 }
 
 #navbarListRight li {
@@ -166,11 +167,16 @@ body {
 
 #summonerDataLevel {
     z-index: 1;
+    background-color: #00000069;
+    border-radius: 10%;
+    border: 0.05vw solid #ffffffad;
     position: absolute;
+    width: 25%;
+    margin: auto;
     left: 0;
     right: 0;
     color: white;
-    bottom: 3.5vw;
+    bottom: 0vw;
     font-size: 1vw;
 }
 
@@ -214,7 +220,7 @@ body {
 }
 
 #levelbar {
-    color: #0004ff;
+    color: #4f006f;
     font-size: 1vw;
 }
 
@@ -786,40 +792,6 @@ p {
     color: #bbbbbb;
 }
 
-#inventoryHeader {
-    margin-top: 2vh;
-    width: 100%;
-    border-bottom: 1px solid #9c9c9c;
-    padding-bottom: 0.5vw;
-}
-
-#inventoryHLinks {
-    margin: 0;
-    list-style: none;
-    list-style-type: none;
-    padding-left: 0;
-    display: inline-flex;
-}
-
-#inventoryHLinks li:first-child {
-    margin-left: 2vw;
-}
-
-#inventoryHLinks li {
-    margin-right: 5vw;
-    font-size: 1.5vw;
-}
-
-#inventoryHLinks li span{
-    color: white;
-}
-
-#inventoryHLinks li span:hover{
-    color: #bbbbbb;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
 #inventoryArea{
     text-align: center;
     width: 97%;
@@ -827,8 +799,9 @@ p {
 }
 
 #inventoryArea img{
-    width: 8vw;
+    width: 10vw;
     margin: 1vw;
+    border: 1px solid white;
 }
 
 #inventoryArea img:hover{

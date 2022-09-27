@@ -14,7 +14,7 @@
     <div id="navbar">
         <ul id="navbarList">
             <li><a id="goProfile">PROFILE</a></li>
-            <li><a id="goInventory">INVENTORY</a></li>
+            <li><a id="goInventory">CHAMPIONS DATA</a></li>
             <li><a id="goTools" style="color: #43a4ff;">TOOLS</a></li>
         </ul>
 
@@ -23,7 +23,7 @@
             <li><span id="donateButton">DONATE</span></li>
             <li><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" id="gitHubImg">
             </li>
-            <li><span id="currentVersion">v3.0</span></li>
+            <li><span id="currentVersion"></span></li>
         </ul>
     </div>
     <span id="backTools" onclick="location.href = `${dirname}\\src\\html\\tools\\index.html`">Back to tools</span>
@@ -43,6 +43,13 @@
         <label for="instalockActive"
             style="font-size: 1.2vw; color: white; display: table; margin: 5vh auto auto auto; background-color: white; color: black; padding: 1vh 1vw; border-radius: 5%; border: 1px solid black;"><input
                 type="checkbox" id="instalockActive" name="instalockActive"> Active</label>
+
+        <label for="autoAccept"
+            style="font-size: 1.2vw; color: white; display: table; margin: 5vh auto auto auto; background-color: white; color: black; padding: 1vh 1vw; border-radius: 5%; border: 1px solid black;"><input
+                type="checkbox" id="autoAccept" name="autoAccept"> Auto Accept Match</label>
+
+        <button id="acceptToMatch" style="border: 2px solid yellow; outline: none; background-color:#1a4e7f; color: white; font-size: 1.2vw; border-radius: 3%; width: 35vw; text-align: center; display: table; margin: 5vh auto auto auto; padding: 0.5vw;">If
+            you accidentally declined to match, click here and accept to match.</button>
     </div>
 
     <script src="js/instalock.js"></script>

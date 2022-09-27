@@ -275,6 +275,26 @@ function createWindow() {
       app.quit();
     });
 
+    ipcMain.on("timeoutAppClose", (event, arg) => {
+      setTimeout(() => {
+        exec(
+          'netsh advfirewall firewall delete rule name="LoLChatOffline"',
+          (error, data, getter) => {
+            if (error) {
+              console.log("error", error.message);
+              return;
+            }
+            if (getter) {
+              console.log("data", data);
+              return;
+            }
+            console.log("data", data);
+          }
+        );
+        app.quit();
+      }, 5000);
+    });
+
     ipcMain.on("getDirname", (event) => {
       event.returnValue = __dirname;
     });

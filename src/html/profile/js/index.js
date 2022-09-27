@@ -3,6 +3,20 @@ async function getData() {
   var alertDataCDN = await ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliToolsCDN/main/alert.json").body;
   var baseDir = await ipcRenderer.sendSync("getDirname");
   try {
+    if (versionCDN["minVersion"] > minVersion) {
+      ipcRenderer.send("alert", {
+        message: `EN:\nThis version is no longer supported. Please download the new version\n\nTR:\nBu sürüm artık desteklenmiyor. Lütfen yeni sürümü indirin.`,
+        type: `error`,
+        title: `Unsupported Version`
+      });
+      shell.openExternal('https://github.com/Tortudereli/TortudereliTools/releases');
+      ipcRenderer.send("timeoutAppClose");
+    }
+  } catch (error) {
+
+  }
+
+  try {
     var alertData = require(`${baseDir}\\..\\alert.json`)
     if (alertData["alertId"] != alertDataCDN["alertId"]) {
       ipcRenderer.send("alert", {

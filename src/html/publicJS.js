@@ -2,8 +2,10 @@ const {
     ipcRenderer,
     shell
 } = require("electron");
-
-
+const appVersion = 3.1;
+const minVersion = 3.1;
+document.getElementById("currentVersion").innerText = `v${appVersion}`;
+console.log(appVersion)
 const versionData = ipcRenderer.sendSync("getApi", "https://ddragon.leagueoflegends.com/api/versions.json").body[0];
 const currentSummoner = ipcRenderer.sendSync("get", "/lol-summoner/v1/current-summoner").body;
 
@@ -52,12 +54,17 @@ document.getElementById("donateClose").addEventListener("click", () => {
 
 document.getElementById("gitHubImg").addEventListener("click", () => {
     shell.openExternal('https://github.com/Tortudereli');
-
 });
+
 document.getElementById("currentVersion").addEventListener("click", () => {
     shell.openExternal('https://github.com/Tortudereli/TortudereliTools/releases');
 });
 
+var versionCDN =ipcRenderer.sendSync("getApi", "https://raw.githubusercontent.com/Tortudereli/TortudereliTools/main/status.json")["body"]["version"];
+
+if (versionCDN > appVersion) {
+    document.getElementById("currentVersion").style.color = "red";
+}
 
 document.getElementById("goProfile").setAttribute("href", `${dirname}\\src\\html\\profile\\index.html`);
 document.getElementById("goInventory").setAttribute("href", `${dirname}\\src\\html\\inventory\\index.html`);
