@@ -3,17 +3,9 @@ const request = require("request");
 const LCUConnector = require("lcu-connector");
 const connector = new LCUConnector();
 const btoa = require("btoa");
-const {
-  exec
-} = require("child_process");
+const { exec } = require("child_process");
 
-const {
-  app,
-  BrowserWindow,
-  Menu,
-  ipcMain,
-  dialog
-} = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -25,14 +17,14 @@ function createWindow() {
     title: "Tortudereli",
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
     },
   });
 
   connector.on("connect", (data) => {
     var clientUrl = `${data["protocol"]}://${data["address"]}:${data["port"]}`;
-    console.log(data['port']);
-    console.log(data['password']);
+    console.log(data["port"]);
+    console.log(data["password"]);
 
     ipcMain.on("get", (event, arg) => {
       let options = {
@@ -112,15 +104,15 @@ function createWindow() {
         json: arg["json"],
       };
       request.put(options, (err, response, body) => {
-        if (typeof response != 'undefined') {
+        if (typeof response != "undefined") {
           event.returnValue = {
             body: body,
-            status: response.statusCode
+            status: response.statusCode,
           };
         } else {
           event.returnValue = {
             body: body,
-            status: 400
+            status: 400,
           };
         }
       });
@@ -292,7 +284,7 @@ function createWindow() {
           }
         );
         app.quit();
-      }, 5000);
+      }, 8000);
     });
 
     ipcMain.on("getDirname", (event) => {
